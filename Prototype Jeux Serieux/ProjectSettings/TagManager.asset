@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Batiment
   - Habitant
+  - Allie
   layers:
   - Default
   - TransparentFX

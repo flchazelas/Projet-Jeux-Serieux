@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ead7544a84db7d498c3ca5773137c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  habitant: {fileID: 288668003164000398, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
+  habitant: {fileID: 4450837172902718047, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
 --- !u!4 &333328064
 Transform:
   m_ObjectHideFlags: 0
