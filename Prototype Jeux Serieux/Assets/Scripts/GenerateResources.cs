@@ -8,6 +8,8 @@ public class GenerateResources : MonoBehaviour
     public bool generateGold;
     public bool generateMeat;
     public bool generateWood;
+
+    public int nbSecondBeforeGenerate;
     public int multiplicator;
 
     private Text canvasFood;
@@ -34,7 +36,7 @@ public class GenerateResources : MonoBehaviour
     IEnumerator generateRessources()
     {
         canGenerate = false;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(nbSecondBeforeGenerate);
         canGenerate = true;
         
         if (generateGold)

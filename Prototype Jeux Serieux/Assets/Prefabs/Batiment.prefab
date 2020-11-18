@@ -129,7 +129,7 @@ MonoBehaviour:
   generateGold: 1
   generateMeat: 1
   generateWood: 1
-  level: {fileID: 0}
+  nbSecondBeforeGenerate: 10
   multiplicator: 2
 --- !u!54 &4503078806978854166
 Rigidbody:
