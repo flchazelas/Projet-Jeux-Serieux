@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenerateResources : MonoBehaviour
+public class GenerateResources : Batiment
 {
     public bool generateGold;
     public bool generateMeat;
@@ -18,15 +18,19 @@ public class GenerateResources : MonoBehaviour
     private bool canGenerate;
     private int nbHabitant;
     // Start is called before the first frame update
-    void Start()
+     override protected void Start()
     {
+
+        base.Start();
         canGenerate = true;
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
-        nbHabitant = this.gameObject.GetComponent<Batiment>().ListHabitants.Count;
+       
+        base.Update();
+        nbHabitant = ListHabitants.Count;
         canvasFood = GameObject.Find("Nb Food").GetComponent<Text>();
         canvasGold = GameObject.Find("Nb Gold").GetComponent<Text>();
         canvasWood = GameObject.Find("Nb Wood").GetComponent<Text>();

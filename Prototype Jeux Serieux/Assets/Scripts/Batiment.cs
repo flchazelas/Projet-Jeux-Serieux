@@ -23,7 +23,7 @@ public class Batiment : MonoBehaviour
     public List<Habitant> ListHabitants { get => listHabitants; set => listHabitants = value; }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         ListHabitants = new List<Habitant>();
 
@@ -43,7 +43,7 @@ public class Batiment : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if(GameVariables.batimentSelectionne != null)
         {
@@ -86,7 +86,7 @@ public class Batiment : MonoBehaviour
     //Met le batiment rouge si impossible de placer
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Terrain") || other.CompareTag("Batiment"))
+        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment")) && batiment != null)
         {
             batiment.GetComponent<Renderer>().material.color = Color.red;
             GetComponent<Renderer>().material.color = Color.red;
@@ -97,7 +97,7 @@ public class Batiment : MonoBehaviour
     //Met le batiment en vert si possible de la placer
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Terrain") || other.CompareTag("Batiment"))
+        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment")) && batiment != null)
         {
             batiment.GetComponent<Renderer>().material.color = Color.green;
             GetComponent<Renderer>().material.color = Color.green;
@@ -108,8 +108,9 @@ public class Batiment : MonoBehaviour
     //met le batiment en surbrillance si on le survole
     private void OnMouseOver()
     {
-        if (!deplacement)
+        if (!deplacement && batiment != null)
         {
+
             batiment.GetComponent<Renderer>().material.color = Color.yellow;
             GetComponent<Renderer>().material.color = Color.yellow;
         }
@@ -118,7 +119,7 @@ public class Batiment : MonoBehaviour
     //remet l'objet normal et ferme l'affichage des choix en quittant le survolement
     private void OnMouseExit()
     {
-        if (!deplacement)
+        if (!deplacement && batiment != null)
         {
             batiment.GetComponent<Renderer>().material.color = color;
             GetComponent<Renderer>().material.color = color;
@@ -128,7 +129,7 @@ public class Batiment : MonoBehaviour
     //Affiche les choix possibles et la description
     private void OnMouseDown()
     {
-        if (!deplacement)
+        if (!deplacement && batiment != null)
         {
             canvas.GetComponent<Canvas>().enabled = true;
             GameVariables.batimentSelectionne = this;

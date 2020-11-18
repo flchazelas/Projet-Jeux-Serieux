@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6a020f3d9207f498a9a320aa525d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0.5
+  description: "Description du batiment en question et son utilit\xE9 ou autre [...]"
+  nbHabitants: "Nombre Habitants Affect\xE9s : "
   generateGold: 1
   generateMeat: 1
   generateWood: 1
