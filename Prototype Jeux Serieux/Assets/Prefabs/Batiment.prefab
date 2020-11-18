@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4503078806978854170}
   - component: {fileID: 4503078806978854169}
   - component: {fileID: 4503078806978854165}
+  - component: {fileID: 4421425150908877339}
   - component: {fileID: 4503078806978854166}
   m_Layer: 0
   m_Name: Batiment
@@ -113,6 +114,23 @@ MonoBehaviour:
   size: 0.5
   description: "Description du batiment en question et son utilit\xE9 ou autre [...]"
   nbHabitants: "Nombre Habitants Affect\xE9s : "
+--- !u!114 &4421425150908877339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503078806978854168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6a020f3d9207f498a9a320aa525d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateGold: 1
+  generateMeat: 1
+  generateWood: 1
+  level: {fileID: 0}
+  multiplicator: 2
 --- !u!54 &4503078806978854166
 Rigidbody:
   m_ObjectHideFlags: 0
