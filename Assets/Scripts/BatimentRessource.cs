@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenerateResources : Batiment
+public class BatimentRessource : Batiment
 {
     public bool generateGold;
     public bool generateMeat;
