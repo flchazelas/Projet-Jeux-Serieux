@@ -9,6 +9,7 @@ public class Habitant : MonoBehaviour
     public float speed = 1;
     private bool isActif;
     public bool isAllie;
+    public int pointsVie;
 
     public Vector3 Vec { get => vec; set => vec = value; }
     public Vector3 V { get => v; set => v = value; }
@@ -40,5 +41,18 @@ public class Habitant : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("isWalking", false);
         }
+
+        if (!isAlive())
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public bool isAlive()
+    {
+        if(pointsVie <= 0)
+            return false;
+        else
+            return true;
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Combattant : Habitant
 {
+    private float allowedTime = 1;
+    private float currentTime = 0;
+
+    public int pointsAttaque;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -15,14 +20,47 @@ public class Combattant : Habitant
     {
         base.Update();
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Ennemi") && currentTime == 0)
+        {
+            GetComponent<Animator>().SetBool("isWalking", false);
+            Vec = new Vector3(Vec.x, Vec.y, Vec.z);
+            V = new Vector3(0, 0, 0);
+            IsActif = true;
+            currentTime = allowedTime;
+            GetComponent<Animator>().SetBool("isFighting", true);
+            StartCoroutine("Timer", other);
+        }
+        else
+        {
+            IsActif = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Ennemi"))
         {
-            GetComponent<Animator>().SetBool("isWalking", false);
-            GetComponent<Animator>().SetBool("isFighting", true);
-            Vec = new Vector3(Vec.x, Vec.y, Vec.z);
-            V = other.transform.position;
+            IsActif = false;
+        }
+    }
+
+    public void attaquer()
+    {
+        GetComponent<Animator>().SetBool("isFighting", true);
+        StartCoroutine("Timer");
+    }
+
+    IEnumerator Timer(Collider other)
+    {
+        yield return new WaitForSeconds(1);
+        currentTime--;
+        GetComponent<Animator>().SetBool("isFighting", false);
+        if (other != null)
+        {
+            other.GetComponent<Combattant>().pointsVie -= pointsAttaque;
         }
     }
 }
