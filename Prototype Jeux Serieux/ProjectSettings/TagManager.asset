@@ -9,6 +9,7 @@ TagManager:
   - Batiment
   - Habitant
   - Allie
+  - Ennemi
   layers:
   - Default
   - TransparentFX
