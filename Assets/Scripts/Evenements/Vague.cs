@@ -9,15 +9,27 @@ public class Vague : Evenement
     public float interval;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        type = "Vague";
-        description = "Vague d'ennemis";
+        base.Start();
+        duree = interval * nbEnnemis;
+        StartCoroutine("Instancie");
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         
+    }
+
+    IEnumerator Instancie()
+    {
+        while(nbEnnemis != 0)
+        {
+            Instantiate(listEnnemis[0]);
+            yield return new WaitForSeconds(interval);
+            nbEnnemis--;
+        }
+        objectifReussi = true;
     }
 }

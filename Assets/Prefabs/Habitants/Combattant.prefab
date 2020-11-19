@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   isAllie: 0
-  pointsVie: 10
+  pointsVie: 20
   pointsAttaque: 2
 --- !u!65 &3360886317785109847
 BoxCollider:

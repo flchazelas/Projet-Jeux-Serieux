@@ -54,7 +54,6 @@ public class GameBehaviourHabitant : MonoBehaviour
             GameVariables.batimentSelectionne.ListHabitants.Add(clone);
             clone.Vec = GameVariables.batimentSelectionne.transform.position;
             clone.V = clone.Vec - clone.transform.position;
-            clone.IsActif = true;
         }
     }
 

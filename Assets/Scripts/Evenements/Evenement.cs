@@ -12,14 +12,14 @@ public class Evenement : MonoBehaviour
     public float currentTimer = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         nom = gameObject.name;
         StartCoroutine("Timer");
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
     }
