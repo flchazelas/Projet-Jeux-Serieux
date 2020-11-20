@@ -9,7 +9,7 @@ public class Niveau : MonoBehaviour
     public int score = 0;
     public int difficulte = 0;
     public ListEvenements listEvenements;
-    public float currentTimer = 0;
+    public float currentTimer;
     public float laps;
 
     Text consigne;
@@ -20,6 +20,11 @@ public class Niveau : MonoBehaviour
         consigne = GameObject.Find("Canvas Evenement").transform.Find("Description").GetComponent<Text>();
 
         listEvenements = GameObject.Find("ListeEvenements").GetComponent<ListEvenements>();
+        for(int i = 0; i < listEvenements.getSize(); i++)
+        {
+            timer += listEvenements.getEvent(i).Duree + 2f*laps;
+        }
+        currentTimer = laps;
         StartCoroutine("Timer");
     }
 
@@ -32,16 +37,21 @@ public class Niveau : MonoBehaviour
 
     IEnumerator Timer()
     {
-        while(currentTimer != laps)
+        while(currentTimer > 0)
         {
             yield return new WaitForSeconds(1);
-            currentTimer++;
+            currentTimer--;
         }
-        currentTimer = 0;
         if(listEvenements.getSize() != 0)
         {
             Evenement e = listEvenements.getEvent();
             Instantiate(e);
+            print("temps :" + e.Duree);
+            currentTimer = e.Duree;
+            if (listEvenements.getSize() == 0)
+            {
+                currentTimer += laps;
+            }
             StartCoroutine("Timer");
         }
         else
@@ -67,7 +77,7 @@ public class Niveau : MonoBehaviour
             if (e.objectifReussi)
             {
                 print("Fin : " + e.description);
-                score += (int)e.duree - (int)e.currentTimer;
+                score += (int)e.Duree - (int)e.currentTimer;
                 Destroy(GameObject.Find(e.nom));
             }
         }

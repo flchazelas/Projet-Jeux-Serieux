@@ -25,6 +25,12 @@ public class ListEvenements : MonoBehaviour
         return e;
     }
 
+    public Evenement getEvent(int i)
+    {
+        Evenement e = listEvenement[i];
+        return e;
+    }
+
     public int getSize()
     {
         return listEvenement.Count;
