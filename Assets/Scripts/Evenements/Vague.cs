@@ -8,11 +8,14 @@ public class Vague : Evenement
     public List<GameObject> listEnnemis;
     public float interval;
 
+    private void Awake()
+    {
+        Duree = (interval * nbEnnemis) * 2;
+    }
 
     // Start is called before the first frame update
     public override void Start()
     {
-        Duree = (interval * nbEnnemis) * 2;
         base.Start();
         StartCoroutine("Instancie");
     }

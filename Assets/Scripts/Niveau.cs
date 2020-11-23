@@ -45,7 +45,7 @@ public class Niveau : MonoBehaviour
         if(listEvenements.getSize() != 0)
         {
             Evenement e = listEvenements.getEvent();
-            Instantiate(e);
+            e = Instantiate(e);
             print("temps :" + e.Duree);
             currentTimer = e.Duree;
             if (listEvenements.getSize() == 0)
