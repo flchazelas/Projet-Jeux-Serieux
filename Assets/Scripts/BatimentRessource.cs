@@ -83,7 +83,12 @@ public class BatimentRessource : Batiment
             nbSecondBeforeGenerate = bat.nbSecondBeforeGenerate;
             description = bat.description;
             desc.text = description;
+            priceUpgradeWood = bat.priceUpgradeWood;
+            priceUpgradeGold = bat.priceUpgradeGold;
+            priceUpgradeMeat = bat.priceUpgradeMeat;
+            //print(priceUpgradeMeat);
             batUpgrade = bat.batUpgrade;
+
 
             afficheCanvas();
 
