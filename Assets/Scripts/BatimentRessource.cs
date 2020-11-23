@@ -11,6 +11,7 @@ public class BatimentRessource : Batiment
 
     public int nbSecondBeforeGenerate;
     public int multiplicator;
+    
 
     private Text canvasFood;
     private Text canvasGold;
@@ -63,4 +64,39 @@ public class BatimentRessource : Batiment
         }
 
     }
+
+    public override void upgradeStructure()
+    {
+        if (GameVariables.nbWood >= priceUpgradeWood && GameVariables.nbGold >= priceUpgradeGold && GameVariables.nbMeat >= priceUpgradeMeat && batUpgrade != null)
+        {
+            GameVariables.nbWood -= priceUpgradeWood;
+            GameVariables.nbGold -= priceUpgradeGold;
+            GameVariables.nbMeat -= priceUpgradeMeat;
+
+            desactiverCanvas();
+
+            BatimentRessource bat = batUpgrade.GetComponent<BatimentRessource>();
+            generateMeat = bat.generateMeat;
+            generateGold = bat.generateGold;
+            generateWood = bat.generateWood;
+            multiplicator = bat.multiplicator;
+            nbSecondBeforeGenerate = bat.nbSecondBeforeGenerate;
+            description = bat.description;
+            desc.text = description;
+            batUpgrade = bat.batUpgrade;
+
+            afficheCanvas();
+
+            /* GameObject structure = Instantiate(batUpgrade, this.transform.position, Quaternion.identity);
+             structure.GetComponent<BatimentRessource>().listHabitants = listHabitants;
+             desactiverCanvas();
+             structure.GetComponent<BatimentRessource>().Update();
+             //structure.GetComponent<BatimentRessource>().validateLocation();
+             structure.GetComponent<BatimentRessource>().afficheCanvas();
+             GameVariables.batimentSelectionne = structure.GetComponent<BatimentRessource>();
+             Destroy(gameObject); */
+
+        }
+    }
+
 }

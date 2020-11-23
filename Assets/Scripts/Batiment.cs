@@ -4,23 +4,36 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Batiment : MonoBehaviour
+public abstract class Batiment : MonoBehaviour
 {
     public float size = 0.5f;
     GameObject batiment;
     GameObject canvas;
+
     Color color;
     bool deplacement;
     bool clic;
     public string description;
     public string nbHabitants;
+    public int nbrMaxHab;
 
-    List<Habitant> listHabitants;
+    public int priceUpgradeGold;
+    public int priceUpgradeMeat;
+    public int priceUpgradeWood;
 
-    Text desc;
+    public GameObject batUpgrade;
+
+    protected List<Habitant> listHabitants;
+
+    protected Text desc;
     Text habitants;
 
+    Button upgradeButton;
+    Button closeButton;
+
     public List<Habitant> ListHabitants { get => listHabitants; set => listHabitants = value; }
+
+    
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -37,6 +50,8 @@ public class Batiment : MonoBehaviour
         batiment.SetActive(true);
 
         canvas = GameObject.Find("Canvas Batiment");
+        upgradeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Upgrade").GetComponent<Button>();
+        closeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Fermer").GetComponent<Button>();
         desc = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Description").GetComponent<Text>();
         desc.text = description;
         habitants = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Nb Habitants Affectés").GetComponent<Text>();
@@ -75,11 +90,7 @@ public class Batiment : MonoBehaviour
 
         //Si clic droit de la souris, le batiment est placé sur le terrain si possible
         if (Input.GetMouseButton(1) && clic){
-            deplacement = false;
-            batiment.SetActive(false);
-            GetComponent<Renderer>().material.color = color;
-            GetComponent<BoxCollider>().isTrigger = false;
-            GetComponent<Rigidbody>().useGravity = true;
+            validateLocation();
         }
     }
 
@@ -129,16 +140,49 @@ public class Batiment : MonoBehaviour
     //Affiche les choix possibles et la description
     private void OnMouseDown()
     {
-        if (!deplacement && batiment != null)
-        {
-            canvas.GetComponent<Canvas>().enabled = true;
-            GameVariables.batimentSelectionne = this;
-        }
+        afficheCanvas();
     }
 
     public void desactiverCanvas()
     {
         canvas = GameObject.Find("Canvas Batiment");
+       // upgradeButton.onClick.RemoveListener(() => { upgradeStructure(); });
+        closeButton.onClick.RemoveListener(() => { desactiverCanvas(); });
         canvas.GetComponent<Canvas>().enabled = false;
     }
+
+    public void afficheCanvas()
+    {
+        if (!deplacement && batiment != null)
+        {
+            canvas.GetComponent<Canvas>().enabled = true;
+            GameVariables.batimentSelectionne = this;
+            if (batUpgrade != null)
+            {
+                upgradeButton.gameObject.SetActive(true);
+                upgradeButton.onClick.AddListener(() => { upgradeStructure(); });
+            }
+            else
+            {
+                upgradeButton.gameObject.SetActive(false);
+
+            }
+            closeButton.onClick.AddListener(() => { desactiverCanvas(); });
+            desc.text = description;
+        }
+    }
+
+    public abstract void upgradeStructure();
+    
+
+    public void validateLocation()
+    {
+        deplacement = false;
+        batiment.SetActive(false);
+        GetComponent<Renderer>().material.color = color;
+        GetComponent<BoxCollider>().isTrigger = false;
+        GetComponent<Rigidbody>().useGravity = true;
+    }
+
+
 }
