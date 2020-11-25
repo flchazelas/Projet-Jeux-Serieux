@@ -12,17 +12,20 @@ public class Niveau : MonoBehaviour
     public float currentTimer;
     public float laps;
 
+    private bool perdu;
+
     Text consigne;
 
     // Start is called before the first frame update
     void Start()
     {
+        perdu = false;
         consigne = GameObject.Find("Canvas Evenement").transform.Find("Description").GetComponent<Text>();
 
         listEvenements = GameObject.Find("ListeEvenements").GetComponent<ListEvenements>();
         for(int i = 0; i < listEvenements.getSize(); i++)
         {
-            timer += listEvenements.getEvent(i).Duree + 2f*laps;
+            timer += listEvenements.getEvent(i).getDuree() + 2f*laps;
         }
         currentTimer = laps;
         StartCoroutine("Timer");
@@ -33,21 +36,30 @@ public class Niveau : MonoBehaviour
     {
         lancerEvenement();
         affichage();
+        if(GameVariables.listHabitant.Count == 0)
+        {
+            perdu = true;
+        }
     }
 
     IEnumerator Timer()
     {
-        while(currentTimer > 0)
+        while (currentTimer > 0 && !perdu)
         {
             yield return new WaitForSeconds(1);
             currentTimer--;
         }
-        if(listEvenements.getSize() != 0)
+        if (perdu)
+        {
+            print("Game Over! Vous n'avez plus d'habitant !");
+
+        }
+        else if(listEvenements.getSize() != 0)
         {
             Evenement e = listEvenements.getEvent();
             e = Instantiate(e);
-            print("temps :" + e.Duree);
-            currentTimer = e.Duree;
+            print("temps :" + e.getDuree());
+            currentTimer = e.getDuree();
             if (listEvenements.getSize() == 0)
             {
                 currentTimer += laps;
@@ -77,7 +89,7 @@ public class Niveau : MonoBehaviour
             if (e.objectifReussi)
             {
                 print("Fin : " + e.description);
-                score += (int)e.Duree - (int)e.currentTimer;
+                score += (int)e.getDuree() - (int)e.currentTimer;
                 Destroy(GameObject.Find(e.nom));
             }
         }

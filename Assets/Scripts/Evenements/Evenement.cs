@@ -8,10 +8,8 @@ public class Evenement : MonoBehaviour
     public string description;
     public string type;
     public bool objectifReussi = false;
-    private float duree;
+    public float duree;
     public float currentTimer = 0;
-
-    public float Duree { get => duree; set => duree = value; }
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -29,12 +27,17 @@ public class Evenement : MonoBehaviour
     IEnumerator Timer()
     {
         print("Début : "+description+" de type "+type);
-        while (currentTimer != Duree && !objectifReussi)
+        while (currentTimer != duree && !objectifReussi)
         {
             yield return new WaitForSeconds(1);
             print(currentTimer);
             currentTimer++;
         }
         objectifReussi = true;
+    }
+
+    public float getDuree()
+    {
+        return duree;
     }
 }

@@ -15,6 +15,7 @@ public class Combattant : Habitant
     {
         base.Start();
         ennemi = null;
+        Type = "Combattant";
     }
 
     // Update is called once per frame

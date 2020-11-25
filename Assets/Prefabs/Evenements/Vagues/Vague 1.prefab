@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1833428125644256808}
   - component: {fileID: 7522532062442179273}
   m_Layer: 0
-  m_Name: Vague
+  m_Name: Vague 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
   type: Vague
   objectifReussi: 0
   currentTimer: 0
-  nbEnnemis: 10
+  nbEnnemis: 8
   listEnnemis:
   - {fileID: 648801741449387694, guid: 2f545bf82ed2ec14c86f745adfd70b46, type: 3}
-  interval: 4
-  nbSpawns: 2
+  interval: 3
+  nbSpawns: 5

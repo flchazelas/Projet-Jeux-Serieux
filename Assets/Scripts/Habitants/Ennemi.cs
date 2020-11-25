@@ -36,7 +36,7 @@ public class Ennemi : MonoBehaviour
         {
             calculDistance();
             GetComponent<Animator>().SetBool("isWalking", true);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, transform.position.y, Vec.z), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, Vec.y, Vec.z), speed * Time.deltaTime);
             transform.forward = V;
             if (transform.position == new Vector3(Vec.x, transform.position.y, Vec.z))
             {
@@ -86,6 +86,33 @@ public class Ennemi : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.CompareTag("Habitant"))
+        {
+            habitant = collision.transform.GetComponent<Habitant>();
+            if (currentTime == 0)
+            {
+                GetComponent<Animator>().SetBool("isWalking", false);
+                Vec = new Vector3(Vec.x, Vec.y, Vec.z);
+                V = new Vector3(0, 0, 0);
+                IsActif = true;
+                currentTime = allowedTime;
+                GetComponent<Animator>().SetBool("isFighting", true);
+                StartCoroutine("Timer", habitant);
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("Habitant"))
+        {
+            StartCoroutine("Attendre");
+        }
+    }
+
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Habitant"))
@@ -102,8 +129,16 @@ public class Ennemi : MonoBehaviour
                 StartCoroutine("Timer", habitant);
             }
         }
+    }*/
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Habitant"))
+        {
+            StartCoroutine("Attendre");
+        }
     }
-
+    */
     IEnumerator Timer(Habitant other)
     {
         yield return new WaitForSeconds(1);
@@ -113,5 +148,11 @@ public class Ennemi : MonoBehaviour
         {
             other.pointsVie -= pointsAttaque;
         }
+    }
+
+    IEnumerator Attendre()
+    {
+        yield return new WaitForSeconds(1);
+        IsActif = false;
     }
 }

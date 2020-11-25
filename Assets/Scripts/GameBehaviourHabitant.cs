@@ -71,7 +71,7 @@ public class GameBehaviourHabitant : MonoBehaviour
     {
         foreach (Habitant h in GameVariables.listHabitant)
         {
-            if (!h.IsActif)
+            if (!h.IsActif && h != null)
             {
                 h.Vec = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), h.transform.position.y, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
                 h.V = h.Vec - h.transform.position;

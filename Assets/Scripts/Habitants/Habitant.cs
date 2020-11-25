@@ -6,14 +6,17 @@ public class Habitant : MonoBehaviour
 {
     private Vector3 vec;
     private Vector3 v;
-    public float speed = 1;
     private bool isActif;
+    private string type;
+
+    public float speed = 1;
     public bool isAllie;
     public int pointsVie;
 
     public Vector3 Vec { get => vec; set => vec = value; }
     public Vector3 V { get => v; set => v = value; }
     public bool IsActif { get => isActif; set => isActif = value; }
+    public string Type { get => type; set => type = value; }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -22,6 +25,7 @@ public class Habitant : MonoBehaviour
         V = new Vector3(0, 0, 0);
         isActif = false;
         isAllie = true;
+        Type = "Villageois";
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class Habitant : MonoBehaviour
         if (V != new Vector3(0, 0, 0))
         {
             GetComponent<Animator>().SetBool("isWalking", true);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, transform.position.y, Vec.z), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, Vec.y, Vec.z), speed * Time.deltaTime);
             transform.forward = V;
             if(transform.position == new Vector3(Vec.x, transform.position.y, Vec.z))
             {
@@ -44,6 +48,7 @@ public class Habitant : MonoBehaviour
 
         if (!isAlive())
         {
+            GameVariables.listHabitant.Remove(this);
             Destroy(gameObject);
         }
     }
