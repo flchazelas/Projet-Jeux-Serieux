@@ -10,7 +10,7 @@ public class Combattant : Habitant
 
     public int pointsAttaque;
 
-    protected override void Awake()
+    private void Awake()
     {
         Type = "Combattant";
     }

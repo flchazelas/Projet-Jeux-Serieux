@@ -1596,9 +1596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358ebead6603c88478b0652ded05e26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeHabitant: 1
+  typeHabitant: 0
   combattant: {fileID: 1775339289748599342, guid: fc3e07697aca56a4cb338e1f2d58b7b9, type: 3}
-  habitant: {fileID: 0}
+  habitant: {fileID: 3247080515230331705}
 --- !u!114 &3247080515230331706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,6 +1614,8 @@ MonoBehaviour:
   speed: 1
   isAllie: 0
   pointsVie: 10
+  survie: 10
+  quantiteConso: 1
 --- !u!65 &1948074463822763072
 BoxCollider:
   m_ObjectHideFlags: 0

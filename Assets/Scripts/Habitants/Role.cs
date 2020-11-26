@@ -28,7 +28,7 @@ public class Role : MonoBehaviour
     }
 
     [System.Obsolete]
-    public void changementRole(string type)
+    public GameObject changementRole(string type)
     {
         string str = GetComponent<Habitant>().Type;
         switch (str)
@@ -56,6 +56,8 @@ public class Role : MonoBehaviour
                 GetComponent<Combattant>().pointsVie = combattant.GetComponent<Combattant>().pointsVie;
                 GetComponent<Combattant>().pointsAttaque = combattant.GetComponent<Combattant>().pointsAttaque;
                 GetComponent<Combattant>().speed = combattant.GetComponent<Combattant>().speed;
+                GetComponent<Combattant>().survie = combattant.GetComponent<Combattant>().survie;
+                GetComponent<Combattant>().quantiteConso = combattant.GetComponent<Combattant>().quantiteConso;
 
                 gameObject.GetComponent<Animator>().runtimeAnimatorController = combattant.GetComponent<Animator>().runtimeAnimatorController;
                
@@ -72,5 +74,6 @@ public class Role : MonoBehaviour
                 //gameObject.GetComponent<Animator>().ani
                 break;*/
         }
+        return gameObject;
     }
 }

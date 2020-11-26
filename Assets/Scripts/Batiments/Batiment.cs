@@ -30,7 +30,7 @@ public abstract class Batiment : MonoBehaviour
 
     public GameObject batUpgrade;
 
-    protected List<Habitant> listHabitants;
+    protected List<GameObject> listHabitants;
 
     protected Text desc;
     Text habitants;
@@ -38,7 +38,7 @@ public abstract class Batiment : MonoBehaviour
     Button upgradeButton;
     Button closeButton;
 
-    public List<Habitant> ListHabitants { get => listHabitants; set => listHabitants = value; }
+    public List<GameObject> ListHabitants { get => listHabitants; set => listHabitants = value; }
 
     
 
@@ -46,7 +46,7 @@ public abstract class Batiment : MonoBehaviour
     protected virtual void Start()
     {
         typeHabitant = role.Habitant;
-        ListHabitants = new List<Habitant>();
+        ListHabitants = new List<GameObject>();
 
         batiment = gameObject.transform.Find("Delimitation").gameObject;
         batiment.SetActive(false);
@@ -68,9 +68,18 @@ public abstract class Batiment : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if(GameVariables.batimentSelectionne != null)
+        if (GameVariables.batimentSelectionne == this)
         {
-            habitants.text = nbHabitants + GameVariables.batimentSelectionne.ListHabitants.Count.ToString();
+            int nb = GameVariables.batimentSelectionne.ListHabitants.Count;
+            for (int i = 0; i < ListHabitants.Count; i++)
+            {
+                if (ListHabitants[i] == null)
+                {
+                    nb--;
+                    ListHabitants.RemoveAt(i);
+                }
+            }
+            habitants.text = nbHabitants + nb;
         }
 
         //Si le batiment est en attente d'être placé et que le bouton gauche de la souris est maintenu,

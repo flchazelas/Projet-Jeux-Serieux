@@ -9,16 +9,24 @@ public class GameBehaviourBatiment : MonoBehaviour
     Animator anim;
     Batiment clone;
 
+    Text canvasFood;
+    Text canvasGold;
+    Text canvasWood;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        canvasFood = GameObject.Find("Nb Food").GetComponent<Text>();
+        canvasGold = GameObject.Find("Nb Gold").GetComponent<Text>();
+        canvasWood = GameObject.Find("Nb Wood").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        canvasFood.text = GameVariables.nbMeat.ToString();
+        canvasGold.text = GameVariables.nbGold.ToString();
+        canvasWood.text = GameVariables.nbWood.ToString();
     }
 
     public void spawnBatiment()

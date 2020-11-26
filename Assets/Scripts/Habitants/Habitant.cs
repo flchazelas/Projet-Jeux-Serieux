@@ -8,19 +8,25 @@ public class Habitant : MonoBehaviour
     private Vector3 v;
     private bool isActif;
     private string type;
+    float tempsSurvie = 10.0f;
+    float tempsConso = 5.0f;
+    bool conso;
 
     public float speed = 1;
     public bool isAllie;
     public int pointsVie;
+    public int survie = 10;
+    public int quantiteConso = 1;
 
     public Vector3 Vec { get => vec; set => vec = value; }
     public Vector3 V { get => v; set => v = value; }
     public bool IsActif { get => isActif; set => isActif = value; }
     public string Type { get => type; set => type = value; }
 
-    protected virtual void Awake()
+    private void Awake()
     {
         Type = "Habitant";
+        conso = true;
     }
 
     // Start is called before the first frame update
@@ -30,6 +36,7 @@ public class Habitant : MonoBehaviour
         V = new Vector3(0, 0, 0);
         isActif = false;
         isAllie = true;
+        StartCoroutine("Survie");
     }
 
     // Update is called once per frame
@@ -56,13 +63,41 @@ public class Habitant : MonoBehaviour
             GameVariables.nbHabitants--;
             Destroy(gameObject);
         }
+
+        if (conso)
+        {
+            StartCoroutine("Consomme");
+        }
     }
 
     public bool isAlive()
     {
-        if(pointsVie <= 0)
+        if(pointsVie <= 0 || survie == 0)
             return false;
         else
             return true;
+    }
+
+    IEnumerator Consomme()
+    {
+        if(GameVariables.nbMeat > 0 && survie != 10)
+        {
+            conso = false;
+            yield return new WaitForSeconds(tempsConso);
+            GameVariables.nbMeat -= quantiteConso;
+            survie++;
+            print("consomme");
+            conso = true;
+        }
+    }
+
+    IEnumerator Survie()
+    {
+        while(survie != 0)
+        {
+            yield return new WaitForSeconds(tempsSurvie);
+            print("survie");
+            survie--;
+        }
     }
 }

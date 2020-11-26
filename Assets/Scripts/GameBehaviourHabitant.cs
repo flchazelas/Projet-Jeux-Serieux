@@ -51,9 +51,9 @@ public class GameBehaviourHabitant : MonoBehaviour
         {
             clone = GameVariables.listHabitant[0];
             GameVariables.listHabitant.Remove(clone);
+            GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
-            clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
-            GameVariables.batimentSelectionne.ListHabitants.Add(clone);
+            GameVariables.batimentSelectionne.ListHabitants.Add(o);
             clone.Vec = GameVariables.batimentSelectionne.transform.position;
             clone.V = clone.Vec - clone.transform.position;
         }
@@ -71,7 +71,7 @@ public class GameBehaviourHabitant : MonoBehaviour
 
     public void walk()
     {
-        foreach (Habitant h in GameVariables.listHabitant)
+        foreach (Habitant h in FindObjectsOfType<Habitant>())
         {
             if (!h.IsActif && h != null)
             {
