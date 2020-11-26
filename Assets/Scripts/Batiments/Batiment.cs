@@ -17,6 +17,13 @@ public abstract class Batiment : MonoBehaviour
     public string nbHabitants;
     public int nbrMaxHab;
 
+    public enum role
+    {
+        Habitant,
+        Combattant
+    };
+    public role typeHabitant;
+
     public int priceUpgradeGold;
     public int priceUpgradeMeat;
     public int priceUpgradeWood;
@@ -38,6 +45,7 @@ public abstract class Batiment : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        typeHabitant = role.Habitant;
         ListHabitants = new List<Habitant>();
 
         batiment = gameObject.transform.Find("Delimitation").gameObject;
@@ -97,7 +105,7 @@ public abstract class Batiment : MonoBehaviour
     //Met le batiment rouge si impossible de placer
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment")) && batiment != null)
+        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null)
         {
             batiment.GetComponent<Renderer>().material.color = Color.red;
             GetComponent<Renderer>().material.color = Color.red;
@@ -108,7 +116,7 @@ public abstract class Batiment : MonoBehaviour
     //Met le batiment en vert si possible de la placer
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment")) && batiment != null)
+        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null)
         {
             batiment.GetComponent<Renderer>().material.color = Color.green;
             GetComponent<Renderer>().material.color = Color.green;

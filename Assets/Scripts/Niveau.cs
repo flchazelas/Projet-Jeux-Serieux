@@ -36,7 +36,7 @@ public class Niveau : MonoBehaviour
     {
         lancerEvenement();
         affichage();
-        if(GameVariables.listHabitant.Count == 0)
+        if(GameVariables.nbHabitants == 0)
         {
             perdu = true;
         }

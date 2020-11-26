@@ -18,6 +18,11 @@ public class Habitant : MonoBehaviour
     public bool IsActif { get => isActif; set => isActif = value; }
     public string Type { get => type; set => type = value; }
 
+    protected virtual void Awake()
+    {
+        Type = "Habitant";
+    }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -25,7 +30,6 @@ public class Habitant : MonoBehaviour
         V = new Vector3(0, 0, 0);
         isActif = false;
         isAllie = true;
-        Type = "Villageois";
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class Habitant : MonoBehaviour
         if (!isAlive())
         {
             GameVariables.listHabitant.Remove(this);
+            GameVariables.nbHabitants--;
             Destroy(gameObject);
         }
     }

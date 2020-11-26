@@ -42,6 +42,7 @@ public class GameBehaviourHabitant : MonoBehaviour
     {
         clone = Instantiate(habitant, new Vector3(0, 0, 0), Quaternion.identity);
         GameVariables.listHabitant.Add(clone);
+        GameVariables.nbHabitants++;
     }
 
     public void affectation()
@@ -51,6 +52,7 @@ public class GameBehaviourHabitant : MonoBehaviour
             clone = GameVariables.listHabitant[0];
             GameVariables.listHabitant.Remove(clone);
             GameVariables.listHabitantAffecte.Add(clone);
+            clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.batimentSelectionne.ListHabitants.Add(clone);
             clone.Vec = GameVariables.batimentSelectionne.transform.position;
             clone.V = clone.Vec - clone.transform.position;

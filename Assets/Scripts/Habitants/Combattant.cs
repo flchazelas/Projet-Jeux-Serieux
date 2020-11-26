@@ -10,12 +10,16 @@ public class Combattant : Habitant
 
     public int pointsAttaque;
 
+    protected override void Awake()
+    {
+        Type = "Combattant";
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         ennemi = null;
-        Type = "Combattant";
     }
 
     // Update is called once per frame
@@ -32,7 +36,25 @@ public class Combattant : Habitant
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ennemi"))
+        {
+            ennemi = collision.transform.GetComponent<Ennemi>();
+            if (currentTime == 0)
+            {
+                GetComponent<Animator>().SetBool("isWalking", false);
+                Vec = new Vector3(Vec.x, Vec.y, Vec.z);
+                V = new Vector3(0, 0, 0);
+                IsActif = true;
+                currentTime = allowedTime;
+                GetComponent<Animator>().SetBool("isFighting", true);
+                StartCoroutine("Timer", ennemi);
+            }
+        }
+    }
+
+    /*private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Ennemi"))
         {
@@ -48,7 +70,7 @@ public class Combattant : Habitant
                 StartCoroutine("Timer", ennemi);
             }
         }
-    }
+    }*/
 
     public void calculDistance()
     {
