@@ -9,6 +9,7 @@ public abstract class Batiment : MonoBehaviour
     public float size = 0.5f;
     GameObject batiment;
     GameObject canvas;
+    public GameObject spawn;
 
     Color color;
     bool deplacement;
@@ -20,7 +21,8 @@ public abstract class Batiment : MonoBehaviour
     public enum role
     {
         Habitant,
-        Combattant
+        Combattant,
+        Fermier
     };
     public role typeHabitant;
 
@@ -39,13 +41,13 @@ public abstract class Batiment : MonoBehaviour
     Button closeButton;
 
     public List<GameObject> ListHabitants { get => listHabitants; set => listHabitants = value; }
+    public GameObject Spawn { get => spawn; set => spawn = value; }
 
-    
+
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        typeHabitant = role.Habitant;
         ListHabitants = new List<GameObject>();
 
         batiment = gameObject.transform.Find("Delimitation").gameObject;
@@ -200,6 +202,4 @@ public abstract class Batiment : MonoBehaviour
         GetComponent<BoxCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
     }
-
-
 }

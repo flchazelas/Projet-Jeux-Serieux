@@ -51,11 +51,12 @@ public class GameBehaviourHabitant : MonoBehaviour
         {
             clone = GameVariables.listHabitant[0];
             GameVariables.listHabitant.Remove(clone);
+            clone.Vec = GameVariables.batimentSelectionne.Spawn.transform.position;
+            clone.V = clone.Vec - clone.transform.position;
+            clone.Spawn = GameVariables.batimentSelectionne.Spawn;
             GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
             GameVariables.batimentSelectionne.ListHabitants.Add(o);
-            clone.Vec = GameVariables.batimentSelectionne.transform.position;
-            clone.V = clone.Vec - clone.transform.position;
         }
     }
 

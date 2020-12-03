@@ -36,7 +36,7 @@ public class Ennemi : MonoBehaviour
         {
             calculDistance();
             GetComponent<Animator>().SetBool("isWalking", true);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, Vec.y, Vec.z), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, 0, Vec.z), speed * Time.deltaTime);
             transform.forward = V;
             if (transform.position == new Vector3(Vec.x, transform.position.y, Vec.z))
             {

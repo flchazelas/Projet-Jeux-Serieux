@@ -1539,11 +1539,11 @@ GameObject:
   - component: {fileID: 3247080515230331708}
   - component: {fileID: 3247080515230331711}
   - component: {fileID: 3837681535374982850}
-  - component: {fileID: 3247080515230331706}
   - component: {fileID: 1948074463822763072}
   - component: {fileID: 3038108316210725848}
+  - component: {fileID: -2928404721691799078}
   m_Layer: 0
-  m_Name: Habitant
+  m_Name: Fermier
   m_TagString: Habitant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1575,7 +1575,7 @@ Animator:
   m_GameObject: {fileID: 3247080515230331705}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b01a3f6cbfa877645ae1653f51bd4cbe, type: 3}
-  m_Controller: {fileID: 9100000, guid: 346c1c6818cbbab4699398d5ad959ff8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 50568b9256ebf2b4f904c97781e54e20, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1596,27 +1596,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358ebead6603c88478b0652ded05e26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeHabitant: 0
+  typeHabitant: 2
   combattant: {fileID: 1775339289748599342, guid: fc3e07697aca56a4cb338e1f2d58b7b9, type: 3}
-  habitant: {fileID: 3247080515230331705}
-  fermier: {fileID: 3247080515230331705, guid: 5eec61e2dda199945ab38f7cd2c131e1, type: 3}
---- !u!114 &3247080515230331706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3247080515230331705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 237788808af908546b298da1e3c2952b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  isAllie: 0
-  pointsVie: 10
-  survie: 10
-  quantiteConso: 1
+  habitant: {fileID: 3247080515230331705, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
+  fermier: {fileID: 3247080515230331705}
 --- !u!65 &1948074463822763072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1646,6 +1629,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2928404721691799078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247080515230331705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbf53b10505b264588bc53e64a0390b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  isAllie: 0
+  pointsVie: 10
+  survie: 10
+  quantiteConso: 1
 --- !u!1 &3247080515237319679
 GameObject:
   m_ObjectHideFlags: 0
