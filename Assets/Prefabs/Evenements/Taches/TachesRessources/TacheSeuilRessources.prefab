@@ -49,5 +49,5 @@ MonoBehaviour:
   objectifReussi: 0
   duree: 20
   currentTimer: 0
-  typeRessource: 2
+  typeRessource: 1
   nombreVoulu: 100

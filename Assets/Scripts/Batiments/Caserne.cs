@@ -8,7 +8,6 @@ public class Caserne : Batiment
     protected override void Start()
     {
         base.Start();
-        typeHabitant = role.Combattant;
     }
 
     // Update is called once per frame

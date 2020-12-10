@@ -8,6 +8,7 @@ public class Habitant : MonoBehaviour
     private Vector3 v;
     private bool isActif;
     private string type;
+    GameObject spawn;
     float tempsSurvie = 10.0f;
     float tempsConso = 5.0f;
     bool conso;
@@ -22,11 +23,11 @@ public class Habitant : MonoBehaviour
     public Vector3 V { get => v; set => v = value; }
     public bool IsActif { get => isActif; set => isActif = value; }
     public string Type { get => type; set => type = value; }
+    public GameObject Spawn { get => spawn; set => spawn = value; }
 
     private void Awake()
     {
         Type = "Habitant";
-        conso = true;
     }
 
     // Start is called before the first frame update
@@ -36,6 +37,7 @@ public class Habitant : MonoBehaviour
         V = new Vector3(0, 0, 0);
         isActif = false;
         isAllie = true;
+        conso = true;
         StartCoroutine("Survie");
     }
 
@@ -45,9 +47,10 @@ public class Habitant : MonoBehaviour
         if (V != new Vector3(0, 0, 0))
         {
             GetComponent<Animator>().SetBool("isWalking", true);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, Vec.y, Vec.z), speed * Time.deltaTime);
+            //GetComponent<Rigidbody>().MovePosition(new Vector3(Vec.x, 0, Vec.z) * speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, 0, Vec.z), speed * Time.deltaTime);
             transform.forward = V;
-            if(transform.position == new Vector3(Vec.x, transform.position.y, Vec.z))
+            if (transform.position == new Vector3(Vec.x, Vec.y, Vec.z))
             {
                 V = new Vector3(0, 0, 0);
             }

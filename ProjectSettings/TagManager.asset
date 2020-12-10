@@ -10,6 +10,8 @@ TagManager:
   - Habitant
   - Allie
   - Ennemi
+  - Arbre
+  - Spawn
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Habitant
+  - Ennemi
   - 
   - 
   - 
