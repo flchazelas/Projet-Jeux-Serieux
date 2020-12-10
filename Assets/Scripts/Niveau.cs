@@ -13,12 +13,13 @@ public class Niveau : MonoBehaviour
     public float laps;
 
     private bool perdu;
-
+    
     Text consigne;
 
     // Start is called before the first frame update
     void Start()
     {
+
         perdu = false;
         consigne = GameObject.Find("Canvas Evenement").transform.Find("Description").GetComponent<Text>();
 

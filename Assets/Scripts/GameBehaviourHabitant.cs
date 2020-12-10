@@ -23,11 +23,14 @@ public class GameBehaviourHabitant : MonoBehaviour
         StartCoroutine(Timer());
         canvas = GameObject.Find("Canvas Principal");
         nbHabitants = canvas.transform.Find("Nb Habitants").GetComponent<Text>();
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         nbHabitants.text = "Nombre habitants : "+GameVariables.listHabitant.Count.ToString();
         if (!b)
         {
@@ -47,7 +50,7 @@ public class GameBehaviourHabitant : MonoBehaviour
 
     public void affectation()
     {
-        if (GameVariables.listHabitant.Count != 0)
+        if (GameVariables.listHabitant.Count != 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab )
         {
             clone = GameVariables.listHabitant[0];
             GameVariables.listHabitant.Remove(clone);

@@ -18,6 +18,7 @@ public class BatimentRessource : Batiment
     private Text canvasWood;
     private bool canGenerate;
     private int nbHabitant;
+    
     // Start is called before the first frame update
     override protected void Start()
     {
@@ -31,11 +32,8 @@ public class BatimentRessource : Batiment
     {
        
         base.Update();
-        nbHabitant = ListHabitants.Count;
-        canvasFood = GameObject.Find("Nb Food").GetComponent<Text>();
-        canvasGold = GameObject.Find("Nb Gold").GetComponent<Text>();
-        canvasWood = GameObject.Find("Nb Wood").GetComponent<Text>();
-        if(canGenerate) StartCoroutine("generateRessources");
+        nbHabitant = ListHabitants.Count; 
+        if (canGenerate) StartCoroutine("generateRessources");
     }
 
     IEnumerator generateRessources()
@@ -43,25 +41,26 @@ public class BatimentRessource : Batiment
         canGenerate = false;
         yield return new WaitForSeconds(nbSecondBeforeGenerate);
         canGenerate = true;
-        
+        int nbRessourcesGenerate = nbHabitant * multiplicator;
         if (generateGold)
         {
-            GameVariables.nbGold += nbHabitant * multiplicator;
+            GameVariables.nbGold += nbRessourcesGenerate  + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus);
+            if (GameVariables.nbGold < 0) GameVariables.nbGold = 0;
             if (GameVariables.nbGold > GameVariables.maxGold) GameVariables.nbGold = GameVariables.maxGold;
-            canvasGold.text = GameVariables.nbGold.ToString();
         }
         if (generateMeat)
         {
-            GameVariables.nbMeat += nbHabitant * multiplicator;
+            GameVariables.nbMeat += nbRessourcesGenerate + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus);
+            if (GameVariables.nbMeat < 0) GameVariables.nbMeat = 0;
             if (GameVariables.nbMeat > GameVariables.maxMeat) GameVariables.nbMeat = GameVariables.maxMeat;
-            canvasFood.text = GameVariables.nbMeat.ToString();
         }
         if (generateWood)
         {
-            GameVariables.nbWood += nbHabitant * multiplicator;
+            GameVariables.nbWood += nbRessourcesGenerate + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus);
+            if (GameVariables.nbWood < 0) GameVariables.nbWood = 0;
             if (GameVariables.nbWood > GameVariables.maxWood) GameVariables.nbWood = GameVariables.maxWood;
-            canvasWood.text = GameVariables.nbWood.ToString();
         }
+        
 
     }
 

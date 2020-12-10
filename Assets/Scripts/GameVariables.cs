@@ -6,15 +6,15 @@ using UnityEngine;
 public class GameVariables : MonoBehaviour
 {
     //Ressources
-    public static int maxWood = 3000;
-    public static int maxMeat = 1000;
-    public static int maxGold = 6000;
+    public static int maxWood = 150;
+    public static int maxMeat = 100;
+    public static int maxGold = 120;
     public static int nbWood = 100;
     public static int nbMeat = 100;
     public static int nbGold = 100;
-    //Malus et Bonus 
-    public static float bonus = 1;
-    public static float malus = 1;
+    //Malus et Bonus (Compris dans l'intervalle  [0,1[ )
+    public static double bonus = 0.6;
+    public static double malus = 0.5;
 
     //Timer
     public static int allowedTime = 30;
@@ -35,4 +35,5 @@ public class GameVariables : MonoBehaviour
     public static List<Habitant> listHabitant = new List<Habitant>();
     public static List<Combattant> listCombattant = new List<Combattant>();
     public static List<Habitant> listHabitantAffecte = new List<Habitant>();
+
 }
