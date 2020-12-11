@@ -32,23 +32,6 @@ public class Role : MonoBehaviour
     [System.Obsolete]
     public GameObject changementRole(string type)
     {
-        Vector3 vec = GetComponent<Habitant>().Vec;
-        Vector3 v = GetComponent<Habitant>().V;
-        GameObject spawn = GetComponent<Habitant>().Spawn;
-        string str = GetComponent<Habitant>().Type;
-        switch (str)
-        {
-            case "Habitant":
-                Destroy(GetComponent<Habitant>());
-                break;
-            case "Fermier":
-                Destroy(GetComponent<Fermier>());
-                break;
-            case "Combattant":
-                Destroy(GetComponent<Combattant>());
-                break;
-        }
-
         //Récupère l'emplacement de l'outils pour le rôle attribué
         GameObject o = gameObject;
         for (int i = 0; i < 6; i++)
@@ -68,24 +51,24 @@ public class Role : MonoBehaviour
                 GetComponent<Combattant>().quantiteConso = combattant.GetComponent<Combattant>().quantiteConso;
 
                 gameObject.GetComponent<Animator>().runtimeAnimatorController = combattant.GetComponent<Animator>().runtimeAnimatorController;
-               
+
                 o = o.transform.GetChild(4).gameObject;
                 o.SetActive(true);
                 break;
 
             case "Fermier":
                 gameObject.AddComponent<Fermier>();
-                GetComponent<Fermier>().pointsVie = fermier.GetComponent<Fermier>().pointsVie;
+                GetComponent<Fermier>().pointsVie = GetComponent<Habitant>().pointsVie;
                 GetComponent<Fermier>().speed = fermier.GetComponent<Fermier>().speed;
-                GetComponent<Fermier>().survie = fermier.GetComponent<Fermier>().survie;
+                GetComponent<Fermier>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Fermier>().quantiteConso = fermier.GetComponent<Fermier>().quantiteConso;
-                GetComponent<Fermier>().Vec = vec;
-                GetComponent<Fermier>().V = v;
-                GetComponent<Fermier>().Spawn = spawn;
+                GetComponent<Fermier>().Vec = GetComponent<Habitant>().Vec;
+                GetComponent<Fermier>().V = GetComponent<Habitant>().V;
+                GetComponent<Fermier>().Spawn = GetComponent<Habitant>().Spawn;
 
 
                 GetComponent<Animator>().runtimeAnimatorController = fermier.GetComponent<Animator>().runtimeAnimatorController;
-                
+
                 /*o = o.transform.GetChild(5).gameObject;
                 o.SetActive(true);*/
                 break;
@@ -98,6 +81,20 @@ public class Role : MonoBehaviour
                      gameObject.GetComponent<Animator>().runtimeAnimatorController = habitant.GetComponent<Animator>().runtimeAnimatorController;
                      //gameObject.GetComponent<Animator>().ani
                      break;*/
+        }
+
+        string str = GetComponent<Habitant>().Type;
+        switch (str)
+        {
+            case "Habitant":
+                Destroy(GetComponent<Habitant>());
+                break;
+            case "Fermier":
+                Destroy(GetComponent<Fermier>());
+                break;
+            case "Combattant":
+                Destroy(GetComponent<Combattant>());
+                break;
         }
 
         return gameObject;
