@@ -8,7 +8,7 @@ public class Habitant : MonoBehaviour
     private Vector3 v;
     private bool isActif;
     private string type;
-    GameObject spawn;
+    Batiment spawn;
     float tempsSurvie = 10.0f;
     float tempsConso = 5.0f;
     bool conso;
@@ -23,7 +23,7 @@ public class Habitant : MonoBehaviour
     public Vector3 V { get => v; set => v = value; }
     public bool IsActif { get => isActif; set => isActif = value; }
     public string Type { get => type; set => type = value; }
-    public GameObject Spawn { get => spawn; set => spawn = value; }
+    public Batiment Spawn { get => spawn; set => spawn = value; }
 
     private void Awake()
     {

@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &2043293306960679890
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741741272440511330}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5974032750634704885
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741813599111370916}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4503078806978854168
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +142,7 @@ MonoBehaviour:
   description2: " quantit\xE9s d'Or toute les "
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
+  pointsVie: 75
   typeHabitant: 0
   priceUpgradeGold: 0
   priceUpgradeMeat: 0
@@ -2998,5 +3031,15 @@ PrefabInstance:
 --- !u!4 &2745385250968633870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646461011993856, guid: beb85566a7ec24c43b265d27f8e5b1b4, type: 3}
+  m_PrefabInstance: {fileID: 2740740237360637710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2741741272440511330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565226681515116, guid: beb85566a7ec24c43b265d27f8e5b1b4, type: 3}
+  m_PrefabInstance: {fileID: 2740740237360637710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2741813599111370916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1671569107484586, guid: beb85566a7ec24c43b265d27f8e5b1b4, type: 3}
   m_PrefabInstance: {fileID: 2740740237360637710}
   m_PrefabAsset: {fileID: 0}

@@ -20830,6 +20830,7 @@ MonoBehaviour:
   description2: 
   nbHabitants: 
   nbrMaxHab: 10
+  pointsVie: 50
   typeHabitant: 1
   priceUpgradeGold: 50
   priceUpgradeMeat: 50

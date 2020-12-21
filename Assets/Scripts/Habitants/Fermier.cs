@@ -106,7 +106,7 @@ public class Fermier : Habitant
             ressource.Capacite--;
         }
 
-        if (collision.transform.CompareTag("Spawn") && collision.transform.CompareTag("Spawn") == Spawn)
+        if (collision.transform.CompareTag("Batiment") && collision.transform.CompareTag("Batiment") == Spawn)
         {
             travail = true;
         }

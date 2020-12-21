@@ -54,9 +54,9 @@ public class GameBehaviourHabitant : MonoBehaviour
         {
             clone = GameVariables.listHabitant[0];
             GameVariables.listHabitant.Remove(clone);
-            clone.Vec = GameVariables.batimentSelectionne.Spawn.transform.position;
+            clone.Vec = new Vector3(GameVariables.batimentSelectionne.transform.position.x, 0, GameVariables.batimentSelectionne.transform.position.z);
             clone.V = clone.Vec - clone.transform.position;
-            clone.Spawn = GameVariables.batimentSelectionne.Spawn;
+            clone.Spawn = GameVariables.batimentSelectionne;
             GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
             GameVariables.batimentSelectionne.ListHabitants.Add(o);

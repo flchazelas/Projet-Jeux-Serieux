@@ -41783,6 +41783,7 @@ MonoBehaviour:
   description2: " quantit\xE9s d'Or toute les "
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
+  pointsVie: 100
   typeHabitant: 0
   priceUpgradeGold: 0
   priceUpgradeMeat: 0

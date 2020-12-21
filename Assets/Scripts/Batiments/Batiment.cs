@@ -24,6 +24,7 @@ public abstract class Batiment : MonoBehaviour
     public string description2;
     public string nbHabitants;
     public int nbrMaxHab;
+    public int pointsVie;
 
     public enum role
     {
