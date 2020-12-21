@@ -20826,6 +20826,8 @@ MonoBehaviour:
   size: 0.5
   spawn: {fileID: 5192985902185153412}
   description: Caserne
+  nomBatiment: 
+  description2: 
   nbHabitants: 
   nbrMaxHab: 10
   typeHabitant: 1

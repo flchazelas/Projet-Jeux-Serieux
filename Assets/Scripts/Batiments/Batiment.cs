@@ -116,6 +116,7 @@ public abstract class Batiment : MonoBehaviour
                 }
             }
         }
+        
     }
     // Update is called once per frame
     protected virtual void Update()
@@ -252,6 +253,21 @@ public abstract class Batiment : MonoBehaviour
                 modelChild[i].GetComponent<SpriteRenderer>().color = c;
             }
 
+        }
+        GameObject o = this.gameObject.transform.Find("Delimitation").gameObject;
+        if (o.transform.childCount > 0)
+        {
+            foreach (Transform child in o.transform)
+            {
+                if (child.GetComponent<MeshRenderer>() != null)
+                {
+                    foreach (Material material in child.GetComponent<MeshRenderer>().materials)
+                    {
+                        material.color = c;
+                    }
+
+                }
+            }
         }
     }
     public void desactiverCanvas()
