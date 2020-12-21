@@ -7,7 +7,7 @@ public class Fermier : Habitant
     private float allowedTime = 1;
     private float currentTime = 0;
     Vector3 vec1;
-    Zone zone;
+    Ressource ressource;
     bool travail;
     bool tache;
     int nbfois = 0;
@@ -69,18 +69,19 @@ public class Fermier : Habitant
     public void calculDistance()
     {
         float distance = 1000f;
-        foreach (Zone z in FindObjectsOfType<Zone>())
+        foreach (Ressource r in FindObjectsOfType<Ressource>())
         {
-            float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - z.transform.position.x, 2f) + Mathf.Pow(transform.position.z - z.transform.position.z, 2f));
-            if (val < distance)
+            float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - r.transform.position.x, 2f) + Mathf.Pow(transform.position.z - r.transform.position.z, 2f));
+            if (val < distance && r.Capacite > 0)
             {
                 distance = val;
-                zone = z;
+                ressource = r;
             }
         }
 
-        Vec = new Vector3(zone.transform.position.x - 1, 0, zone.transform.position.z - 1);
+        Vec = new Vector3(ressource.transform.position.x, 0, ressource.transform.position.z);
         V = Vec - transform.position;
+        //ressource.Capacite--;
         //travail = false;
     }
 
@@ -92,6 +93,7 @@ public class Fermier : Habitant
             currentTime = allowedTime;
             IsActif = false;
             tache = false;
+            ressource.Capacite++;
         }
     }
 
@@ -99,7 +101,9 @@ public class Fermier : Habitant
     {
         if (collision.transform.CompareTag("Arbre"))
         {
+            travail = false;
             tache = true;
+            ressource.Capacite--;
         }
 
         if (collision.transform.CompareTag("Spawn") && collision.transform.CompareTag("Spawn") == Spawn)
