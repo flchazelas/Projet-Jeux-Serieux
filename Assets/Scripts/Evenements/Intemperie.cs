@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Intemperie : Evenement
 {
-    [Range(1,2)] public float bonus;
+    [Range(0,1)] public float bonus;
     [Range(0,1)] public float malus;
 
     private void Awake()

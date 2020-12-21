@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zone : MonoBehaviour
+public class Ressource : MonoBehaviour
 {
+    public int capacite = 2;
+
+    public int Capacite { get => capacite; set => capacite = value; }
+
     // Start is called before the first frame update
     void Start()
     {
