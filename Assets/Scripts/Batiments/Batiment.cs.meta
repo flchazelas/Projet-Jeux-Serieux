@@ -3,7 +3,9 @@ guid: d143ba2b0d6e0434092aeac6ed87b09a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spawn: {instanceID: 0}
+  - batUpgrade: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

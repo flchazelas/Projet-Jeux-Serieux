@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 56172174}
   - component: {fileID: 56172173}
   - component: {fileID: 56172172}
-  - component: {fileID: 56172176}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Batiment
@@ -358,28 +357,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56172171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 1.5, z: 10}
+  m_LocalPosition: {x: 10, y: 0.8, z: 10}
   m_LocalScale: {x: 10, y: 3, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &56172176
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56172171}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &56438959
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383175231bc8df845ae4e2a4950f3732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batiment: {fileID: 4421425150908877339, guid: 423a783754386b644b733fe3da3bf87c, type: 3}
+  batiment: {fileID: 4421425150908877339, guid: a1af29051b060a24597c1455ba42fe34, type: 3}
 --- !u!1 &381450459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1226,6 @@ GameObject:
   - component: {fileID: 653094357}
   - component: {fileID: 653094356}
   - component: {fileID: 653094355}
-  - component: {fileID: 653094359}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Batiment
@@ -1327,22 +1309,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &653094359
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653094354}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,7 +4001,6 @@ GameObject:
   - component: {fileID: 2129900727}
   - component: {fileID: 2129900726}
   - component: {fileID: 2129900725}
-  - component: {fileID: 2129900729}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Batiment
@@ -4113,28 +4078,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129900724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -116, y: -28.5, z: 30}
+  m_LocalPosition: {x: -116, y: -29.1, z: 30}
   m_LocalScale: {x: 10, y: 3, z: 5}
   m_Children: []
   m_Father: {fileID: 847380887}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &2129900729
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129900724}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2139801586
 GameObject:
   m_ObjectHideFlags: 0
