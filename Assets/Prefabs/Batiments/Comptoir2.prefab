@@ -41779,9 +41779,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 8193124218437195144}
-  description: "Description du batiment en question et son utilit\xE9 ou autre [...]"
+  description: 'Ce Comptoir produit '
+  nomBatiment: "Comptoir de Commerce Avanc\xE9"
+  description2: " quantit\xE9s d'Or toute les "
   nbHabitants: "Nombre Habitants Affect\xE9s : "
-  nbrMaxHab: 5
+  nbrMaxHab: 10
   typeHabitant: 0
   priceUpgradeGold: 0
   priceUpgradeMeat: 0
@@ -41790,8 +41792,8 @@ MonoBehaviour:
   generateGold: 1
   generateMeat: 0
   generateWood: 0
-  nbSecondBeforeGenerate: 15
-  multiplicator: 2
+  nbSecondBeforeGenerate: 10
+  multiplicator: 3
 --- !u!54 &4503078806978854166
 Rigidbody:
   m_ObjectHideFlags: 0

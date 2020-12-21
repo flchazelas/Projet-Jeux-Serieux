@@ -8,8 +8,8 @@ using UnityEngine.Events;
 public abstract class Batiment : MonoBehaviour
 {
     public float size = 0.5f;
-    GameObject batiment;
-    GameObject canvas;
+    protected GameObject batiment;
+    protected GameObject canvas;
     UnityAction close;
     UnityAction upgrade;
     static bool actionPossible;
@@ -17,9 +17,11 @@ public abstract class Batiment : MonoBehaviour
 
     Color color;
     bool deplacement;
-    bool clic;
+    private bool clic;
 
     public string description;
+    public string nomBatiment;
+    public string description2;
     public string nbHabitants;
     public int nbrMaxHab;
 
@@ -42,6 +44,7 @@ public abstract class Batiment : MonoBehaviour
     protected List<GameObject> modelChild;
 
     protected Text desc;
+    protected Text batName;
     Text habitants;
 
     Button upgradeButton;
@@ -72,7 +75,10 @@ public abstract class Batiment : MonoBehaviour
         upgradeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Upgrade").GetComponent<Button>();
         closeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Fermer").GetComponent<Button>();
         desc = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Description").GetComponent<Text>();
-        desc.text = description;
+        
+        batName = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("BatName").GetComponent<Text>();
+        batName.text = nomBatiment;
+        //ChangeDesc();
         habitants = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Nb Habitants Affectés").GetComponent<Text>();
         actionPossible = false;
         GetPartModel();
@@ -80,6 +86,7 @@ public abstract class Batiment : MonoBehaviour
 
     }
 
+    public abstract void ChangeDesc();
     protected void GetPartModel()
     {
         prefabModelColorChild = new List<Color>();
@@ -151,7 +158,8 @@ public abstract class Batiment : MonoBehaviour
         }
 
         //Si clic droit de la souris, le batiment est placé sur le terrain si possible
-        if (Input.GetMouseButton(1) && clic)
+
+        if (Input.GetMouseButton(1) && clic && deplacement)
         {
             validateLocation();
             
@@ -200,19 +208,22 @@ public abstract class Batiment : MonoBehaviour
     {
         if (!deplacement && batiment != null)
         {
-         
+            int it = 0;
             for (int i = 0; i < modelChild.Count; i++)
             {
+          
                 if (modelChild[i].GetComponent<MeshRenderer>() != null)
                 {
                     foreach (Material material in modelChild[i].GetComponent<MeshRenderer>().materials)
                     {
-                        material.color = prefabModelColorChild[i];
+                        material.color = prefabModelColorChild[it];
+                        it++;
                     }
                 }
                 if (modelChild[i].GetComponent<SpriteRenderer>() != null)
                 {
-                    modelChild[i].GetComponent<SpriteRenderer>().color = prefabModelColorChild[i]; ;
+                    modelChild[i].GetComponent<SpriteRenderer>().color = prefabModelColorChild[it];
+                    it++;
                 }
 
             }
@@ -272,7 +283,7 @@ public abstract class Batiment : MonoBehaviour
 
             }
             closeButton.onClick.AddListener(close);
-            desc.text = description;
+            ChangeDesc();
         }
     }
 
@@ -284,7 +295,7 @@ public abstract class Batiment : MonoBehaviour
         actionPossible = true;
         deplacement = false;
         batiment.SetActive(false);
-        GetComponent<Renderer>().material.color = color;
+       // GetComponent<Renderer>().material.color = color;
         GetComponent<BoxCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
         for (int i = 0; i < modelChild.Count; i++)

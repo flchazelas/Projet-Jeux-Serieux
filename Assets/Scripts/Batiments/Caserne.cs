@@ -20,4 +20,9 @@ public class Caserne : Batiment
     {
         throw new System.NotImplementedException();
     }
+
+    public override void ChangeDesc()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -105,7 +105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 8193124218437195144}
-  description: "Description du batiment en question et son utilit\xE9 ou autre [...]"
+  description: 'Cette Ferme produit '
+  nomBatiment: Ferme
+  description2: " quantit\xE9s de Nourriture toute les "
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 5
   typeHabitant: 2

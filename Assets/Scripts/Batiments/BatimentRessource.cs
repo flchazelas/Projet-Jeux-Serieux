@@ -18,13 +18,14 @@ public class BatimentRessource : Batiment
     private Text canvasWood;
     private bool canGenerate;
     private int nbHabitant;
-
+    private int nbRessourcesGenerate;
+ 
     // Start is called before the first frame update
     override protected void Start()
     {
-
         base.Start();
-
+        ChangeDesc();
+        nbHabitant = 0;
         canGenerate = true;
     }
 
@@ -42,9 +43,9 @@ public class BatimentRessource : Batiment
         canGenerate = false;
         yield return new WaitForSeconds(nbSecondBeforeGenerate);
         canGenerate = true;
-        int nbRessourcesGenerate = nbHabitant * multiplicator;
         if (generateGold)
         {
+            
             GameVariables.nbGold += nbRessourcesGenerate + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus);
             if (GameVariables.nbGold < 0) GameVariables.nbGold = 0;
             if (GameVariables.nbGold > GameVariables.maxGold) GameVariables.nbGold = GameVariables.maxGold;
@@ -65,6 +66,21 @@ public class BatimentRessource : Batiment
 
     }
 
+    public override void ChangeDesc()
+    {
+        batName.text = nomBatiment;
+        nbHabitant = ListHabitants.Count;
+        nbRessourcesGenerate = nbHabitant * multiplicator;
+        canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("NbMaxHab").GetComponent<Text>().text = "Nombre maximum d'habitants : " + nbrMaxHab.ToString();
+        if (nbHabitant > 0)
+        {
+            desc.text = description + (nbRessourcesGenerate + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus)).ToString() + description2 + nbSecondBeforeGenerate.ToString() + " secondes";
+        }
+        else
+        {
+            desc.text = "Ce bâtiment n'est pas actif, affectez lui de la main d'oeuvre.";
+        }
+    }
     public override void upgradeStructure()
     {
         if (GameVariables.nbWood >= priceUpgradeWood && GameVariables.nbGold >= priceUpgradeGold && GameVariables.nbMeat >= priceUpgradeMeat && batUpgrade != null)
@@ -81,8 +97,12 @@ public class BatimentRessource : Batiment
             generateWood = bat.generateWood;
             multiplicator = bat.multiplicator;
             nbSecondBeforeGenerate = bat.nbSecondBeforeGenerate;
+            nbrMaxHab = bat.nbrMaxHab;
             description = bat.description;
-            desc.text = description;
+            description2 = bat.description2;
+            nomBatiment = bat.nomBatiment;
+            batName.text = nomBatiment;
+            
             priceUpgradeWood = bat.priceUpgradeWood;
             priceUpgradeGold = bat.priceUpgradeGold;
             priceUpgradeMeat = bat.priceUpgradeMeat;
@@ -94,7 +114,7 @@ public class BatimentRessource : Batiment
             GetPartModel();
             batUpgrade = bat.batUpgrade;
             Destroy(del);
-            
+            ChangeDesc();
             afficheCanvas();
             
 

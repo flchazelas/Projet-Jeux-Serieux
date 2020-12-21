@@ -60,6 +60,7 @@ public class GameBehaviourHabitant : MonoBehaviour
             GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
             GameVariables.batimentSelectionne.ListHabitants.Add(o);
+            GameVariables.batimentSelectionne.ChangeDesc();
             
         }
     }

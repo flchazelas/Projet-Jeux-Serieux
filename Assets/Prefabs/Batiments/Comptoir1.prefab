@@ -105,9 +105,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 8193124218437195144}
-  description: "Description du batiment en question et son utilit\xE9 ou autre [...]"
+  description: 'Ce Comptoir produit '
+  nomBatiment: "Comptoir de Commerce Am\xE9lior\xE9"
+  description2: " quantit\xE9s d'Or toute les "
   nbHabitants: "Nombre Habitants Affect\xE9s : "
-  nbrMaxHab: 5
+  nbrMaxHab: 10
   typeHabitant: 0
   priceUpgradeGold: 0
   priceUpgradeMeat: 0

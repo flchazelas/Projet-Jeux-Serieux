@@ -721,9 +721,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 8193124218437195144}
-  description: "Description du batiment en question et son utilit\xE9 ou autre [...]"
+  description: 'Cette Ferme produit '
+  nomBatiment: "Ferme Avanc\xE9e"
+  description2: " quantit\xE9s de Nourriture toute les "
   nbHabitants: "Nombre Habitants Affect\xE9s : "
-  nbrMaxHab: 15
+  nbrMaxHab: 10
   typeHabitant: 2
   priceUpgradeGold: 0
   priceUpgradeMeat: 0
@@ -732,8 +734,8 @@ MonoBehaviour:
   generateGold: 0
   generateMeat: 1
   generateWood: 0
-  nbSecondBeforeGenerate: 15
-  multiplicator: 2
+  nbSecondBeforeGenerate: 10
+  multiplicator: 3
 --- !u!54 &4503078806978854166
 Rigidbody:
   m_ObjectHideFlags: 0
