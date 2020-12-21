@@ -9,9 +9,12 @@ public class GameVariables : MonoBehaviour
     public static int maxWood = 150;
     public static int maxMeat = 100;
     public static int maxGold = 120;
+    public static int maxMana = 120;
     public static int nbWood = 100;
     public static int nbMeat = 100;
     public static int nbGold = 100;
+    public static int nbMana = 100;
+    public static int nbMaxHabitants = 20;
     //Malus et Bonus (Compris dans l'intervalle  [0,1[ )
     public static double bonus = 0.6;
     public static double malus = 0.5;

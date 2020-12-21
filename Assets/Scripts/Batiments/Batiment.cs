@@ -37,6 +37,8 @@ public abstract class Batiment : MonoBehaviour
     public int priceUpgradeGold;
     public int priceUpgradeMeat;
     public int priceUpgradeWood;
+    public int priceUpgradeMana;
+
 
     public GameObject batUpgrade;
 
@@ -46,7 +48,7 @@ public abstract class Batiment : MonoBehaviour
 
     protected Text desc;
     protected Text batName;
-    Text habitants;
+    protected Text habitants;
 
     Button upgradeButton;
     Button closeButton;
@@ -133,7 +135,7 @@ public abstract class Batiment : MonoBehaviour
                     ListHabitants.RemoveAt(i);
                 }
             }
-            habitants.text = nbHabitants + nb;
+            
         }
 
         //Si le batiment est en attente d'être placé et que le bouton gauche de la souris est maintenu,
@@ -288,7 +290,14 @@ public abstract class Batiment : MonoBehaviour
         {
             canvas.GetComponent<Canvas>().enabled = true;
             GameVariables.batimentSelectionne = this;
-            
+            if(listHabitants.Count < nbrMaxHab)
+            {
+                canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(true);
+            }
+            else
+            {
+                canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(false);
+            }
             if (batUpgrade != null)
             {
                 upgradeButton.gameObject.SetActive(true);

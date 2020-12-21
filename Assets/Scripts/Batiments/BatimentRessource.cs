@@ -8,6 +8,7 @@ public class BatimentRessource : Batiment
     public bool generateGold;
     public bool generateMeat;
     public bool generateWood;
+    public bool generateMana;
 
     public int nbSecondBeforeGenerate;
     public int multiplicator;
@@ -16,6 +17,7 @@ public class BatimentRessource : Batiment
     private Text canvasFood;
     private Text canvasGold;
     private Text canvasWood;
+    private Text canvasMana;
     private bool canGenerate;
     private int nbHabitant;
     private int nbRessourcesGenerate;
@@ -62,6 +64,12 @@ public class BatimentRessource : Batiment
             if (GameVariables.nbWood < 0) GameVariables.nbWood = 0;
             if (GameVariables.nbWood > GameVariables.maxWood) GameVariables.nbWood = GameVariables.maxWood;
         }
+        if (generateMana)
+        {
+            GameVariables.nbMana += nbRessourcesGenerate + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus);
+            if (GameVariables.nbMana < 0) GameVariables.nbMana = 0;
+            if (GameVariables.nbMana > GameVariables.maxMana) GameVariables.nbMana = GameVariables.maxMana;
+        }
 
 
     }
@@ -71,6 +79,8 @@ public class BatimentRessource : Batiment
         batName.text = nomBatiment;
         nbHabitant = ListHabitants.Count;
         nbRessourcesGenerate = nbHabitant * multiplicator;
+        habitants.text = "Nombre d'habitant affectés : " + nbHabitant.ToString();
+        
         canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("NbMaxHab").GetComponent<Text>().text = "Nombre maximum d'habitants : " + nbrMaxHab.ToString();
         if (nbHabitant > 0)
         {
@@ -83,11 +93,13 @@ public class BatimentRessource : Batiment
     }
     public override void upgradeStructure()
     {
-        if (GameVariables.nbWood >= priceUpgradeWood && GameVariables.nbGold >= priceUpgradeGold && GameVariables.nbMeat >= priceUpgradeMeat && batUpgrade != null)
+        if (batUpgrade != null && GameVariables.nbWood >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeWood && GameVariables.nbGold >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeGold 
+            && GameVariables.nbMeat >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMeat && GameVariables.nbMana >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMana)
         {
-            GameVariables.nbWood -= priceUpgradeWood;
-            GameVariables.nbGold -= priceUpgradeGold;
-            GameVariables.nbMeat -= priceUpgradeMeat;
+            GameVariables.nbWood -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeWood;
+            GameVariables.nbGold -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeGold;
+            GameVariables.nbMeat -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMeat;
+            GameVariables.nbMana -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMana;
 
             desactiverCanvas();
 
@@ -95,6 +107,7 @@ public class BatimentRessource : Batiment
             generateMeat = bat.generateMeat;
             generateGold = bat.generateGold;
             generateWood = bat.generateWood;
+            generateMana = bat.generateMana;
             multiplicator = bat.multiplicator;
             nbSecondBeforeGenerate = bat.nbSecondBeforeGenerate;
             nbrMaxHab = bat.nbrMaxHab;
@@ -102,18 +115,15 @@ public class BatimentRessource : Batiment
             description2 = bat.description2;
             nomBatiment = bat.nomBatiment;
             batName.text = nomBatiment;
-            
-            priceUpgradeWood = bat.priceUpgradeWood;
-            priceUpgradeGold = bat.priceUpgradeGold;
-            priceUpgradeMeat = bat.priceUpgradeMeat;
             GameObject del = this.gameObject.transform.Find("Model").gameObject;
             del.name = "del";
             GameObject o = Instantiate(batUpgrade.transform.Find("Model").gameObject, this.transform);
             o.name = "Model";
             o.transform.parent = this.transform;
             GetPartModel();
-            batUpgrade = bat.batUpgrade;
             Destroy(del);
+            batUpgrade = bat.batUpgrade;
+            
             ChangeDesc();
             afficheCanvas();
             
