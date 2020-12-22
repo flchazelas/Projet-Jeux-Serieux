@@ -101,9 +101,12 @@ public class Fermier : Habitant
     {
         if (collision.transform.CompareTag("Arbre"))
         {
-            travail = false;
             tache = true;
-            ressource.Capacite--;
+            if(ressource.transform == collision.transform)
+            {
+                travail = false;
+                ressource.Capacite--;
+            }
         }
 
         if (collision.transform.CompareTag("Batiment") && collision.transform.CompareTag("Batiment") == Spawn)
