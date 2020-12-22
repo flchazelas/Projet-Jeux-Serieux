@@ -9117,7 +9117,7 @@ GameObject:
   - component: {fileID: 3810642849885784028}
   m_Layer: 8
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Batiment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9131,7 +9131,7 @@ Transform:
   m_GameObject: {fileID: 3815025445336318392}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.183, y: -0.499, z: 0.257}
-  m_LocalScale: {x: 0.19629182, y: 0.1885326, z: 0.19629182}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 3810772703549277778}
   - {fileID: 3818170713366700312}
@@ -72894,6 +72894,7 @@ GameObject:
   - component: {fileID: 4503078806978854169}
   - component: {fileID: 4421425150908877339}
   - component: {fileID: 4503078806978854166}
+  - component: {fileID: 8175805591519278376}
   m_Layer: 10
   m_Name: Academie3
   m_TagString: Batiment
@@ -72967,10 +72968,10 @@ BoxCollider:
   m_GameObject: {fileID: 4503078806978854168}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1935396, y: 0.6074152, z: 0.38444328}
+  m_Center: {x: -0.032784175, y: -0.1962926, z: 0.18435116}
 --- !u!114 &4421425150908877339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73019,6 +73020,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!65 &8175805591519278376
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503078806978854168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8771089, y: 1, z: 0.39175597}
+  m_Center: {x: 0.1254313, y: 0, z: -0.3164459}
 --- !u!1 &4503078808856339967
 GameObject:
   m_ObjectHideFlags: 0
@@ -73030,9 +73044,9 @@ GameObject:
   - component: {fileID: 4503078808856339960}
   - component: {fileID: 4503078808856339962}
   - component: {fileID: 4503078808856339961}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Delimitation
-  m_TagString: Untagged
+  m_TagString: BatimentLimit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

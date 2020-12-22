@@ -1801,7 +1801,7 @@ GameObject:
   - component: {fileID: 3810642849885784028}
   m_Layer: 8
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Batiment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1814,8 +1814,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815025445336318392}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.278, y: -0.499, z: 0.016}
-  m_LocalScale: {x: 0.19629182, y: 0.1885326, z: 0.19629182}
+  m_LocalPosition: {x: 0.37, y: -0.499, z: 0.016}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 3810772703549277778}
   - {fileID: 3818170713366700312}
@@ -44654,10 +44654,10 @@ BoxCollider:
   m_GameObject: {fileID: 4503078806978854168}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0258048, y: 0.98766196, z: 0.39417267}
+  m_Center: {x: -0.012902165, y: -0.0061690332, z: 0.012090302}
 --- !u!114 &4421425150908877339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44717,9 +44717,9 @@ GameObject:
   - component: {fileID: 4503078808856339960}
   - component: {fileID: 4503078808856339962}
   - component: {fileID: 4503078808856339961}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Delimitation
-  m_TagString: Untagged
+  m_TagString: BatimentLimit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44806,7 +44806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1008083629972744, guid: a1c98984911794cbcafcbd783d12518b, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4831291462664164, guid: a1c98984911794cbcafcbd783d12518b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44864,7 +44864,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3333334
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65438749055021696, guid: a1c98984911794cbcafcbd783d12518b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1c98984911794cbcafcbd783d12518b, type: 3}
 --- !u!4 &2000307108229936866 stripped
 Transform:

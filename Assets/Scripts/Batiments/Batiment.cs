@@ -173,7 +173,7 @@ public abstract class Batiment : MonoBehaviour
     //Met le batiment rouge si impossible de placer
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
+        if ((other.CompareTag("Terrain") || other.CompareTag("BatimentLimit") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
         {
             ChangeBatColor(Color.red);
             clic = false;
@@ -181,7 +181,7 @@ public abstract class Batiment : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
+        if ((other.CompareTag("Terrain") || other.CompareTag("BatimentLimit") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement && clic == true)
         {
             ChangeBatColor(Color.red);
             clic = false;
@@ -191,7 +191,7 @@ public abstract class Batiment : MonoBehaviour
     //Met le batiment en vert si possible de la placer
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
+        if ((other.CompareTag("Terrain") || other.CompareTag("BatimentLimit") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
         {
             ChangeBatColor(Color.green);
             clic = true;
@@ -204,6 +204,7 @@ public abstract class Batiment : MonoBehaviour
         if (!deplacement && batiment != null && GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false && actionPossible)
         {
             ChangeBatColor(Color.yellow);
+           
         }
     }
 
@@ -213,6 +214,7 @@ public abstract class Batiment : MonoBehaviour
         if (!deplacement && batiment != null)
         {
             int it = 0;
+            
             for (int i = 0; i < modelChild.Count; i++)
             {
           
@@ -320,7 +322,7 @@ public abstract class Batiment : MonoBehaviour
     {
         actionPossible = true;
         deplacement = false;
-        batiment.SetActive(false);
+        batiment.transform.GetChild(0).gameObject.SetActive(false);
        // GetComponent<Renderer>().material.color = color;
         GetComponent<BoxCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
