@@ -13,6 +13,7 @@ TagManager:
   - Arbre
   - Spawn
   - Champ
+  - Rocher
   layers:
   - Default
   - TransparentFX
