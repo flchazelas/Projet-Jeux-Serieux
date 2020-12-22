@@ -3122,7 +3122,7 @@ GameObject:
   - component: {fileID: 423077547}
   m_Layer: 0
   m_Name: Terrain_(50.0, 0.0, 50.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4418,7 +4418,7 @@ GameObject:
   - component: {fileID: 607275938}
   m_Layer: 0
   m_Name: Terrain_(-150.0, 0.0, 50.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7220,7 +7220,7 @@ GameObject:
   - component: {fileID: 971865266}
   m_Layer: 0
   m_Name: Terrain_(50.0, 0.0, -150.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9019,7 +9019,7 @@ GameObject:
   - component: {fileID: 1182312950}
   m_Layer: 0
   m_Name: Terrain_(-50.0, 0.0, -150.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -11712,7 +11712,7 @@ GameObject:
   - component: {fileID: 1441982454}
   m_Layer: 0
   m_Name: Terrain_(-150.0, 0.0, -50.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13366,7 +13366,7 @@ GameObject:
   - component: {fileID: 1626357984}
   m_Layer: 0
   m_Name: Terrain_(-50.0, 0.0, 50.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13652,7 +13652,7 @@ GameObject:
   - component: {fileID: 1653339045}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13728,7 +13728,7 @@ GameObject:
   - component: {fileID: 1657454523}
   m_Layer: 0
   m_Name: Terrain_(-150.0, 0.0, -150.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13890,7 +13890,7 @@ GameObject:
   - component: {fileID: 1707772918}
   m_Layer: 0
   m_Name: Terrain_(50.0, 0.0, -50.0)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
