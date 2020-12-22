@@ -28,4 +28,9 @@ public class Intemperie : Evenement
             GameVariables.malus = 1;
         }
     }
+
+    public override float getDuree()
+    {
+        return duree;
+    }
 }

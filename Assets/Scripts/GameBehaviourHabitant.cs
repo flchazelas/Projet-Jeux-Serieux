@@ -31,7 +31,7 @@ public class GameBehaviourHabitant : MonoBehaviour
     void Update()
     {
         
-        nbHabitants.text = "Nombre habitants : "+GameVariables.listHabitant.Count.ToString();
+        nbHabitants.text = "Nombre habitants : "+GameVariables.listFermier.Count.ToString();
         if (!b)
         {
             walk();
@@ -59,9 +59,20 @@ public class GameBehaviourHabitant : MonoBehaviour
             clone.Spawn = GameVariables.batimentSelectionne;
             GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
+
+            switch (clone.Type)
+            {
+                case "Combattant":
+                    GameVariables.listCombattant.Add(clone);
+                    break;
+
+                case "Fermier":
+                    GameVariables.listFermier.Add(clone);
+                    break;
+            }
+
             GameVariables.batimentSelectionne.ListHabitants.Add(o);
             GameVariables.batimentSelectionne.ChangeDesc();
-            
         }
     }
 

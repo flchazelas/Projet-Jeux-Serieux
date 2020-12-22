@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4612178098967010038}
   - component: {fileID: 4612178098967975990}
   - component: {fileID: 4612178098963787510}
-  - component: {fileID: 4658465011185447285}
+  - component: {fileID: 3047785512328626410}
   m_Layer: 0
   m_Name: Rock4B
   m_TagString: Rocher
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.19, y: 1.62, z: 2.26}
   m_Center: {x: -0.09005731, y: 0.4182105, z: 0.035725772}
---- !u!114 &4658465011185447285
+--- !u!114 &3047785512328626410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4612178098969904886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d96b401076297346aaf29dbf27807e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 15169a1d6b9bcb54296d28a674de6a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   capacite: 2

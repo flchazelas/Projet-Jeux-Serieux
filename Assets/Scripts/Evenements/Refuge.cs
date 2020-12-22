@@ -28,4 +28,9 @@ public class Refuge : Evenement
     {
 
     }
+
+    public override float getDuree()
+    {
+        return duree;
+    }
 }

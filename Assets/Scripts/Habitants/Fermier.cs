@@ -58,6 +58,11 @@ public class Fermier : Habitant
             GetComponent<Animator>().SetBool("isFighting", false);
             tache = false;
         }
+
+        if (!isAlive())
+        {
+            GameVariables.listFermier.Remove(this);
+        }
     }
 
     public void Travail()
@@ -69,7 +74,7 @@ public class Fermier : Habitant
     public void calculDistance()
     {
         float distance = 1000f;
-        foreach (Ressource r in FindObjectsOfType<Ressource>())
+        foreach (Ressource r in FindObjectsOfType<Champ>())
         {
             float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - r.transform.position.x, 2f) + Mathf.Pow(transform.position.z - r.transform.position.z, 2f));
             if (val < distance && r.Capacite > 0)
@@ -87,7 +92,7 @@ public class Fermier : Habitant
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.CompareTag("Arbre"))
+        if (collision.transform.CompareTag("Champ"))
         {
             nbfois = 0;
             currentTime = allowedTime;
@@ -99,7 +104,7 @@ public class Fermier : Habitant
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Arbre"))
+        if (collision.transform.CompareTag("Champ"))
         {
             tache = true;
             if(ressource.transform == collision.transform)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Evenement : MonoBehaviour
+public abstract class Evenement : MonoBehaviour
 {
     public string nom;
     public string description;
@@ -36,8 +36,5 @@ public class Evenement : MonoBehaviour
         objectifReussi = true;
     }
 
-    public float getDuree()
-    {
-        return duree;
-    }
+    public abstract float getDuree();
 }

@@ -28,4 +28,9 @@ public class Tache : Evenement
     {
         return false;
     }
+
+    public override float getDuree()
+    {
+        return duree;
+    }
 }

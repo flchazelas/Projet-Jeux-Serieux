@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8449006858715485268}
   - component: {fileID: 8449006858714355348}
   - component: {fileID: 8449006858718455540}
-  - component: {fileID: -4297843050072455093}
+  - component: {fileID: -1415693548167659562}
   m_Layer: 0
   m_Name: Rock4A
   m_TagString: Rocher
@@ -97,7 +97,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 415a1cc574249824c902b084a5dc6096, type: 3}
---- !u!114 &-4297843050072455093
+--- !u!114 &-1415693548167659562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8449006858716350548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d96b401076297346aaf29dbf27807e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 15169a1d6b9bcb54296d28a674de6a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   capacite: 2

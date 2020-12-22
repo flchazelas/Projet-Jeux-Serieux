@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 19339622}
   - component: {fileID: 3335006}
   - component: {fileID: 2346822}
-  - component: {fileID: -3959328674312965338}
   - component: {fileID: 6429586474751634678}
+  - component: {fileID: -8247452314410387613}
   m_Layer: 0
   m_Name: Tree9_2
   m_TagString: Arbre
@@ -94,19 +94,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3959328674312965338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d96b401076297346aaf29dbf27807e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capacite: 2
 --- !u!64 &6429586474751634678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -121,6 +108,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4303498}
+--- !u!114 &-8247452314410387613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3432d39a8f0de8049a5635e38334f272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capacite: 2
 --- !u!21 &2129798
 Material:
   serializedVersion: 6

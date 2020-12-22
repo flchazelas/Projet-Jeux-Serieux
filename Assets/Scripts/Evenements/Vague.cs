@@ -14,7 +14,6 @@ public class Vague : Evenement
 
     private void Awake()
     {
-        duree = (interval * nbEnnemis) * 2;
         spawns = new List<Vector3>();
         remplirSpawns();
     }
@@ -81,5 +80,11 @@ public class Vague : Evenement
             else if (choix == 3)
                 spawns.Add(new Vector3(Random.Range(xmin3, xmax3), 0, Random.Range(zmin3, zmax3)));
         }
+    }
+
+    public override float getDuree()
+    {
+        duree = (interval * nbEnnemis) * 2;
+        return duree;
     }
 }

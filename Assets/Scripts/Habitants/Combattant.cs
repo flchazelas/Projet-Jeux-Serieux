@@ -34,6 +34,11 @@ public class Combattant : Habitant
         {
             IsActif = false;
         }
+
+        if (!isAlive())
+        {
+            GameVariables.listCombattant.Remove(this);
+        }
     }
 
     private void OnCollisionStay(Collision collision)

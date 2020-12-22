@@ -26,8 +26,9 @@ public class Niveau : MonoBehaviour
         listEvenements = GameObject.Find("ListeEvenements").GetComponent<ListEvenements>();
         for(int i = 0; i < listEvenements.getSize(); i++)
         {
-            timer += listEvenements.getEvent(i).getDuree() + 2f*laps;
+            timer += listEvenements.getEvent(i).getDuree();
         }
+        timer += 2.0f * laps;
         currentTimer = laps;
         StartCoroutine("Timer");
     }
@@ -90,7 +91,7 @@ public class Niveau : MonoBehaviour
             if (e.objectifReussi)
             {
                 print("Fin : " + e.description);
-                score += (int)e.getDuree() - (int)e.currentTimer;
+                score += (int)e.duree - (int)e.currentTimer;
                 Destroy(GameObject.Find(e.nom));
             }
         }
