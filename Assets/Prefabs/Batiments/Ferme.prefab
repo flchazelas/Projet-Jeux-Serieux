@@ -1092,7 +1092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4503078806978854164}
   - component: {fileID: 4503078806978854170}
-  - component: {fileID: 4503078806978854169}
+  - component: {fileID: 1390157949535683393}
   - component: {fileID: 4421425150908877339}
   - component: {fileID: 4503078806978854166}
   m_Layer: 10
@@ -1159,7 +1159,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4503078806978854169
+--- !u!65 &1390157949535683393
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1196,10 +1196,12 @@ MonoBehaviour:
   priceUpgradeGold: 0
   priceUpgradeMeat: 0
   priceUpgradeWood: 0
+  priceUpgradeMana: 0
   batUpgrade: {fileID: 4503078806978854168, guid: 8be480ae3acdecf47b76cd2c755c9994, type: 3}
   generateGold: 0
   generateMeat: 1
   generateWood: 0
+  generateMana: 0
   nbSecondBeforeGenerate: 15
   multiplicator: 2
 --- !u!54 &4503078806978854166
