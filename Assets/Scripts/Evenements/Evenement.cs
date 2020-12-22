@@ -33,7 +33,7 @@ public abstract class Evenement : MonoBehaviour
             print(currentTimer);
             currentTimer++;
         }
-        objectifReussi = true;
+        //objectifReussi = true;
     }
 
     public abstract float getDuree();

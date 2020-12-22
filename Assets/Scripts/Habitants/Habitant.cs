@@ -25,7 +25,7 @@ public class Habitant : MonoBehaviour
     public string Type { get => type; set => type = value; }
     public Batiment Spawn { get => spawn; set => spawn = value; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Type = "Habitant";
     }

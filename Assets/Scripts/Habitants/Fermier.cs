@@ -12,7 +12,7 @@ public class Fermier : Habitant
     bool tache;
     int nbfois = 0;
 
-    private void Awake()
+    protected override void Awake()
     {
         Type = "Fermier";
     }
@@ -29,6 +29,10 @@ public class Fermier : Habitant
     // Update is called once per frame
     protected override void Update()
     {
+        if (!isAlive())
+        {
+            GameVariables.listFermier.Remove(this);
+        }
         base.Update();
 
         if (!IsActif)
@@ -57,11 +61,6 @@ public class Fermier : Habitant
             GetComponent<Animator>().SetBool("isWalking", true);
             GetComponent<Animator>().SetBool("isFighting", false);
             tache = false;
-        }
-
-        if (!isAlive())
-        {
-            GameVariables.listFermier.Remove(this);
         }
     }
 

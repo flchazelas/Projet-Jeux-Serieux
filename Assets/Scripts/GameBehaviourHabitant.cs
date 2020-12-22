@@ -30,8 +30,7 @@ public class GameBehaviourHabitant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        nbHabitants.text = "Nombre habitants : "+GameVariables.listFermier.Count.ToString();
+        nbHabitants.text = "Nombre habitants : "+GameVariables.listHabitant.Count.ToString();
         if (!b)
         {
             walk();
@@ -60,14 +59,14 @@ public class GameBehaviourHabitant : MonoBehaviour
             GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
 
-            switch (clone.Type)
+            switch (GameVariables.batimentSelectionne.typeHabitant.ToString())
             {
                 case "Combattant":
-                    GameVariables.listCombattant.Add(clone);
+                    GameVariables.listCombattant.Add(o.GetComponent<Combattant>());
                     break;
 
                 case "Fermier":
-                    GameVariables.listFermier.Add(clone);
+                    GameVariables.listFermier.Add(o.GetComponent<Fermier>());
                     break;
             }
 
