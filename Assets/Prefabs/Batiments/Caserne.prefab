@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4024975825742873022}
   m_Layer: 8
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Batiment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,8 +516,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4503078806978854164}
   - component: {fileID: 4503078806978854170}
+  - component: {fileID: 8119388362871620560}
   - component: {fileID: 4503078806978854169}
-  - component: {fileID: 4421425150908877339}
   - component: {fileID: 4503078806978854166}
   m_Layer: 10
   m_Name: Caserne
@@ -583,6 +583,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8119388362871620560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503078806978854168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822eb8b680f80b34ab5adf3e29c02e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0.5
+  spawn: {fileID: 0}
+  description: 
+  nomBatiment: Caserne
+  description2: 
+  nbHabitants: 
+  nbrMaxHab: 5
+  pointsVie: 0
+  typeHabitant: 0
+  priceUpgradeGold: 0
+  priceUpgradeMeat: 0
+  priceUpgradeWood: 0
+  priceUpgradeMana: 0
+  batUpgrade: {fileID: 0}
 --- !u!65 &4503078806978854169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -592,40 +618,10 @@ BoxCollider:
   m_GameObject: {fileID: 4503078806978854168}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4421425150908877339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503078806978854168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac6a020f3d9207f498a9a320aa525d96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 0.5
-  spawn: {fileID: 0}
-  description: 'Cette Ferme produit '
-  nomBatiment: Ferme
-  description2: " quantit\xE9s de Nourriture toute les "
-  nbHabitants: "Nombre Habitants Affect\xE9s : "
-  nbrMaxHab: 5
-  pointsVie: 0
-  typeHabitant: 2
-  priceUpgradeGold: 0
-  priceUpgradeMeat: 0
-  priceUpgradeWood: 0
-  batUpgrade: {fileID: 4503078806978854168, guid: 8be480ae3acdecf47b76cd2c755c9994, type: 3}
-  generateGold: 0
-  generateMeat: 1
-  generateWood: 0
-  nbSecondBeforeGenerate: 15
-  multiplicator: 2
+  m_Size: {x: 0.6365649, y: 1, z: 0.89310306}
+  m_Center: {x: 0.058342602, y: 0, z: -0.0033050538}
 --- !u!54 &4503078806978854166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -653,9 +649,9 @@ GameObject:
   - component: {fileID: 4503078808856339960}
   - component: {fileID: 4503078808856339962}
   - component: {fileID: 4503078808856339961}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Delimitation
-  m_TagString: Untagged
+  m_TagString: BatimentLimit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9068,15 +9064,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59787305238190636, guid: d92ae718e0e5c44328f5e6948f08d460, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.28446496
+      value: 0.30244458
       objectReference: {fileID: 0}
     - target: {fileID: 59787305238190636, guid: d92ae718e0e5c44328f5e6948f08d460, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 1.2955818
+      value: 1.5457089
       objectReference: {fileID: 0}
     - target: {fileID: 59787305238190636, guid: d92ae718e0e5c44328f5e6948f08d460, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 9.827978
+      value: 9.928837
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d92ae718e0e5c44328f5e6948f08d460, type: 3}

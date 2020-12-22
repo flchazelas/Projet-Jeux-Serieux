@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 56172172}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Batiment
+  m_TagString: BatimentLimit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383175231bc8df845ae4e2a4950f3732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batiment: {fileID: 6108305614118769151, guid: 8fed6a99eabbeb4428953fc8ae4df7f4, type: 3}
+  batiment: {fileID: 4421425150908877339, guid: 1070628f633ed3e4cbf450d0053a839a, type: 3}
 --- !u!1 &381450459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,6 +1861,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 333328065}
+    - target: {fileID: 6704351681060083676, guid: 94bc3c1b61bc21140b69ab1be1bd3285, type: 3}
+      propertyPath: m_TagString
+      value: BatimentLimit
+      objectReference: {fileID: 0}
     - target: {fileID: 6704351681362230831, guid: 94bc3c1b61bc21140b69ab1be1bd3285, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
