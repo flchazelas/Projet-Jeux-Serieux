@@ -20697,10 +20697,11 @@ MonoBehaviour:
   priceMana: 0
   priceIron: 0
   batUpgrade: {fileID: 0}
-  generateGold: 1
+  generateGold: 0
   generateMeat: 0
   generateWood: 0
   generateMana: 0
+  generateIron: 1
   nbSecondBeforeGenerate: 10
   multiplicator: 3
 --- !u!54 &4503078806978854166

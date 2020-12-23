@@ -20702,10 +20702,11 @@ MonoBehaviour:
   priceMana: 0
   priceIron: 0
   batUpgrade: {fileID: 4503078806978854168, guid: f5908995d7a784a4b85626031cd38d89, type: 3}
-  generateGold: 1
+  generateGold: 0
   generateMeat: 0
   generateWood: 0
   generateMana: 0
+  generateIron: 1
   nbSecondBeforeGenerate: 15
   multiplicator: 2
 --- !u!54 &4503078806978854166
