@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3280061854558286671}
   - component: {fileID: 3280061854558286664}
   m_Layer: 0
-  m_Name: Refuge
+  m_Name: Refuge 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,4 +51,4 @@ MonoBehaviour:
   duree: 20
   currentTimer: 0
   nbRefugies: 3
-  h: {fileID: 4450837172902718047, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
+  h: {fileID: 3247080515230331706, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
