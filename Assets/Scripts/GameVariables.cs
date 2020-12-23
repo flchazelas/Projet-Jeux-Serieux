@@ -11,6 +11,8 @@ public class GameVariables : MonoBehaviour
     public static int maxGold = 120;
     public static int maxStone = 120;
     public static int maxMana = 120;
+    public static int maxIron = 250;
+    public static int nbIron = 100;
     public static int nbWood = 100;
     public static int nbMeat = 100;
     public static int nbGold = 100;

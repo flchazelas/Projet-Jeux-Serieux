@@ -9,6 +9,7 @@ public class BatimentRessource : Batiment
     public bool generateMeat;
     public bool generateWood;
     public bool generateMana;
+    public bool generateIron;
 
     public int nbSecondBeforeGenerate;
     public int multiplicator;
@@ -70,6 +71,12 @@ public class BatimentRessource : Batiment
             if (GameVariables.nbMana < 0) GameVariables.nbMana = 0;
             if (GameVariables.nbMana > GameVariables.maxMana) GameVariables.nbMana = GameVariables.maxMana;
         }
+        if (generateIron)
+        {
+            GameVariables.nbIron += nbRessourcesGenerate + (int)(nbRessourcesGenerate * GameVariables.bonus) - (int)(nbRessourcesGenerate * GameVariables.malus);
+            if (GameVariables.nbIron < 0) GameVariables.nbIron = 0;
+            if (GameVariables.nbIron > GameVariables.maxIron) GameVariables.nbIron = GameVariables.maxIron;
+        }
 
 
     }
@@ -95,10 +102,7 @@ public class BatimentRessource : Batiment
     {
         if (batUpgrade != null && batUpgrade.GetComponent<Batiment>().canBeConstruct() )
         {
-            GameVariables.nbWood -= batUpgrade.GetComponent<Batiment>().priceWood;
-            GameVariables.nbGold -= batUpgrade.GetComponent<Batiment>().priceGold;
-            GameVariables.nbMeat -= batUpgrade.GetComponent<Batiment>().priceMeat;
-            GameVariables.nbMana -= batUpgrade.GetComponent<Batiment>().priceMana;
+            batUpgrade.GetComponent<Batiment>().constructBat();
 
             desactiverCanvas();
 

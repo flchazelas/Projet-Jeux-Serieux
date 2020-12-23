@@ -111,10 +111,11 @@ MonoBehaviour:
   nbrMaxHab: 10
   pointsVie: 75
   typeHabitant: 0
-  priceUpgradeGold: 0
-  priceUpgradeMeat: 0
-  priceUpgradeWood: 0
-  priceUpgradeMana: 0
+  priceGold: 0
+  priceMeat: 0
+  priceWood: 0
+  priceMana: 0
+  priceIron: 0
   batUpgrade: {fileID: 4503078806978854168, guid: 5286252bcaa439b4f9ca6e8ce20802f1, type: 3}
   generateGold: 1
   generateMeat: 0
