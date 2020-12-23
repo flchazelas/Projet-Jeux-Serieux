@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3280061854558286671}
   - component: {fileID: 3280061854558286664}
   m_Layer: 0
-  m_Name: Refuge
+  m_Name: Refuge 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53119c26dde77144b9fdd9af7d4ff087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: Refuge + 1
+  nom: Refuge + 10
   description: 3 survivants viennent de trouver votre camps et vous les accueillez
     !
   type: Refuge
   objectifReussi: 0
   duree: 20
   currentTimer: 0
-  nbRefugies: 1
+  nbRefugies: 10
   h: {fileID: 4450837172902718047, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}

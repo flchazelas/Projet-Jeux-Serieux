@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3280061854558286670
+--- !u!1 &8329759960044014162
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3280061854558286671}
-  - component: {fileID: 3280061854558286664}
+  - component: {fileID: 8329759960044014163}
+  - component: {fileID: 8686469383321056709}
   m_Layer: 0
-  m_Name: Refuge
+  m_Name: TacheSeuilRessources 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3280061854558286671
+--- !u!4 &8329759960044014163
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280061854558286670}
+  m_GameObject: {fileID: 8329759960044014162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,24 +31,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3280061854558286664
+--- !u!114 &8686469383321056709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280061854558286670}
+  m_GameObject: {fileID: 8329759960044014162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53119c26dde77144b9fdd9af7d4ff087, type: 3}
+  m_Script: {fileID: 11500000, guid: 46d22bab6cb7ce84aa0e1744e7a982cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: Refuge + 1
-  description: 3 survivants viennent de trouver votre camps et vous les accueillez
-    !
-  type: Refuge
+  nom: Tache200Meat
+  description: "Vous devez poss\xE9dez 200 de nourriture"
+  type: Tache
   objectifReussi: 0
-  duree: 20
+  duree: 60
   currentTimer: 0
-  nbRefugies: 1
-  h: {fileID: 4450837172902718047, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
+  typeRessource: 1
+  nombreVoulu: 200

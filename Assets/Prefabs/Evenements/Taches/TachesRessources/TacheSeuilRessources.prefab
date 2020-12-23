@@ -47,7 +47,7 @@ MonoBehaviour:
   description: "Vous devez poss\xE9dez 100 de bois"
   type: Tache
   objectifReussi: 0
-  duree: 20
+  duree: 60
   currentTimer: 0
   typeRessource: 2
   nombreVoulu: 100
