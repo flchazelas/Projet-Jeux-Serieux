@@ -9,24 +9,36 @@ public class Niveau : MonoBehaviour
     public int score = 0;
     public int difficulte = 0;
     public ListEvenements listEvenements;
+
+    public ListEvenements listEvents;
     public float currentTimer;
     public float laps;
 
     private bool perdu;
     
     Text consigne;
+    Text fin;
+    Image image;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        score += 1000;
         perdu = false;
         consigne = GameObject.Find("Canvas Evenement").transform.Find("Description").GetComponent<Text>();
+        image = GameObject.Find("Canvas Principal").transform.Find("Image").GetComponent<Image>();
+        fin = image.transform.Find("Fin").GetComponent<Text>();
 
         listEvenements = GameObject.Find("ListeEvenements").GetComponent<ListEvenements>();
-        for(int i = 0; i < listEvenements.getSize(); i++)
+        int rand = Random.Range(5, 15);
+        for(int i = 0; i<rand; i++)
         {
-            timer += listEvenements.getEvent(i).getDuree();
+            listEvents.AddEvent(listEvenements.getEvent(Random.Range(0, listEvenements.getSize())));
+        }
+
+        for(int i = 0; i < listEvents.getSize(); i++)
+        {
+            timer += listEvents.getEvent(i).getDuree();
         }
         timer += 2.0f * laps;
         currentTimer = laps;
@@ -53,25 +65,33 @@ public class Niveau : MonoBehaviour
         }
         if (perdu)
         {
-            print("Game Over! Vous n'avez plus d'habitant !");
-
+            StartCoroutine("Fin", "Game Over!\nVous n'avez plus d'habitant !");
+            image.enabled = true;
+            image.GetComponent<Animation>().Play();
         }
-        else if(listEvenements.getSize() != 0)
+        else if(listEvents.getSize() != 0)
         {
-            Evenement e = listEvenements.getEvent();
+            Evenement e = listEvents.getEvent();
             e = Instantiate(e);
             print("temps :" + e.getDuree());
             currentTimer = e.getDuree();
-            if (listEvenements.getSize() == 0)
+            if (listEvents.getSize() == 0)
             {
                 currentTimer += laps;
             }
             StartCoroutine("Timer");
         }
+        else if(listEvents.getSize() == 0 && FindObjectOfType<Evenement>())
+        {
+            StartCoroutine("Fin", "Game Over!\nVous n'avez pas fini tous les évènements !");
+            image.enabled = true;
+            image.GetComponent<Animation>().Play();
+        }
         else
         {
-            print("Fin du Niveau");
-            print(score);
+            StartCoroutine("Fin", "Fin du niveau !\nVoici votre score : "+score);
+            image.enabled = true;
+            image.GetComponent<Animation>().Play();
         }
     }
 
@@ -95,5 +115,12 @@ public class Niveau : MonoBehaviour
                 Destroy(GameObject.Find(e.nom));
             }
         }
+    }
+
+    IEnumerator Fin(string text)
+    {
+        yield return new WaitForSeconds(3);
+        fin.text = text;
+        fin.enabled = true;
     }
 }

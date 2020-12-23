@@ -22,10 +22,7 @@ public class Caserne : Batiment
     {
         if (batUpgrade != null && batUpgrade.GetComponent<Batiment>().canBeConstruct())
         {
-            GameVariables.nbWood -= batUpgrade.GetComponent<Batiment>().priceWood;
-            GameVariables.nbGold -= batUpgrade.GetComponent<Batiment>().priceGold;
-            GameVariables.nbMeat -= batUpgrade.GetComponent<Batiment>().priceMeat;
-            GameVariables.nbMana -= batUpgrade.GetComponent<Batiment>().priceMana;
+            batUpgrade.GetComponent<Batiment>().constructBat();
 
             desactiverCanvas();
 

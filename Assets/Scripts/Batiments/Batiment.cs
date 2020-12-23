@@ -38,6 +38,7 @@ public abstract class Batiment : MonoBehaviour
     public int priceMeat;
     public int priceWood;
     public int priceMana;
+    public int priceIron;
 
 
     public GameObject batUpgrade;
@@ -163,9 +164,10 @@ public abstract class Batiment : MonoBehaviour
 
         //Si clic droit de la souris, le batiment est placé sur le terrain si possible
 
-        if (Input.GetMouseButton(1) && clic && deplacement)
+        if (Input.GetMouseButton(1) && clic && deplacement && canBeConstruct())
         {
             validateLocation();
+            constructBat();
 
         }
     }
@@ -348,7 +350,16 @@ public abstract class Batiment : MonoBehaviour
     public bool canBeConstruct()
     {
 
-        bool t = (GameVariables.nbWood >= priceWood && GameVariables.nbGold >= priceGold && GameVariables.nbMeat >= priceMeat && GameVariables.nbMana >= priceMana);
+        bool t = (GameVariables.nbWood >= priceWood && GameVariables.nbGold >= priceGold && GameVariables.nbMeat >= priceMeat && GameVariables.nbMana >= priceMana && GameVariables.nbIron >= priceIron);
         return t;
+    }
+
+    public void constructBat()
+    {
+        GameVariables.nbWood -= priceWood;
+        GameVariables.nbGold -= priceGold;
+        GameVariables.nbMeat -= priceMeat;
+        GameVariables.nbMana -= priceMana;
+        GameVariables.nbIron -= priceIron;
     }
 }

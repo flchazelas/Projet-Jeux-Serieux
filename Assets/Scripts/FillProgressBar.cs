@@ -9,6 +9,8 @@ public class FillProgressBar : MonoBehaviour
     private Image foodbar;
     private Image goldbar;
     private Image manabar;
+    private Image ironbar;
+    private Text canvasIron;
     private Text canvasFood;
     private Text canvasGold;
     private Text canvasWood;
@@ -22,6 +24,8 @@ public class FillProgressBar : MonoBehaviour
         canvasGold = GameObject.Find("Nb Gold").GetComponent<Text>();
         canvasWood = GameObject.Find("Nb Wood").GetComponent<Text>();
         canvasMana = GameObject.Find("Nb Mana").GetComponent<Text>();
+        canvasIron = GameObject.Find("Nb Iron").GetComponent<Text>();
+        ironbar = GameObject.Find("IronProgressBar").GetComponent<Image>();
         manabar = GameObject.Find("ManaProgressBar").GetComponent<Image>();
         goldbar = GameObject.Find("GoldProgressBar").GetComponent<Image>();
         woodbar = GameObject.Find("WoodProgressBar").GetComponent<Image>();
@@ -39,6 +43,9 @@ public class FillProgressBar : MonoBehaviour
         foodbar.fillAmount = amountFood;
         float amountMana = (float)GameVariables.nbMana / (float)GameVariables.maxMana;
         manabar.fillAmount = amountMana;
+        float amountIron = (float)GameVariables.nbIron / (float)GameVariables.maxIron;
+        ironbar.fillAmount = amountIron;
+        canvasIron.text = GameVariables.nbIron.ToString() + "/" + GameVariables.maxIron.ToString();
         canvasMana.text = GameVariables.nbMana.ToString() + "/" + GameVariables.maxMana.ToString();
         canvasGold.text = GameVariables.nbGold.ToString() + "/" + GameVariables.maxGold.ToString();
         canvasWood.text = GameVariables.nbWood.ToString() + "/" + GameVariables.maxWood.ToString();

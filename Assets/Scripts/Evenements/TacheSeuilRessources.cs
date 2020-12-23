@@ -8,7 +8,8 @@ public class TacheSeuilRessources : Tache
     {
         Gold,
         Meat,
-        Wood
+        Wood,
+        Stone
     };
     public habitant typeRessource;
     public int nombreVoulu;
@@ -28,6 +29,10 @@ public class TacheSeuilRessources : Tache
                 break;
             case habitant.Wood:
                 if (GameVariables.nbWood == nombreVoulu)
+                    return true;
+                break;
+            case habitant.Stone:
+                if (GameVariables.nbStone == nombreVoulu)
                     return true;
                 break;
         }

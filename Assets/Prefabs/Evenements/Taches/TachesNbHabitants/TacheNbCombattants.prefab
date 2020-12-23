@@ -47,7 +47,7 @@ MonoBehaviour:
   description: "Vous devez poss\xE9dez 10 villageois"
   type: Tache
   objectifReussi: 0
-  duree: 20
+  duree: 60
   currentTimer: 0
   typeHabitant: 0
   nombreVoulu: 10

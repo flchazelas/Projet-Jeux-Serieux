@@ -47,9 +47,10 @@ MonoBehaviour:
   description: Vague d'ennemis
   type: Vague
   objectifReussi: 0
+  duree: 200
   currentTimer: 0
   nbEnnemis: 10
   listEnnemis:
   - {fileID: 648801741449387694, guid: 2f545bf82ed2ec14c86f745adfd70b46, type: 3}
   interval: 4
-  nbSpawns: 2
+  nbSpawns: 7

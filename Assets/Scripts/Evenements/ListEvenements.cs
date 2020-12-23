@@ -18,6 +18,11 @@ public class ListEvenements : MonoBehaviour
         
     }
 
+    public void AddEvent(Evenement e)
+    {
+        listEvenement.Add(e);
+    }
+
     public Evenement getEvent()
     {
         Evenement e = listEvenement[0];

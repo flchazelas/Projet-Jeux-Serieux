@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53119c26dde77144b9fdd9af7d4ff087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nom: Refuge + 3
+  nom: Refuge + 1
   description: 3 survivants viennent de trouver votre camps et vous les accueillez
     !
   type: Refuge
   objectifReussi: 0
-  duree: 10
+  duree: 20
   currentTimer: 0
-  nbRefugies: 3
-  h: {fileID: 4450837172902718047, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}
+  nbRefugies: 1
+  h: {fileID: 3247080515230331706, guid: 9bbd0964efe50a84ca1ee4f5dbb9ee40, type: 3}

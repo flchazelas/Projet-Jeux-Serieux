@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904395656668733931}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.115, y: -0.498, z: -0.022}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.06, y: -0.498, z: 0.06}
   m_LocalScale: {x: 0.07999878, y: 0.09994788, z: 0.08419716}
   m_Children:
   - {fileID: 5533863484676002723}
@@ -155,7 +155,7 @@ Transform:
   - {fileID: 5533925617365271005}
   m_Father: {fileID: 4503078806978854164}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &4503078806978854168
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,10 +267,11 @@ MonoBehaviour:
   nbrMaxHab: 10
   pointsVie: 0
   typeHabitant: 2
-  priceUpgradeGold: 0
-  priceUpgradeMeat: 0
-  priceUpgradeWood: 0
-  priceUpgradeMana: 0
+  priceGold: 0
+  priceMeat: 0
+  priceWood: 0
+  priceMana: 0
+  priceIron: 0
   batUpgrade: {fileID: 4503078806978854168, guid: b9b4fe3604d96d547a1b035acb2f6756, type: 3}
   generateGold: 1
   generateMeat: 1

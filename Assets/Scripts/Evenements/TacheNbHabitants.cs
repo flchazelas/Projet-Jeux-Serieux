@@ -7,7 +7,12 @@ public class TacheNbHabitants : Tache
     public enum habitant // your custom enumeration
     {
         Villageois,
-        Combattant
+        Combattant,
+        Fermier,
+        Mineur,
+        Banquier,
+        Bucheron,
+        Pretre
     };
     public habitant typeHabitant;
     public int nombreVoulu;
@@ -22,6 +27,22 @@ public class TacheNbHabitants : Tache
                     return true;
                 break;
             case habitant.Combattant:
+                if (GameVariables.listCombattant.Count == nombreVoulu)
+                    return true;
+                break;
+            case habitant.Fermier:
+                if (GameVariables.listCombattant.Count == nombreVoulu)
+                    return true;
+                break;
+            case habitant.Mineur:
+                if (GameVariables.listCombattant.Count == nombreVoulu)
+                    return true;
+                break;
+            case habitant.Bucheron:
+                if (GameVariables.listCombattant.Count == nombreVoulu)
+                    return true;
+                break;
+            case habitant.Pretre:
                 if (GameVariables.listCombattant.Count == nombreVoulu)
                     return true;
                 break;
