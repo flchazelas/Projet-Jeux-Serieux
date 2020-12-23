@@ -20,7 +20,7 @@ public class BatimentRessource : Batiment
     private int nbHabitant;
     
     // Start is called before the first frame update
-    override protected void Start()
+    override public void Start()
     {
 
         base.Start();
@@ -28,7 +28,7 @@ public class BatimentRessource : Batiment
     }
 
     // Update is called once per frame
-    override protected void Update()
+    override public void Update()
     {
        
         base.Update();

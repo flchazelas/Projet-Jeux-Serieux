@@ -46,7 +46,7 @@ public abstract class Batiment : MonoBehaviour
 
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    public virtual void Start()
     {
         ListHabitants = new List<GameObject>();
 
@@ -68,7 +68,7 @@ public abstract class Batiment : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    public virtual void Update()
     {
         if (GameVariables.batimentSelectionne == this)
         {
