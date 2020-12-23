@@ -26,6 +26,7 @@ public class Intemperie : Evenement
         {
             GameVariables.bonus = 1;
             GameVariables.malus = 1;
+            objectifReussi = true;
         }
     }
 
