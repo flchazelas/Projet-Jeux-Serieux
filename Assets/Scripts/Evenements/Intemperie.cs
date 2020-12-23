@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Intemperie : Evenement
 {
-    [Range(1,2)] public float bonus;
+    [Range(0,1)] public float bonus;
     [Range(0,1)] public float malus;
 
     private void Awake()
@@ -26,6 +26,12 @@ public class Intemperie : Evenement
         {
             GameVariables.bonus = 1;
             GameVariables.malus = 1;
+            objectifReussi = true;
         }
+    }
+
+    public override float getDuree()
+    {
+        return duree;
     }
 }

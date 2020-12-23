@@ -27,4 +27,13 @@ public class LimiteBehaviour : MonoBehaviour
             cam.transform.position = new Vector3(cam.transform.position.x + vec.x, cam.transform.position.y, cam.transform.position.z + vec.z);
         }
     }
+
+    //Detecte si la camera atteint une limite
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("MainCamera"))
+        {
+            cam.transform.position = new Vector3(cam.transform.position.x + vec.x, cam.transform.position.y, cam.transform.position.z + vec.z);
+        }
+    }
 }

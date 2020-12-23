@@ -12,6 +12,9 @@ TagManager:
   - Ennemi
   - Arbre
   - Spawn
+  - Champ
+  - BatimentLimit
+  - Rocher
   layers:
   - Default
   - TransparentFX
@@ -23,9 +26,9 @@ TagManager:
   - 
   - Habitant
   - Ennemi
-  - 
-  - 
-  - 
+  - Batiment
+  - BatimentLimit
+  - Champ
   - 
   - 
   - 

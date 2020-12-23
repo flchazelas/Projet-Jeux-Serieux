@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public abstract class Batiment : MonoBehaviour
 {
     public float size = 0.5f;
-    GameObject batiment;
-    GameObject canvas;
+    protected GameObject batiment;
+    protected GameObject canvas;
+    UnityAction close;
+    UnityAction upgrade;
+    static bool actionPossible;
     public GameObject spawn;
 
     Color color;
     bool deplacement;
-    bool clic;
+    private bool clic;
+
     public string description;
+    public string nomBatiment;
+    public string description2;
     public string nbHabitants;
     public int nbrMaxHab;
+    public int pointsVie;
 
     public enum role
     {
@@ -26,16 +34,21 @@ public abstract class Batiment : MonoBehaviour
     };
     public role typeHabitant;
 
-    public int priceUpgradeGold;
-    public int priceUpgradeMeat;
-    public int priceUpgradeWood;
+    public int priceGold;
+    public int priceMeat;
+    public int priceWood;
+    public int priceMana;
+
 
     public GameObject batUpgrade;
 
     protected List<GameObject> listHabitants;
+    protected List<Color> prefabModelColorChild;
+    protected List<GameObject> modelChild;
 
     protected Text desc;
-    Text habitants;
+    protected Text batName;
+    protected Text habitants;
 
     Button upgradeButton;
     Button closeButton;
@@ -49,6 +62,8 @@ public abstract class Batiment : MonoBehaviour
     public virtual void Start()
     {
         ListHabitants = new List<GameObject>();
+        upgrade = () => { this.upgradeStructure(); };
+        close = () => { this.desactiverCanvas(); };
 
         batiment = gameObject.transform.Find("Delimitation").gameObject;
         batiment.SetActive(false);
@@ -63,10 +78,49 @@ public abstract class Batiment : MonoBehaviour
         upgradeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Upgrade").GetComponent<Button>();
         closeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Fermer").GetComponent<Button>();
         desc = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Description").GetComponent<Text>();
-        desc.text = description;
+
+        batName = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("BatName").GetComponent<Text>();
+        batName.text = nomBatiment;
+        //ChangeDesc();
         habitants = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Nb Habitants Affectés").GetComponent<Text>();
+        actionPossible = false;
+        GetPartModel();
+        ChangeBatColor(Color.green);
+
     }
 
+    public abstract void ChangeDesc();
+    protected void GetPartModel()
+    {
+        prefabModelColorChild = new List<Color>();
+        modelChild = new List<GameObject>();
+        modelChild.Add(this.gameObject.transform.Find("Model").gameObject);
+
+        for (int i = 0; i < modelChild.Count; i++)
+        {
+            if (modelChild[i].transform.childCount > 0)
+            {
+                foreach (Transform child in modelChild[i].transform)
+                {
+                    modelChild.Add(child.gameObject);
+                    if (child.GetComponent<MeshRenderer>() != null)
+                    {
+                        foreach (Material material in child.GetComponent<MeshRenderer>().materials)
+                        {
+                            prefabModelColorChild.Add(material.color);
+                        }
+                    }
+                    if (child.GetComponent<SpriteRenderer>() != null)
+                    {
+                        prefabModelColorChild.Add(child.GetComponent<SpriteRenderer>().color);
+
+                    }
+
+                }
+            }
+        }
+
+    }
     // Update is called once per frame
     public virtual void Update()
     {
@@ -81,7 +135,7 @@ public abstract class Batiment : MonoBehaviour
                     ListHabitants.RemoveAt(i);
                 }
             }
-            habitants.text = nbHabitants + nb;
+
         }
 
         //Si le batiment est en attente d'être placé et que le bouton gauche de la souris est maintenu,
@@ -108,18 +162,28 @@ public abstract class Batiment : MonoBehaviour
         }
 
         //Si clic droit de la souris, le batiment est placé sur le terrain si possible
-        if (Input.GetMouseButton(1) && clic){
+
+        if (Input.GetMouseButton(1) && clic && deplacement)
+        {
             validateLocation();
+
         }
     }
 
     //Met le batiment rouge si impossible de placer
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null)
+        if ((other.CompareTag("Terrain") || other.CompareTag("BatimentLimit") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
         {
-            batiment.GetComponent<Renderer>().material.color = Color.red;
-            GetComponent<Renderer>().material.color = Color.red;
+            ChangeBatColor(Color.red);
+            clic = false;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if ((other.CompareTag("Terrain") || other.CompareTag("BatimentLimit") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement && clic == true)
+        {
+            ChangeBatColor(Color.red);
             clic = false;
         }
     }
@@ -127,10 +191,9 @@ public abstract class Batiment : MonoBehaviour
     //Met le batiment en vert si possible de la placer
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("Terrain") || other.CompareTag("Batiment") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null)
+        if ((other.CompareTag("Terrain") || other.CompareTag("BatimentLimit") || other.CompareTag("Habitant") || other.CompareTag("Ennemi")) && batiment != null && deplacement)
         {
-            batiment.GetComponent<Renderer>().material.color = Color.green;
-            GetComponent<Renderer>().material.color = Color.green;
+            ChangeBatColor(Color.green);
             clic = true;
         }
     }
@@ -138,11 +201,10 @@ public abstract class Batiment : MonoBehaviour
     //met le batiment en surbrillance si on le survole
     private void OnMouseOver()
     {
-        if (!deplacement && batiment != null)
+        if (!deplacement && batiment != null && GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false && actionPossible)
         {
+            ChangeBatColor(Color.yellow);
 
-            batiment.GetComponent<Renderer>().material.color = Color.yellow;
-            GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
 
@@ -151,55 +213,142 @@ public abstract class Batiment : MonoBehaviour
     {
         if (!deplacement && batiment != null)
         {
-            batiment.GetComponent<Renderer>().material.color = color;
-            GetComponent<Renderer>().material.color = color;
+            int it = 0;
+
+            for (int i = 0; i < modelChild.Count; i++)
+            {
+
+                if (modelChild[i].GetComponent<MeshRenderer>() != null)
+                {
+                    foreach (Material material in modelChild[i].GetComponent<MeshRenderer>().materials)
+                    {
+                        material.color = prefabModelColorChild[it];
+                        it++;
+                    }
+                }
+                if (modelChild[i].GetComponent<SpriteRenderer>() != null)
+                {
+                    modelChild[i].GetComponent<SpriteRenderer>().color = prefabModelColorChild[it];
+                    it++;
+                }
+
+            }
         }
     }
 
     //Affiche les choix possibles et la description
     private void OnMouseDown()
     {
-        afficheCanvas();
+        if (GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false) afficheCanvas();
     }
 
+    public void ChangeBatColor(Color c)
+    {
+        for (int i = 0; i < modelChild.Count; i++)
+        {
+            if (modelChild[i].GetComponent<MeshRenderer>() != null)
+            {
+                foreach (Material material in modelChild[i].GetComponent<MeshRenderer>().materials)
+                {
+                    material.color = c;
+                }
+            }
+            if (modelChild[i].GetComponent<SpriteRenderer>() != null)
+            {
+                modelChild[i].GetComponent<SpriteRenderer>().color = c;
+            }
+
+        }
+        GameObject o = this.gameObject.transform.Find("Delimitation").gameObject;
+        if (o.transform.childCount > 0)
+        {
+            foreach (Transform child in o.transform)
+            {
+                if (child.GetComponent<MeshRenderer>() != null)
+                {
+                    foreach (Material material in child.GetComponent<MeshRenderer>().materials)
+                    {
+                        material.color = c;
+                    }
+
+                }
+            }
+        }
+    }
     public void desactiverCanvas()
     {
         canvas = GameObject.Find("Canvas Batiment");
-       // upgradeButton.onClick.RemoveListener(() => { upgradeStructure(); });
-        closeButton.onClick.RemoveListener(() => { desactiverCanvas(); });
+        upgradeButton.onClick.RemoveListener(upgrade);
+
+        closeButton.onClick.RemoveListener(close);
         canvas.GetComponent<Canvas>().enabled = false;
+
+
     }
 
     public void afficheCanvas()
     {
-        if (!deplacement && batiment != null)
+        if (!deplacement && batiment != null && actionPossible)
         {
             canvas.GetComponent<Canvas>().enabled = true;
             GameVariables.batimentSelectionne = this;
+            if (listHabitants.Count < nbrMaxHab)
+            {
+                canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(true);
+            }
+            else
+            {
+                canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(false);
+            }
             if (batUpgrade != null)
             {
                 upgradeButton.gameObject.SetActive(true);
-                upgradeButton.onClick.AddListener(() => { upgradeStructure(); });
+                upgradeButton.onClick.AddListener(upgrade);
             }
             else
             {
                 upgradeButton.gameObject.SetActive(false);
 
             }
-            closeButton.onClick.AddListener(() => { desactiverCanvas(); });
-            desc.text = description;
+            closeButton.onClick.AddListener(close);
+            ChangeDesc();
         }
     }
 
     public abstract void upgradeStructure();
-    
+
 
     public void validateLocation()
     {
+        actionPossible = true;
         deplacement = false;
-        batiment.SetActive(false);
-        GetComponent<Renderer>().material.color = color;
+        batiment.transform.GetChild(0).gameObject.SetActive(false);
+        // GetComponent<Renderer>().material.color = color;
         GetComponent<BoxCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
+        transform.position = transform.position + new Vector3(0, -0.2f, 0);
+        for (int i = 0; i < modelChild.Count; i++)
+        {
+            if (modelChild[i].GetComponent<MeshRenderer>() != null)
+            {
+                foreach (Material material in modelChild[i].GetComponent<MeshRenderer>().materials)
+                {
+                    material.color = prefabModelColorChild[i];
+                }
+            }
+            if (modelChild[i].GetComponent<SpriteRenderer>() != null)
+            {
+                modelChild[i].GetComponent<SpriteRenderer>().color = prefabModelColorChild[i]; ;
+            }
+
+        }
+
+    }
+
+    public bool canBeConstruct()
+    {
+
+        bool t = (GameVariables.nbWood >= priceWood && GameVariables.nbGold >= priceGold && GameVariables.nbMeat >= priceMeat && GameVariables.nbMana >= priceMana);
+        return t;
     }
 }

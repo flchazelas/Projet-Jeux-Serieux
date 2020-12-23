@@ -10,6 +10,7 @@ public class Refuge : Evenement
 
     private void Awake()
     {
+
         for (int i = 0; i < nbRefugies; i++)
         {
             Habitant habitant = Instantiate(h);
@@ -26,6 +27,14 @@ public class Refuge : Evenement
     // Update is called once per frame
     public override void Update()
     {
+        if (currentTimer == duree - 1)
+        {
+            objectifReussi = true;
+        }
+    }
 
+    public override float getDuree()
+    {
+        return duree;
     }
 }

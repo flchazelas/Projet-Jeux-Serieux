@@ -9,9 +9,12 @@ public class GameVariables : MonoBehaviour
     public static int maxWood = 150;
     public static int maxMeat = 100;
     public static int maxGold = 120;
+    public static int maxMana = 120;
     public static int nbWood = 100;
     public static int nbMeat = 100;
     public static int nbGold = 100;
+    public static int nbMana = 100;
+    public static int nbMaxHabitants = 20;
     //Malus et Bonus (Compris dans l'intervalle  [0,1[ )
     public static double bonus = 0.6;
     public static double malus = 0.5;
@@ -33,6 +36,7 @@ public class GameVariables : MonoBehaviour
     //Habitants
     public static int nbHabitants = 0;
     public static List<Habitant> listHabitant = new List<Habitant>();
-    public static List<Combattant> listCombattant = new List<Combattant>();
+    public static List<Habitant> listCombattant = new List<Habitant>();
+    public static List<Habitant> listFermier = new List<Habitant>();
     public static List<Habitant> listHabitantAffecte = new List<Habitant>();
 }

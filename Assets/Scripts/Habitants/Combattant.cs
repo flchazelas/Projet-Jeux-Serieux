@@ -10,7 +10,7 @@ public class Combattant : Habitant
 
     public int pointsAttaque;
 
-    private void Awake()
+    protected override void Awake()
     {
         Type = "Combattant";
     }
@@ -25,6 +25,11 @@ public class Combattant : Habitant
     // Update is called once per frame
     protected override void Update()
     {
+        if (!isAlive())
+        {
+            GameVariables.listCombattant.Remove(this);
+        }
+
         base.Update();
         if(FindObjectsOfType<Ennemi>().Length != 0 && !IsActif)
         {
