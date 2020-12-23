@@ -41,6 +41,11 @@ public class SwitchButton : MonoBehaviour
     private void updateButton()
     {
         if (!isOn)
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        if (icon == null && text == null)
+            return;
+
+        if (!isOn)
         {
             icon.sprite = offIcon;
             text.text = offText;
@@ -50,5 +55,10 @@ public class SwitchButton : MonoBehaviour
             icon.sprite = onIcon;
             text.text = onText;
         }
+    }
+
+    public void triggerOnClick()
+    {
+        this.GetComponent<Button>().onClick.Invoke();
     }
 }

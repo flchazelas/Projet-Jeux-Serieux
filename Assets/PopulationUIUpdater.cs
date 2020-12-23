@@ -43,8 +43,6 @@ public class PopulationUIUpdater : MonoBehaviour
         { //On désac le bouton + (plus de place pour pop supp)
             foodPop.disableUpAction();
         }
-
-        Debug.Log(foodPopCounter + "  " + getQtMax_foodPop());
     }
 
     // accés modele
@@ -104,7 +102,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         villager.Vec = batiment.Spawn.transform.position;
         villager.V = villager.Vec - villager.transform.position;
-        villager.Spawn = batiment.Spawn;
+        villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
         batiment.ListHabitants.Add(o);
