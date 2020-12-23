@@ -84,7 +84,7 @@ public class Vague : Evenement
 
     public override float getDuree()
     {
-        duree = (interval * nbEnnemis) * 3;
+        duree = (interval * nbEnnemis) * 5;
         return duree;
     }
 }

@@ -15,13 +15,17 @@ public class Niveau : MonoBehaviour
     private bool perdu;
     
     Text consigne;
+    Text fin;
+    Image image;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        score += 1000;
         perdu = false;
         consigne = GameObject.Find("Canvas Evenement").transform.Find("Description").GetComponent<Text>();
+        image = GameObject.Find("Canvas Principal").transform.Find("Image").GetComponent<Image>();
+        fin = image.transform.Find("Fin").GetComponent<Text>();
 
         listEvenements = GameObject.Find("ListeEvenements").GetComponent<ListEvenements>();
         for(int i = 0; i < listEvenements.getSize(); i++)
@@ -53,8 +57,8 @@ public class Niveau : MonoBehaviour
         }
         if (perdu)
         {
-            print("Game Over! Vous n'avez plus d'habitant !");
-
+            StartCoroutine("Fin", "Game Over!\nVous n'avez plus d'habitant !");
+            image.GetComponent<Animation>().Play();
         }
         else if(listEvenements.getSize() != 0)
         {
@@ -68,10 +72,15 @@ public class Niveau : MonoBehaviour
             }
             StartCoroutine("Timer");
         }
+        else if(listEvenements.getSize() == 0 && FindObjectOfType<Evenement>())
+        {
+            StartCoroutine("Fin", "Game Over!\nVous n'avez pas fini tous les évènements !");
+            image.GetComponent<Animation>().Play();
+        }
         else
         {
-            print("Fin du Niveau");
-            print(score);
+            StartCoroutine("Fin", "Fin du niveau !\nVoici votre score : "+score);
+            image.GetComponent<Animation>().Play();
         }
     }
 
@@ -95,5 +104,12 @@ public class Niveau : MonoBehaviour
                 Destroy(GameObject.Find(e.nom));
             }
         }
+    }
+
+    IEnumerator Fin(string text)
+    {
+        yield return new WaitForSeconds(3);
+        fin.text = text;
+        fin.enabled = true;
     }
 }
