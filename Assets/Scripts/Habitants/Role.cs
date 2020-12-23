@@ -9,13 +9,17 @@ public class Role : MonoBehaviour
     {
         Habitant,
         Combattant,
-        Fermier
+        Fermier,
+        Mineur,
+        Bucheron
     };
     public role typeHabitant;
 
     public GameObject combattant;
     public GameObject habitant;
     public GameObject fermier;
+    public GameObject mineur;
+    public GameObject bucheron;
 
     // Start is called before the first frame update
     void Start()
@@ -69,8 +73,42 @@ public class Role : MonoBehaviour
 
                 GetComponent<Animator>().runtimeAnimatorController = fermier.GetComponent<Animator>().runtimeAnimatorController;
 
-                /*o = o.transform.GetChild(5).gameObject;
-                o.SetActive(true);*/
+                o = o.transform.GetChild(5).gameObject;
+                o.SetActive(true);
+                break;
+
+            case "Mineur":
+                gameObject.AddComponent<Mineur>();
+                GetComponent<Mineur>().pointsVie = GetComponent<Habitant>().pointsVie;
+                GetComponent<Mineur>().speed = mineur.GetComponent<Mineur>().speed;
+                GetComponent<Mineur>().survie = GetComponent<Habitant>().survie;
+                GetComponent<Mineur>().quantiteConso = mineur.GetComponent<Mineur>().quantiteConso;
+                GetComponent<Mineur>().Vec = GetComponent<Habitant>().Vec;
+                GetComponent<Mineur>().V = GetComponent<Habitant>().V;
+                GetComponent<Mineur>().Spawn = GetComponent<Habitant>().Spawn;
+
+
+                GetComponent<Animator>().runtimeAnimatorController = mineur.GetComponent<Animator>().runtimeAnimatorController;
+
+                o = o.transform.GetChild(6).gameObject;
+                o.SetActive(true);
+                break;
+
+            case "Bucheron":
+                gameObject.AddComponent<Bucheron>();
+                GetComponent<Bucheron>().pointsVie = GetComponent<Habitant>().pointsVie;
+                GetComponent<Bucheron>().speed = bucheron.GetComponent<Bucheron>().speed;
+                GetComponent<Bucheron>().survie = GetComponent<Habitant>().survie;
+                GetComponent<Bucheron>().quantiteConso = bucheron.GetComponent<Bucheron>().quantiteConso;
+                GetComponent<Bucheron>().Vec = GetComponent<Habitant>().Vec;
+                GetComponent<Bucheron>().V = GetComponent<Habitant>().V;
+                GetComponent<Bucheron>().Spawn = GetComponent<Habitant>().Spawn;
+
+
+                GetComponent<Animator>().runtimeAnimatorController = bucheron.GetComponent<Animator>().runtimeAnimatorController;
+
+                o = o.transform.GetChild(7).gameObject;
+                o.SetActive(true);
                 break;
 
                 /* case "Habitant":
@@ -94,6 +132,12 @@ public class Role : MonoBehaviour
                 break;
             case "Combattant":
                 Destroy(GetComponent<Combattant>());
+                break;
+            case "Mineur":
+                Destroy(GetComponent<Mineur>());
+                break;
+            case "Bucheron":
+                Destroy(GetComponent<Bucheron>());
                 break;
         }
 

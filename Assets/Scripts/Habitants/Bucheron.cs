@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fermier : Habitant
+public class Bucheron : Habitant
 {
     private float allowedTime = 1;
     private float currentTime = 0;
@@ -14,7 +14,7 @@ public class Fermier : Habitant
 
     protected override void Awake()
     {
-        Type = "Fermier";
+        Type = "Bucheron";
     }
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class Fermier : Habitant
     {
         if (!isAlive())
         {
-            GameVariables.listFermier.Remove(this);
+            GameVariables.listBucheron.Remove(this);
         }
         base.Update();
 
@@ -46,21 +46,27 @@ public class Fermier : Habitant
         }
         if (tache && currentTime == 0 && nbfois < 5)
         {
+            print("On enleve la marche");
             GetComponent<Animator>().SetBool("isWalking", false);
             Vec = new Vector3(Vec.x, Vec.y, Vec.z);
             V = new Vector3(0, 0, 0);
             IsActif = true;
             currentTime = allowedTime;
-            GetComponent<Animator>().SetBool("isFarming", true);
+            GetComponent<Animator>().SetBool("isWoodCutting", true);
             StartCoroutine("Timer");
         }
         if (nbfois >= 4)
         {
             Vec = vec1;
             V = vec1 - transform.position;
+            print("On remet la marche");
             GetComponent<Animator>().SetBool("isWalking", true);
-            GetComponent<Animator>().SetBool("isFarming", false);
+            GetComponent<Animator>().SetBool("isWoodCutting", false);
             tache = false;
+        }
+        else
+        {
+            print("rien");
         }
     }
 
@@ -73,7 +79,7 @@ public class Fermier : Habitant
     public void calculDistance()
     {
         float distance = 1000f;
-        foreach (Ressource r in FindObjectsOfType<Champ>())
+        foreach (Ressource r in FindObjectsOfType<Arbre>())
         {
             float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - r.transform.position.x, 2f) + Mathf.Pow(transform.position.z - r.transform.position.z, 2f));
             if (val < distance && r.Capacite > 0)
@@ -91,8 +97,9 @@ public class Fermier : Habitant
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.CompareTag("Champ"))
+        if (collision.transform.CompareTag("Arbre"))
         {
+        print("sortie");
             nbfois = 0;
             currentTime = allowedTime;
             IsActif = false;
@@ -103,7 +110,7 @@ public class Fermier : Habitant
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Champ"))
+        if (collision.transform.CompareTag("Arbre"))
         {
             tache = true;
             if(ressource.transform == collision.transform)
@@ -121,7 +128,9 @@ public class Fermier : Habitant
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(1.63f);
+        print("debut coup");
+        yield return new WaitForSeconds(1);
+        print("fin coup");
         currentTime--;
        //GetComponent<Animator>().SetBool("isFarming", false);
         nbfois++;

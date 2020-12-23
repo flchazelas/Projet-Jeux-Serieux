@@ -30,7 +30,9 @@ public abstract class Batiment : MonoBehaviour
     {
         Habitant,
         Combattant,
-        Fermier
+        Fermier,
+        Mineur,
+        Bucheron
     };
     public role typeHabitant;
 

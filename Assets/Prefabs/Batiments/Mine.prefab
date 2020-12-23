@@ -13658,7 +13658,7 @@ MonoBehaviour:
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 5
   pointsVie: 50
-  typeHabitant: 2
+  typeHabitant: 3
   priceGold: 0
   priceMeat: 0
   priceWood: 0

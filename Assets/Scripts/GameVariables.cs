@@ -42,6 +42,8 @@ public class GameVariables : MonoBehaviour
     public static List<Habitant> listHabitant = new List<Habitant>();
     public static List<Habitant> listCombattant = new List<Habitant>();
     public static List<Habitant> listFermier = new List<Habitant>();
+    public static List<Habitant> listMineur = new List<Habitant>();
+    public static List<Habitant> listBucheron = new List<Habitant>();
     public static List<Habitant> listHabitantAffecte = new List<Habitant>();
 
 }
