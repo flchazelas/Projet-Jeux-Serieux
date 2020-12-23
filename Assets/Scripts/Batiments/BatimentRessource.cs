@@ -93,13 +93,12 @@ public class BatimentRessource : Batiment
     }
     public override void upgradeStructure()
     {
-        if (batUpgrade != null && GameVariables.nbWood >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeWood && GameVariables.nbGold >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeGold 
-            && GameVariables.nbMeat >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMeat && GameVariables.nbMana >= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMana)
+        if (batUpgrade != null && batUpgrade.GetComponent<Batiment>().canBeConstruct() )
         {
-            GameVariables.nbWood -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeWood;
-            GameVariables.nbGold -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeGold;
-            GameVariables.nbMeat -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMeat;
-            GameVariables.nbMana -= batUpgrade.GetComponent<BatimentRessource>().priceUpgradeMana;
+            GameVariables.nbWood -= batUpgrade.GetComponent<Batiment>().priceWood;
+            GameVariables.nbGold -= batUpgrade.GetComponent<Batiment>().priceGold;
+            GameVariables.nbMeat -= batUpgrade.GetComponent<Batiment>().priceMeat;
+            GameVariables.nbMana -= batUpgrade.GetComponent<Batiment>().priceMana;
 
             desactiverCanvas();
 

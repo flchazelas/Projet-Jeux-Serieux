@@ -34,10 +34,10 @@ public abstract class Batiment : MonoBehaviour
     };
     public role typeHabitant;
 
-    public int priceUpgradeGold;
-    public int priceUpgradeMeat;
-    public int priceUpgradeWood;
-    public int priceUpgradeMana;
+    public int priceGold;
+    public int priceMeat;
+    public int priceWood;
+    public int priceMana;
 
 
     public GameObject batUpgrade;
@@ -78,7 +78,7 @@ public abstract class Batiment : MonoBehaviour
         upgradeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Upgrade").GetComponent<Button>();
         closeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Fermer").GetComponent<Button>();
         desc = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Description").GetComponent<Text>();
-        
+
         batName = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("BatName").GetComponent<Text>();
         batName.text = nomBatiment;
         //ChangeDesc();
@@ -119,7 +119,7 @@ public abstract class Batiment : MonoBehaviour
                 }
             }
         }
-        
+
     }
     // Update is called once per frame
     protected virtual void Update()
@@ -135,7 +135,7 @@ public abstract class Batiment : MonoBehaviour
                     ListHabitants.RemoveAt(i);
                 }
             }
-            
+
         }
 
         //Si le batiment est en attente d'être placé et que le bouton gauche de la souris est maintenu,
@@ -166,7 +166,7 @@ public abstract class Batiment : MonoBehaviour
         if (Input.GetMouseButton(1) && clic && deplacement)
         {
             validateLocation();
-            
+
         }
     }
 
@@ -204,7 +204,7 @@ public abstract class Batiment : MonoBehaviour
         if (!deplacement && batiment != null && GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false && actionPossible)
         {
             ChangeBatColor(Color.yellow);
-           
+
         }
     }
 
@@ -214,10 +214,10 @@ public abstract class Batiment : MonoBehaviour
         if (!deplacement && batiment != null)
         {
             int it = 0;
-            
+
             for (int i = 0; i < modelChild.Count; i++)
             {
-          
+
                 if (modelChild[i].GetComponent<MeshRenderer>() != null)
                 {
                     foreach (Material material in modelChild[i].GetComponent<MeshRenderer>().materials)
@@ -239,7 +239,7 @@ public abstract class Batiment : MonoBehaviour
     //Affiche les choix possibles et la description
     private void OnMouseDown()
     {
-        if(GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false) afficheCanvas();
+        if (GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false) afficheCanvas();
     }
 
     public void ChangeBatColor(Color c)
@@ -279,10 +279,10 @@ public abstract class Batiment : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas Batiment");
         upgradeButton.onClick.RemoveListener(upgrade);
-     
+
         closeButton.onClick.RemoveListener(close);
         canvas.GetComponent<Canvas>().enabled = false;
-       
+
 
     }
 
@@ -292,7 +292,7 @@ public abstract class Batiment : MonoBehaviour
         {
             canvas.GetComponent<Canvas>().enabled = true;
             GameVariables.batimentSelectionne = this;
-            if(listHabitants.Count < nbrMaxHab)
+            if (listHabitants.Count < nbrMaxHab)
             {
                 canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(true);
             }
@@ -323,7 +323,7 @@ public abstract class Batiment : MonoBehaviour
         actionPossible = true;
         deplacement = false;
         batiment.transform.GetChild(0).gameObject.SetActive(false);
-       // GetComponent<Renderer>().material.color = color;
+        // GetComponent<Renderer>().material.color = color;
         GetComponent<BoxCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
         transform.position = transform.position + new Vector3(0, -0.2f, 0);
@@ -343,5 +343,12 @@ public abstract class Batiment : MonoBehaviour
 
         }
 
+    }
+
+    public bool canBeConstruct()
+    {
+
+        bool t = (GameVariables.nbWood >= priceWood && GameVariables.nbGold >= priceGold && GameVariables.nbMeat >= priceMeat && GameVariables.nbMana >= priceMana);
+        return t;
     }
 }
