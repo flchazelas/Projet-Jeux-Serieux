@@ -11,7 +11,9 @@ public class Role : MonoBehaviour
         Combattant,
         Fermier,
         Mineur,
-        Bucheron
+        Bucheron,
+        Marchand,
+        Pretre
     };
     public role typeHabitant;
 
@@ -20,6 +22,8 @@ public class Role : MonoBehaviour
     public GameObject fermier;
     public GameObject mineur;
     public GameObject bucheron;
+    public GameObject marchand;
+    public GameObject pretre;
 
     // Start is called before the first frame update
     void Start()
@@ -111,15 +115,36 @@ public class Role : MonoBehaviour
                 o.SetActive(true);
                 break;
 
-                /* case "Habitant":
-                     gameObject.AddComponent<Habitant>();
-                     gameObject.GetComponent<Habitant>().pointsVie = habitant.GetComponent<Habitant>().pointsVie;
-                     gameObject.GetComponent<Habitant>().speed = habitant.GetComponent<Habitant>().speed;
+            case "Marchand":
+                gameObject.AddComponent<Marchand>();
+                GetComponent<Marchand>().pointsVie = GetComponent<Habitant>().pointsVie;
+                GetComponent<Marchand>().speed = bucheron.GetComponent<Marchand>().speed;
+                GetComponent<Marchand>().survie = GetComponent<Habitant>().survie;
+                GetComponent<Marchand>().quantiteConso = marchand.GetComponent<Marchand>().quantiteConso;
+                GetComponent<Marchand>().Vec = GetComponent<Habitant>().Vec;
+                GetComponent<Marchand>().V = GetComponent<Habitant>().V;
+                GetComponent<Marchand>().Spawn = GetComponent<Habitant>().Spawn;
 
-                     gameObject.GetComponent<Animator>().runtimeAnimatorController = habitant.GetComponent<Animator>().runtimeAnimatorController;
-                     //gameObject.GetComponent<Animator>().ani
-                     break;*/
-        }
+                GetComponent<Animator>().runtimeAnimatorController = marchand.GetComponent<Animator>().runtimeAnimatorController;
+
+                break;
+
+            case "Pretre":
+                gameObject.AddComponent<Pretre>();
+                GetComponent<Pretre>().pointsVie = GetComponent<Habitant>().pointsVie;
+                GetComponent<Pretre>().speed = pretre.GetComponent<Pretre>().speed;
+                GetComponent<Pretre>().survie = GetComponent<Habitant>().survie;
+                GetComponent<Pretre>().quantiteConso = pretre.GetComponent<Pretre>().quantiteConso;
+                GetComponent<Pretre>().Vec = GetComponent<Habitant>().Vec;
+                GetComponent<Pretre>().V = GetComponent<Habitant>().V;
+                GetComponent<Pretre>().Spawn = GetComponent<Habitant>().Spawn;
+
+
+                GetComponent<Animator>().runtimeAnimatorController = pretre.GetComponent<Animator>().runtimeAnimatorController;
+;
+                break;
+
+                }
 
         string str = GetComponent<Habitant>().Type;
         switch (str)
@@ -138,6 +163,12 @@ public class Role : MonoBehaviour
                 break;
             case "Bucheron":
                 Destroy(GetComponent<Bucheron>());
+                break;
+            case "Marchand":
+                Destroy(GetComponent<Marchand>());
+                break;
+            case "Pretre":
+                Destroy(GetComponent<Pretre>());
                 break;
         }
 

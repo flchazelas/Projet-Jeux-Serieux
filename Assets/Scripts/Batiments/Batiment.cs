@@ -32,7 +32,9 @@ public abstract class Batiment : MonoBehaviour
         Combattant,
         Fermier,
         Mineur,
-        Bucheron
+        Bucheron,
+        Marchand,
+        Pretre
     };
     public role typeHabitant;
 

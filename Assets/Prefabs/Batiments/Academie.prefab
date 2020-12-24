@@ -44678,16 +44678,18 @@ MonoBehaviour:
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 5
   pointsVie: 0
-  typeHabitant: 2
-  priceUpgradeGold: 5
-  priceUpgradeMeat: 5
-  priceUpgradeWood: 5
-  priceUpgradeMana: 5
+  typeHabitant: 6
+  priceGold: 0
+  priceMeat: 0
+  priceWood: 0
+  priceMana: 0
+  priceIron: 0
   batUpgrade: {fileID: 4503078806978854168, guid: 8972ffab47d4a974089f6c5c92a4a3bd, type: 3}
   generateGold: 0
   generateMeat: 0
   generateWood: 0
   generateMana: 1
+  generateIron: 0
   nbSecondBeforeGenerate: 15
   multiplicator: 2
 --- !u!54 &4503078806978854166
