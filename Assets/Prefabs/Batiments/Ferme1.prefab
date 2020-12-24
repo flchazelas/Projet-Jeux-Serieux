@@ -277,6 +277,7 @@ MonoBehaviour:
   generateMeat: 1
   generateWood: 1
   generateMana: 0
+  generateIron: 0
   nbSecondBeforeGenerate: 15
   multiplicator: 2
 --- !u!54 &4503078806978854166
@@ -2207,6 +2208,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2328994225273942604
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539182126744660018}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300006, guid: c4e4554048f11471e91d56a448649870, type: 3}
 --- !u!1001 &2005138395290650886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6426,6 +6441,11 @@ PrefabInstance:
 --- !u!4 &5534176169310318898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4930402031000206, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
+  m_PrefabInstance: {fileID: 5538534511488543676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5539182126744660018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1111609867682702, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
   m_PrefabInstance: {fileID: 5538534511488543676}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5538534511497177724
