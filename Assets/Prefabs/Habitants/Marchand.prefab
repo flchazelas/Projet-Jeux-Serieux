@@ -1604,7 +1604,7 @@ MonoBehaviour:
   mineur: {fileID: 3247080515230331705, guid: 207f88e3e4c61ed40b38e5b7a133025a, type: 3}
   bucheron: {fileID: 3247080515230331705, guid: 0b9fcf92116e51146985fa8b00ab5052, type: 3}
   marchand: {fileID: 3247080515230331705}
-  pretre: {fileID: 0}
+  pretre: {fileID: 3247080515230331705, guid: e4477c71b1fff654da828e306a761905, type: 3}
 --- !u!65 &1948074463822763072
 BoxCollider:
   m_ObjectHideFlags: 0

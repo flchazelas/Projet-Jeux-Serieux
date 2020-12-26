@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Marchand : Habitant
 {
-    
 
     protected override void Awake()
     {

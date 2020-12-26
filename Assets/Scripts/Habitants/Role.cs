@@ -118,7 +118,8 @@ public class Role : MonoBehaviour
             case "Marchand":
                 gameObject.AddComponent<Marchand>();
                 GetComponent<Marchand>().pointsVie = GetComponent<Habitant>().pointsVie;
-                GetComponent<Marchand>().speed = bucheron.GetComponent<Marchand>().speed;
+                float speed= marchand.GetComponent<Marchand>().speed;
+                GetComponent<Marchand>().speed = speed;
                 GetComponent<Marchand>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Marchand>().quantiteConso = marchand.GetComponent<Marchand>().quantiteConso;
                 GetComponent<Marchand>().Vec = GetComponent<Habitant>().Vec;
