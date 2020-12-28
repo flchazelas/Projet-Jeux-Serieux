@@ -65,6 +65,20 @@ public class GameBehaviourHabitant : MonoBehaviour
                 case "Fermier":
                     GameVariables.listFermier.Add(o.GetComponent<Fermier>());
                     break;
+
+                case "Mineur":
+                    GameVariables.listMineur.Add(o.GetComponent<Mineur>());
+                    break;
+                case "Bucheron":
+                    GameVariables.listBucheron.Add(o.GetComponent<Bucheron>());
+                    break;
+                case "Marchand":
+                    print("New Marchand");
+                    GameVariables.listMarchand.Add(o.GetComponent<Marchand>());
+                    break;
+                case "Pretre":
+                    GameVariables.listPretre.Add(o.GetComponent<Pretre>());
+                    break;
             }
 
             GameVariables.batimentSelectionne.ListHabitants.Add(o);

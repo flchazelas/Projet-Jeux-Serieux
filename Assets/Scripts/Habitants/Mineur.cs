@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fermier : Habitant
+public class Mineur : Habitant
 {
     private float allowedTime = 1;
     private float currentTime = 0;
@@ -14,7 +14,7 @@ public class Fermier : Habitant
 
     protected override void Awake()
     {
-        Type = "Fermier";
+        Type = "Mineur";
     }
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class Fermier : Habitant
     {
         if (!isAlive())
         {
-            GameVariables.listFermier.Remove(this);
+            GameVariables.listMineur.Remove(this);
         }
         base.Update();
 
@@ -51,7 +51,7 @@ public class Fermier : Habitant
             V = new Vector3(0, 0, 0);
             IsActif = true;
             currentTime = allowedTime;
-            GetComponent<Animator>().SetBool("isFarming", true);
+            GetComponent<Animator>().SetBool("isMining", true);
             StartCoroutine("Timer");
         }
         if (nbfois >= 4)
@@ -59,7 +59,7 @@ public class Fermier : Habitant
             Vec = vec1;
             V = vec1 - transform.position;
             GetComponent<Animator>().SetBool("isWalking", true);
-            GetComponent<Animator>().SetBool("isFarming", false);
+            GetComponent<Animator>().SetBool("isMining", false);
             tache = false;
         }
     }
@@ -73,7 +73,7 @@ public class Fermier : Habitant
     public void calculDistance()
     {
         float distance = 1000f;
-        foreach (Ressource r in FindObjectsOfType<Champ>())
+        foreach (Ressource r in FindObjectsOfType<Rocher>())
         {
             float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - r.transform.position.x, 2f) + Mathf.Pow(transform.position.z - r.transform.position.z, 2f));
             if (val < distance && r.Capacite > 0)
@@ -91,7 +91,7 @@ public class Fermier : Habitant
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.CompareTag("Champ"))
+        if (collision.transform.CompareTag("Rocher"))
         {
             nbfois = 0;
             currentTime = allowedTime;
@@ -103,7 +103,7 @@ public class Fermier : Habitant
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Champ"))
+        if (collision.transform.CompareTag("Rocher"))
         {
             tache = true;
             if(ressource.transform == collision.transform)

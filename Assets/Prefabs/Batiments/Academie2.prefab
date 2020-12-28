@@ -64943,7 +64943,7 @@ MonoBehaviour:
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
   pointsVie: 0
-  typeHabitant: 2
+  typeHabitant: 6
   priceGold: 5
   priceMeat: 4
   priceWood: 3
@@ -64954,6 +64954,7 @@ MonoBehaviour:
   generateMeat: 0
   generateWood: 0
   generateMana: 1
+  generateIron: 0
   nbSecondBeforeGenerate: 15
   multiplicator: 2
 --- !u!54 &4503078806978854166

@@ -14450,10 +14450,11 @@ MonoBehaviour:
   nbrMaxHab: 0
   pointsVie: 0
   typeHabitant: 0
-  priceUpgradeGold: 5
-  priceUpgradeMeat: 0
-  priceUpgradeWood: 10
-  priceUpgradeMana: 0
+  priceGold: 0
+  priceMeat: 0
+  priceWood: 0
+  priceMana: 0
+  priceIron: 0
   batUpgrade: {fileID: 4503078806978854168, guid: 5c04364c51217874eb69af41d323b1c9, type: 3}
   habSup: 10
 --- !u!23 &4503078806978854170

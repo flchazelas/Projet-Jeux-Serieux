@@ -72992,16 +72992,18 @@ MonoBehaviour:
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
   pointsVie: 0
-  typeHabitant: 2
-  priceUpgradeGold: 15
-  priceUpgradeMeat: 15
-  priceUpgradeWood: 15
-  priceUpgradeMana: 15
+  typeHabitant: 6
+  priceGold: 0
+  priceMeat: 0
+  priceWood: 0
+  priceMana: 0
+  priceIron: 0
   batUpgrade: {fileID: 0}
   generateGold: 0
   generateMeat: 0
   generateWood: 0
   generateMana: 1
+  generateIron: 0
   nbSecondBeforeGenerate: 10
   multiplicator: 3
 --- !u!54 &4503078806978854166
