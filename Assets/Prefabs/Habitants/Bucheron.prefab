@@ -1602,6 +1602,8 @@ MonoBehaviour:
   fermier: {fileID: 3247080515230331705, guid: 5eec61e2dda199945ab38f7cd2c131e1, type: 3}
   mineur: {fileID: 3247080515230331705, guid: 207f88e3e4c61ed40b38e5b7a133025a, type: 3}
   bucheron: {fileID: 3247080515230331705}
+  marchand: {fileID: 0}
+  pretre: {fileID: 0}
 --- !u!54 &3038108316210725848
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1644,11 +1646,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bae97f093951b4aad1a91eeab62687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   speed: 1
   isAllie: 0
   pointsVie: 10
   survie: 10
   quantiteConso: 1
+  workplaceType: 2
+  workType: 
+  workDuration: 0
 --- !u!1 &3247080515237319679
 GameObject:
   m_ObjectHideFlags: 0
