@@ -320,9 +320,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if (batiment == null)
             return;
-
-        villager.Vec = batiment.transform.position;
-        villager.V = villager.Vec - villager.transform.position;
+        
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
@@ -375,9 +373,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if (batiment == null)
             return;
-
-        villager.Vec = batiment.transform.position;
-        villager.V = villager.Vec - villager.transform.position;
+        
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
@@ -430,9 +426,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if (batiment == null)
             return;
-
-        villager.Vec = batiment.transform.position;
-        villager.V = villager.Vec - villager.transform.position;
+        
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
@@ -485,9 +479,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if (batiment == null)
             return;
-
-        villager.Vec = batiment.transform.position;
-        villager.V = villager.Vec - villager.transform.position;
+        
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
@@ -540,9 +532,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if (batiment == null)
             return;
-
-        villager.Vec = batiment.transform.position;
-        villager.V = villager.Vec - villager.transform.position;
+        
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
@@ -595,9 +585,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if (batiment == null)
             return;
-
-        villager.Vec = batiment.transform.position;
-        villager.V = villager.Vec - villager.transform.position;
+        
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
