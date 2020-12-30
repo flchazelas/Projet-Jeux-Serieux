@@ -21,6 +21,7 @@ public class Pretre : Habitant
     {
         if (!isAlive())
         {
+            Destroy(random_object);
             GameVariables.listPretre.Remove(this);
         }
         base.Update();

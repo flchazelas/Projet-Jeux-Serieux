@@ -1,52 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Ennemi : MonoBehaviour
 {
-    private Vector3 vec;
-    private Vector3 v;
+
     public float speed = 1;
     private bool isActif;
     public int pointsVie;
     public int pointsAttaque;
 
+    Transform target;
+
     private float allowedTime = 1;
     private float currentTime = 0;
-
+    private bool isFighting;
     Habitant habitant;
-
-    public Vector3 Vec { get => vec; set => vec = value; }
-    public Vector3 V { get => v; set => v = value; }
+    NavMeshAgent agent;
     public bool IsActif { get => isActif; set => isActif = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        Vec = new Vector3(0, 0, 0);
-        V = new Vector3(0, 0, 0);
         isActif = false;
         habitant = null;
+        isFighting = false;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!IsActif)
+        searchHabitant();
+        if (habitant!=null)
         {
-            calculDistance();
-            GetComponent<Animator>().SetBool("isWalking", true);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, 0, Vec.z), speed * Time.deltaTime);
-            transform.forward = V;
-            if (transform.position == new Vector3(Vec.x, transform.position.y, Vec.z))
-            {
-                GetComponent<Animator>().SetBool("isWalking", false);
-            }
+            target = habitant.transform;
+            if(!isFighting)
+                agent.isStopped = false;
         }
-        else if(habitant == null)
+        else
+        {
+            agent.isStopped = true;
+        }
+
+        agent.SetDestination(target.position);
+        print(agent.velocity);
+        if (agent.velocity.magnitude > 0)
+        {
+            GetComponent<Animator>().SetBool("isWalking", true);
+        }
+        else
         {
             GetComponent<Animator>().SetBool("isWalking", false);
-            IsActif = false;
         }
 
         if (!isAlive())
@@ -63,26 +69,25 @@ public class Ennemi : MonoBehaviour
             return true;
     }
 
-    public void calculDistance()
+    public void searchHabitant()
     {
-        float distance = 1000f;
-        if (FindObjectsOfType<Habitant>().Length != 0) {
+        float closestHabitant = 1000f;
+        if (FindObjectsOfType<Habitant>().Length != 0)
+        {
             foreach (Habitant h in FindObjectsOfType<Habitant>())
             {
-                float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - h.transform.position.x, 2f) + Mathf.Pow(transform.position.z - h.transform.position.z, 2f));
-                if (val < distance)
+                float val = Vector3.Distance(transform.position, h.transform.position);
+                if (val < closestHabitant)
                 {
-                    distance = val;
+                    closestHabitant = val;
                     habitant = h;
                 }
             }
 
-            Vec = new Vector3(habitant.transform.position.x, habitant.transform.position.y, habitant.transform.position.z);
-            V = Vec - transform.position;
         }
         else
         {
-            Vec = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            habitant = null;
         }
     }
 
@@ -90,16 +95,16 @@ public class Ennemi : MonoBehaviour
     {
         if (collision.transform.CompareTag("Habitant"))
         {
+            print(habitant);
             habitant = collision.transform.GetComponent<Habitant>();
+            print(habitant);
             if (currentTime == 0)
             {
                 GetComponent<Animator>().SetBool("isWalking", false);
-                Vec = new Vector3(Vec.x, Vec.y, Vec.z);
-                V = new Vector3(0, 0, 0);
-                IsActif = true;
+
                 currentTime = allowedTime;
                 GetComponent<Animator>().SetBool("isFighting", true);
-                StartCoroutine("Timer", habitant);
+                StartCoroutine("Combattre", habitant);
             }
         }
     }
@@ -139,15 +144,19 @@ public class Ennemi : MonoBehaviour
         }
     }
     */
-    IEnumerator Timer(Habitant other)
+    IEnumerator Combattre()
     {
+        isFighting = true;
+        agent.isStopped = true;
         yield return new WaitForSeconds(1);
         currentTime--;
         GetComponent<Animator>().SetBool("isFighting", false);
-        if (other != null)
+        if (habitant != null)
         {
-            other.pointsVie -= pointsAttaque;
+            habitant.pointsVie -= pointsAttaque;
         }
+        agent.isStopped = false;
+        isFighting = false;
     }
 
     IEnumerator Attendre()

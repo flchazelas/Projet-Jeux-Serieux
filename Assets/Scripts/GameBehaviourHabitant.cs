@@ -52,9 +52,9 @@ public class GameBehaviourHabitant : MonoBehaviour
         if (GameVariables.listHabitant.Count != 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab )
         {
             clone = GameVariables.listHabitant[0];
+            clone.random_object.SetActive(false);
+            Destroy(clone.random_object);
             GameVariables.listHabitant.Remove(clone);
-            clone.Vec = new Vector3(GameVariables.batimentSelectionne.transform.position.x, 0, GameVariables.batimentSelectionne.transform.position.z);
-            clone.V = clone.Vec - clone.transform.position;
             clone.Spawn = GameVariables.batimentSelectionne;
             GameObject o = clone.GetComponent<Role>().changementRole(GameVariables.batimentSelectionne.typeHabitant.ToString());
             GameVariables.listHabitantAffecte.Add(clone);
@@ -103,10 +103,11 @@ public class GameBehaviourHabitant : MonoBehaviour
     {
         foreach (Habitant h in FindObjectsOfType<Habitant>())
         {
-            if (!h.IsActif && h != null)
+            if (h.random_object!=null && !h.IsActif && h != null)
             {
-                h.Vec = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), h.transform.position.y, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
-                h.V = h.Vec - h.transform.position;
+                
+                h.random_object.transform.position = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), h.transform.position.y, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
+                //h.V = h.Vec - h.transform.position;
             }
         }
     }

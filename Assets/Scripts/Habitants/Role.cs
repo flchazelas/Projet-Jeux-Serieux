@@ -70,9 +70,9 @@ public class Role : MonoBehaviour
                 GetComponent<Fermier>().speed = fermier.GetComponent<Fermier>().speed;
                 GetComponent<Fermier>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Fermier>().quantiteConso = fermier.GetComponent<Fermier>().quantiteConso;
-                GetComponent<Fermier>().Vec = GetComponent<Habitant>().Vec;
-                GetComponent<Fermier>().V = GetComponent<Habitant>().V;
                 GetComponent<Fermier>().Spawn = GetComponent<Habitant>().Spawn;
+                //GetComponent<Fermier>().workType = "isFarming";
+
 
 
                 GetComponent<Animator>().runtimeAnimatorController = fermier.GetComponent<Animator>().runtimeAnimatorController;
@@ -87,8 +87,6 @@ public class Role : MonoBehaviour
                 GetComponent<Mineur>().speed = mineur.GetComponent<Mineur>().speed;
                 GetComponent<Mineur>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Mineur>().quantiteConso = mineur.GetComponent<Mineur>().quantiteConso;
-                GetComponent<Mineur>().Vec = GetComponent<Habitant>().Vec;
-                GetComponent<Mineur>().V = GetComponent<Habitant>().V;
                 GetComponent<Mineur>().Spawn = GetComponent<Habitant>().Spawn;
 
 
@@ -104,8 +102,6 @@ public class Role : MonoBehaviour
                 GetComponent<Bucheron>().speed = bucheron.GetComponent<Bucheron>().speed;
                 GetComponent<Bucheron>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Bucheron>().quantiteConso = bucheron.GetComponent<Bucheron>().quantiteConso;
-                GetComponent<Bucheron>().Vec = GetComponent<Habitant>().Vec;
-                GetComponent<Bucheron>().V = GetComponent<Habitant>().V;
                 GetComponent<Bucheron>().Spawn = GetComponent<Habitant>().Spawn;
 
 
@@ -122,8 +118,6 @@ public class Role : MonoBehaviour
                 GetComponent<Marchand>().speed = speed;
                 GetComponent<Marchand>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Marchand>().quantiteConso = marchand.GetComponent<Marchand>().quantiteConso;
-                GetComponent<Marchand>().Vec = GetComponent<Habitant>().Vec;
-                GetComponent<Marchand>().V = GetComponent<Habitant>().V;
                 GetComponent<Marchand>().Spawn = GetComponent<Habitant>().Spawn;
 
                 GetComponent<Animator>().runtimeAnimatorController = marchand.GetComponent<Animator>().runtimeAnimatorController;
@@ -136,8 +130,6 @@ public class Role : MonoBehaviour
                 GetComponent<Pretre>().speed = pretre.GetComponent<Pretre>().speed;
                 GetComponent<Pretre>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Pretre>().quantiteConso = pretre.GetComponent<Pretre>().quantiteConso;
-                GetComponent<Pretre>().Vec = GetComponent<Habitant>().Vec;
-                GetComponent<Pretre>().V = GetComponent<Habitant>().V;
                 GetComponent<Pretre>().Spawn = GetComponent<Habitant>().Spawn;
 
 

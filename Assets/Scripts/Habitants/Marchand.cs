@@ -21,6 +21,7 @@ public class Marchand : Habitant
     {
         if (!isAlive())
         {
+            Destroy(random_object);
             GameVariables.listMarchand.Remove(this);
         }
         base.Update();

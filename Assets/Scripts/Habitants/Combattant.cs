@@ -27,17 +27,18 @@ public class Combattant : Habitant
     {
         if (!isAlive())
         {
+            Destroy(random_object);
             GameVariables.listCombattant.Remove(this);
         }
 
         base.Update();
-        if(FindObjectsOfType<Ennemi>().Length != 0 && !IsActif)
+        if(searchEnnemi())
         {
-            calculDistance();
+            target = ennemi.transform;
         }
         else if(ennemi == null)
         {
-            IsActif = false;
+            target = random_object.transform;
         }
     }
 
@@ -49,12 +50,10 @@ public class Combattant : Habitant
             if (currentTime == 0)
             {
                 GetComponent<Animator>().SetBool("isWalking", false);
-                Vec = new Vector3(Vec.x, Vec.y, Vec.z);
-                V = new Vector3(0, 0, 0);
-                IsActif = true;
+                
                 currentTime = allowedTime;
                 GetComponent<Animator>().SetBool("isFighting", true);
-                StartCoroutine("Timer", ennemi);
+                StartCoroutine("Combattre", ennemi);
             }
         }
     }
@@ -77,25 +76,32 @@ public class Combattant : Habitant
         }
     }*/
 
-    public void calculDistance()
+    public bool searchEnnemi()
     {
-        float distance = 1000f;
+        float closestEnnemi = 1000f;
         foreach (Ennemi e in FindObjectsOfType<Ennemi>())
         {
-            float val = Mathf.Sqrt(Mathf.Pow(transform.position.x - e.transform.position.x, 2f) + Mathf.Pow(transform.position.z - e.transform.position.z, 2f));
-            if (val < distance)
+            float val = Vector3.Distance(transform.position, e.transform.position);
+            if (val < closestEnnemi)
             {
-                distance = val;
+                closestEnnemi = val;
                 ennemi = e;
             }
         }
-
-        Vec = new Vector3(ennemi.transform.position.x, ennemi.transform.position.y, ennemi.transform.position.z);
-        V = Vec - transform.position;
+        if (closestEnnemi == 1000f)
+        {
+            ennemi = null;
+            return false;
+        }
+        
+        return true;
     }
 
-    IEnumerator Timer(Ennemi other)
+    IEnumerator Combattre(Ennemi other)
     {
+        agent.isStopped = true;
+        transform.forward=other.transform.position-transform.position;
+
         yield return new WaitForSeconds(1);
         currentTime--;
         GetComponent<Animator>().SetBool("isFighting", false);
@@ -103,5 +109,6 @@ public class Combattant : Habitant
         {
             other.pointsVie -= pointsAttaque;
         }
+        agent.isStopped = false;
     }
 }

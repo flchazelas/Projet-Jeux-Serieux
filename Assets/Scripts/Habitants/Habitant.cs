@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Habitant : MonoBehaviour
 {
-    private Vector3 vec;
-    private Vector3 v;
     private bool isActif;
     private string type;
+    public GameObject random_object;
     Batiment spawn;
     float tempsSurvie = 10.0f;
     float tempsConso = 5.0f;
     bool conso;
+
+    public Transform target;
+    protected NavMeshAgent agent;
 
     public float speed = 1;
     public bool isAllie;
@@ -19,8 +22,6 @@ public class Habitant : MonoBehaviour
     public int survie = 10;
     public int quantiteConso = 1;
 
-    public Vector3 Vec { get => vec; set => vec = value; }
-    public Vector3 V { get => v; set => v = value; }
     public bool IsActif { get => isActif; set => isActif = value; }
     public string Type { get => type; set => type = value; }
     public Batiment Spawn { get => spawn; set => spawn = value; }
@@ -33,27 +34,26 @@ public class Habitant : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        Vec = new Vector3(0, 0, 0);
-        V = new Vector3(0, 0, 0);
+        random_object = new GameObject();random_object.transform.position= new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), 0, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
+
+        target = random_object.transform;
         isActif = false;
         isAllie = true;
         conso = true;
+        agent = GetComponent<NavMeshAgent>();
         StartCoroutine("Survie");
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (V != new Vector3(0, 0, 0))
+        if(target!=null)
+            agent.SetDestination(target.position);
+
+
+        if (agent.velocity.magnitude > 0)
         {
             GetComponent<Animator>().SetBool("isWalking", true);
-            //GetComponent<Rigidbody>().MovePosition(new Vector3(Vec.x, 0, Vec.z) * speed * Time.deltaTime);
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, 0, Vec.z), speed * Time.deltaTime);
-            transform.forward = V;
-            if (transform.position == new Vector3(Vec.x, Vec.y, Vec.z))
-            {
-                V = new Vector3(0, 0, 0);
-            }
         }
         else
         {
