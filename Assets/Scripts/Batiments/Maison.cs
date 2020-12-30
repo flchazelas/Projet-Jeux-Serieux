@@ -11,7 +11,6 @@ public class Maison : Batiment
     {
         base.Start();
         GameVariables.nbMaxHabitants += habSup;
-        ChangeDesc();
     }
 
     // Update is called once per frame
@@ -32,7 +31,6 @@ public class Maison : Batiment
             GameVariables.nbMaxHabitants += habSup;
             description = bat.description;
             nomBatiment = bat.nomBatiment;
-            batName.text = nomBatiment;
 
             GameObject del = this.gameObject.transform.Find("Model").gameObject;
             del.name = "del";
@@ -41,19 +39,11 @@ public class Maison : Batiment
             o.transform.parent = this.transform;
             GetPartModel();
             Destroy(del);
-            ChangeDesc();
 
             batUpgrade = bat.batUpgrade;
             
             afficheCanvas();
         }
-    }
-     public override void ChangeDesc()
-    {
-        habitants.text = " ";
-        batName.text = nomBatiment;
-        desc.text = "Ce bâtiment permet d'accueillir " + habSup.ToString() + " habitants supplémentaires.";
-        canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("NbMaxHab").GetComponent<Text>().text =" ";
     }
 
     void OnDestroy()

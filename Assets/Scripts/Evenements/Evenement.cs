@@ -30,7 +30,6 @@ public abstract class Evenement : MonoBehaviour
         while (currentTimer != duree && !objectifReussi)
         {
             yield return new WaitForSeconds(1);
-            print(currentTimer);
             currentTimer++;
         }
         //objectifReussi = true;

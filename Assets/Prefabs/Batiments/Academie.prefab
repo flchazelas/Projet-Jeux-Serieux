@@ -44679,11 +44679,11 @@ MonoBehaviour:
   nbrMaxHab: 5
   pointsVie: 0
   typeHabitant: 6
-  priceGold: 0
-  priceMeat: 0
-  priceWood: 0
-  priceMana: 0
-  priceIron: 0
+  priceGold: 1
+  priceMeat: 1
+  priceWood: 1
+  priceMana: 1
+  priceIron: 1
   batUpgrade: {fileID: 4503078806978854168, guid: 8972ffab47d4a974089f6c5c92a4a3bd, type: 3}
   generateGold: 0
   generateMeat: 0

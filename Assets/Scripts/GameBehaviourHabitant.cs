@@ -82,7 +82,6 @@ public class GameBehaviourHabitant : MonoBehaviour
             }
 
             GameVariables.batimentSelectionne.ListHabitants.Add(o);
-            GameVariables.batimentSelectionne.ChangeDesc();
         }
     }
 

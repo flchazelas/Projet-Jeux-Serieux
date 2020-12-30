@@ -24,6 +24,7 @@ public class PopulationUI : MonoBehaviour
 
     public void setUpAction(UnityEngine.Events.UnityAction listener)
     {
+        upButton.onClick.RemoveAllListeners();
         upButton.onClick.AddListener(() => {
             listener.Invoke();
         });
@@ -31,6 +32,7 @@ public class PopulationUI : MonoBehaviour
 
     public void setDownAction(UnityEngine.Events.UnityAction listener)
     {
+        downButton.onClick.RemoveAllListeners();
         downButton.onClick.AddListener(() => {
             listener.Invoke();
         });
