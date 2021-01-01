@@ -48,6 +48,8 @@ public class Role : MonoBehaviour
         }
         o = o.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
 
+        string str = typeHabitant.ToString();
+
         switch (type)
         {
             case "Combattant":
@@ -57,6 +59,7 @@ public class Role : MonoBehaviour
                 GetComponent<Combattant>().speed = combattant.GetComponent<Combattant>().speed;
                 GetComponent<Combattant>().survie = combattant.GetComponent<Combattant>().survie;
                 GetComponent<Combattant>().quantiteConso = combattant.GetComponent<Combattant>().quantiteConso;
+                typeHabitant = role.Combattant;
 
                 gameObject.GetComponent<Animator>().runtimeAnimatorController = combattant.GetComponent<Animator>().runtimeAnimatorController;
 
@@ -71,7 +74,7 @@ public class Role : MonoBehaviour
                 GetComponent<Fermier>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Fermier>().quantiteConso = fermier.GetComponent<Fermier>().quantiteConso;
                 GetComponent<Fermier>().Spawn = GetComponent<Habitant>().Spawn;
-                //GetComponent<Fermier>().workType = "isFarming";
+                typeHabitant = role.Fermier;
 
 
 
@@ -88,6 +91,7 @@ public class Role : MonoBehaviour
                 GetComponent<Mineur>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Mineur>().quantiteConso = mineur.GetComponent<Mineur>().quantiteConso;
                 GetComponent<Mineur>().Spawn = GetComponent<Habitant>().Spawn;
+                typeHabitant = role.Mineur;
 
 
                 GetComponent<Animator>().runtimeAnimatorController = mineur.GetComponent<Animator>().runtimeAnimatorController;
@@ -103,6 +107,7 @@ public class Role : MonoBehaviour
                 GetComponent<Bucheron>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Bucheron>().quantiteConso = bucheron.GetComponent<Bucheron>().quantiteConso;
                 GetComponent<Bucheron>().Spawn = GetComponent<Habitant>().Spawn;
+                typeHabitant = role.Bucheron;
 
 
                 GetComponent<Animator>().runtimeAnimatorController = bucheron.GetComponent<Animator>().runtimeAnimatorController;
@@ -119,6 +124,7 @@ public class Role : MonoBehaviour
                 GetComponent<Marchand>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Marchand>().quantiteConso = marchand.GetComponent<Marchand>().quantiteConso;
                 GetComponent<Marchand>().Spawn = GetComponent<Habitant>().Spawn;
+                typeHabitant = role.Marchand;
 
                 GetComponent<Animator>().runtimeAnimatorController = marchand.GetComponent<Animator>().runtimeAnimatorController;
 
@@ -126,35 +132,61 @@ public class Role : MonoBehaviour
 
             case "Pretre":
                 gameObject.AddComponent<Pretre>();
+                
                 GetComponent<Pretre>().pointsVie = GetComponent<Habitant>().pointsVie;
                 GetComponent<Pretre>().speed = pretre.GetComponent<Pretre>().speed;
                 GetComponent<Pretre>().survie = GetComponent<Habitant>().survie;
                 GetComponent<Pretre>().quantiteConso = pretre.GetComponent<Pretre>().quantiteConso;
                 GetComponent<Pretre>().Spawn = GetComponent<Habitant>().Spawn;
+                typeHabitant = role.Pretre;
 
 
                 GetComponent<Animator>().runtimeAnimatorController = pretre.GetComponent<Animator>().runtimeAnimatorController;
-;
+                ;
+                break;
+            case "Habitant":
+                print("Removal");
+                GetComponent<Habitant>().enabled=true;
+                typeHabitant = role.Habitant;
+                GetComponent<Habitant>().pointsVie = habitant.GetComponent<Habitant>().pointsVie;
+                GetComponent<Habitant>().speed = habitant.GetComponent<Habitant>().speed;
+                GetComponent<Habitant>().survie = habitant.GetComponent<Habitant>().survie;
+                GetComponent<Habitant>().quantiteConso = habitant.GetComponent<Habitant>().quantiteConso;
+                GetComponent<Habitant>().Spawn = habitant.GetComponent<Habitant>().Spawn;
+
+
+                GetComponent<Animator>().runtimeAnimatorController = habitant.GetComponent<Animator>().runtimeAnimatorController;
+                
                 break;
 
-                }
+        }
 
-        string str = GetComponent<Habitant>().Type;
+        print(str);
         switch (str)
         {
             case "Habitant":
-                Destroy(GetComponent<Habitant>());
+                print("Removal");
+                GetComponent<Habitant>().enabled = false; 
+                //GetComponent<Habitant>().enabled = true;
                 break;
             case "Fermier":
+                o = o.transform.GetChild(5).gameObject;
+                o.SetActive(false);
                 Destroy(GetComponent<Fermier>());
                 break;
             case "Combattant":
+                o = o.transform.GetChild(4).gameObject;
+                o.SetActive(false);
                 Destroy(GetComponent<Combattant>());
                 break;
             case "Mineur":
+                o = o.transform.GetChild(6).gameObject;
+                o.SetActive(false);
                 Destroy(GetComponent<Mineur>());
                 break;
             case "Bucheron":
+                o = o.transform.GetChild(7).gameObject;
+                o.SetActive(false);
                 Destroy(GetComponent<Bucheron>());
                 break;
             case "Marchand":
