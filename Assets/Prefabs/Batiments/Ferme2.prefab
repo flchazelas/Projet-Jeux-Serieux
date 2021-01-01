@@ -17454,7 +17454,6 @@ GameObject:
   - component: {fileID: 4503078806978854166}
   - component: {fileID: 3913643750332134556}
   - component: {fileID: 4930999520375611762}
-  - component: {fileID: -6034249802923590061}
   m_Layer: 10
   m_Name: Ferme2
   m_TagString: Batiment
@@ -17608,22 +17607,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52482796, y: 1, z: 0.3639353}
   m_Center: {x: 0.28236637, y: 0, z: -0.22848406}
---- !u!208 &-6034249802923590061
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503078806978854168}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.335, y: 0.5, z: 0.3}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0.01, y: 0, z: 0.01}
-  m_TimeToStationary: 0.5
 --- !u!1 &4503078808856339967
 GameObject:
   m_ObjectHideFlags: 0
@@ -40004,14 +39987,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 356f9580967c544b593a4aff6b22d80d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
---- !u!1 &5537575561630360516 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1610138114361464, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
-  m_PrefabInstance: {fileID: 5538534511488543676}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5539182126744660018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1111609867682702, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
+  m_PrefabInstance: {fileID: 5538534511488543676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5537575561630360516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1610138114361464, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
   m_PrefabInstance: {fileID: 5538534511488543676}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5534176169310318898 stripped

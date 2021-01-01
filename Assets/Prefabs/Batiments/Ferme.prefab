@@ -1095,7 +1095,6 @@ GameObject:
   - component: {fileID: 1390157949535683393}
   - component: {fileID: 4421425150908877339}
   - component: {fileID: 4503078806978854166}
-  - component: {fileID: 1481415601635405423}
   m_Layer: 10
   m_Name: Ferme
   m_TagString: Batiment
@@ -1223,22 +1222,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!208 &1481415601635405423
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503078806978854168}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.15, y: 0.5, z: 0.29}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0.04, y: 0, z: -0.05}
-  m_TimeToStationary: 0.5
 --- !u!1 &4503078808856339967
 GameObject:
   m_ObjectHideFlags: 0
@@ -9466,11 +9449,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 356f9580967c544b593a4aff6b22d80d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
---- !u!1 &6397018434240782399 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1111609867682702, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
-  m_PrefabInstance: {fileID: 6396577529326920625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6400936082047678783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4930402031000206, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
@@ -9479,6 +9457,11 @@ Transform:
 --- !u!1 &6395266734665657289 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610138114361464, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
+  m_PrefabInstance: {fileID: 6396577529326920625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6397018434240782399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1111609867682702, guid: df54917cf37e54ed58759e91b5db7ab0, type: 3}
   m_PrefabInstance: {fileID: 6396577529326920625}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6413695884646335723

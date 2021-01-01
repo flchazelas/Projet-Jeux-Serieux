@@ -64846,7 +64846,6 @@ GameObject:
   - component: {fileID: 4421425150908877339}
   - component: {fileID: 4503078806978854166}
   - component: {fileID: 3083320510245906716}
-  - component: {fileID: -6837415726240287509}
   m_Layer: 10
   m_Name: Academie2
   m_TagString: Batiment
@@ -64987,22 +64986,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26274833, y: 1, z: 0.2868765}
   m_Center: {x: 0.36862633, y: 0, z: -0.38224766}
---- !u!208 &-6837415726240287509
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503078806978854168}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.515, y: 0.5, z: 0.335}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: -0.04, y: 0, z: 0.13}
-  m_TimeToStationary: 0.5
 --- !u!1 &4503078808856339967
 GameObject:
   m_ObjectHideFlags: 0
