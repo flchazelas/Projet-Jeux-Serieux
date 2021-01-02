@@ -261,22 +261,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: 'Cette Ferme produit '
+  description: Les Fermes produissent de la nourriture.
   nomBatiment: "Ferme Am\xE9lior\xE9e"
-  description2: " quantit\xE9s de Nourriture toute les "
+  hab: Fermiers
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
   pointsVie: 0
   typeHabitant: 2
-  priceGold: 50
-  priceMeat: 50
-  priceWood: 50
-  priceMana: 50
-  priceIron: 50
+  priceGold: 20
+  priceMeat: 30
+  priceWood: 20
+  priceMana: 10
+  priceIron: 30
   batUpgrade: {fileID: 4503078806978854168, guid: b9b4fe3604d96d547a1b035acb2f6756, type: 3}
-  generateGold: 1
+  generateGold: 0
   generateMeat: 1
-  generateWood: 1
+  generateWood: 0
   generateMana: 0
   generateIron: 0
   nbSecondBeforeGenerate: 15

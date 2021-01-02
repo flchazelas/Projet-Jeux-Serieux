@@ -17546,22 +17546,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: 'Cette Ferme produit '
+  description: Les Fermes produissent de la nourriture.
   nomBatiment: "Ferme Avanc\xE9e"
-  description2: " quantit\xE9s de Nourriture toute les "
+  hab: Fermiers
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
   pointsVie: 0
   typeHabitant: 2
-  priceGold: 0
-  priceMeat: 0
-  priceWood: 0
-  priceMana: 0
-  priceIron: 0
+  priceGold: 30
+  priceMeat: 35
+  priceWood: 30
+  priceMana: 15
+  priceIron: 35
   batUpgrade: {fileID: 4503078806978854168, guid: 81080bd514513c643854b071c2ed7bde, type: 3}
-  generateGold: 1
+  generateGold: 0
   generateMeat: 1
-  generateWood: 1
+  generateWood: 0
   generateMana: 0
   generateIron: 0
   nbSecondBeforeGenerate: 10

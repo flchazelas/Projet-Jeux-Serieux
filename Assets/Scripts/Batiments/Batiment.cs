@@ -18,7 +18,7 @@ public abstract class Batiment : MonoBehaviour
 
     public string description;
     public string nomBatiment;
-    public string description2;
+    public string hab;
     public string nbHabitants;
     public int nbrMaxHab;
     public int pointsVie;

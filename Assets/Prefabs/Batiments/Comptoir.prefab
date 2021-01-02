@@ -25927,18 +25927,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: 'Ce Comptoir produit '
+  description: Les comptoirs produissent de l'or.
   nomBatiment: Comptoir de Commerce
-  description2: " quantit\xE9s d'Or toute les "
+  hab: Marchands
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 5
   pointsVie: 50
   typeHabitant: 5
   priceGold: 0
-  priceMeat: 0
-  priceWood: 0
+  priceMeat: 20
+  priceWood: 30
   priceMana: 0
-  priceIron: 0
+  priceIron: 10
   batUpgrade: {fileID: 4503078806978854168, guid: 9b71c6b1e91b0e64db6390a813e72b46, type: 3}
   generateGold: 1
   generateMeat: 0

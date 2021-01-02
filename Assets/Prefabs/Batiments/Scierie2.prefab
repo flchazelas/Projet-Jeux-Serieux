@@ -30576,18 +30576,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: 'Cette Scierie produit '
+  description: Les scieries produissent du bois.
   nomBatiment: "Scierie Avanc\xE9e"
-  description2: " quantit\xE9s de Bois toute les "
+  hab: Bucherons
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
   pointsVie: 50
   typeHabitant: 4
-  priceGold: 0
-  priceMeat: 0
-  priceWood: 0
-  priceMana: 0
-  priceIron: 0
+  priceGold: 50
+  priceMeat: 30
+  priceWood: 25
+  priceMana: 20
+  priceIron: 20
   batUpgrade: {fileID: 0}
   generateGold: 0
   generateMeat: 0

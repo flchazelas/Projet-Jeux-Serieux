@@ -29,7 +29,7 @@ public class Caserne : Batiment
             Caserne bat = batUpgrade.GetComponent<Caserne>();
             nbrMaxHab = bat.nbrMaxHab;
             description = bat.description;
-            description2 = bat.description2;
+            hab = bat.hab;
             nomBatiment = bat.nomBatiment;
             GameObject del = this.gameObject.transform.Find("Model").gameObject;
             del.name = "del";

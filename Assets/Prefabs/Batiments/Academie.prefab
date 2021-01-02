@@ -44673,18 +44673,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: "Cette Acad\xE9mie produit "
+  description: "Les acad\xE9mies produissent de la mana."
   nomBatiment: Academie
-  description2: " quantit\xE9s de Mana toute les "
+  hab: "Pr\xEAtres"
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 5
   pointsVie: 0
   typeHabitant: 6
-  priceGold: 1
-  priceMeat: 1
-  priceWood: 1
-  priceMana: 1
-  priceIron: 1
+  priceGold: 0
+  priceMeat: 20
+  priceWood: 50
+  priceMana: 0
+  priceIron: 10
   batUpgrade: {fileID: 4503078806978854168, guid: 8972ffab47d4a974089f6c5c92a4a3bd, type: 3}
   generateGold: 0
   generateMeat: 0

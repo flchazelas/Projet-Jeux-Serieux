@@ -34,7 +34,9 @@ public class BatimentRessource : Batiment
         nbHabitant = ListHabitants.Count;
         nbRessourcesGenerate = nbHabitant * multiplicator;
         if (canGenerate) StartCoroutine("generateRessources");
+
     }
+
 
     public int getCurrentResourceProd()
     {
@@ -93,7 +95,7 @@ public class BatimentRessource : Batiment
             nbSecondBeforeGenerate = bat.nbSecondBeforeGenerate;
             nbrMaxHab = bat.nbrMaxHab;
             description = bat.description;
-            description2 = bat.description2;
+            hab = bat.hab;
             nomBatiment = bat.nomBatiment;
             GameObject del = this.gameObject.transform.Find("Model").gameObject;
             del.name = "del";

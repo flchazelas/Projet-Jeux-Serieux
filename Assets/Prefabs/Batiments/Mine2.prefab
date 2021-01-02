@@ -20685,18 +20685,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: "Cette Compagnie Mini\xE9re produit "
+  description: Les mines produissent du fer.
   nomBatiment: "Compagnie Mini\xE9re Avanc\xE9e"
-  description2: " quantit\xE9s de Fer toute les "
+  hab: Mineurs
   nbHabitants: "Nombre Habitants Affect\xE9s : "
   nbrMaxHab: 10
   pointsVie: 50
   typeHabitant: 3
-  priceGold: 0
-  priceMeat: 0
-  priceWood: 0
-  priceMana: 0
-  priceIron: 0
+  priceGold: 35
+  priceMeat: 40
+  priceWood: 30
+  priceMana: 20
+  priceIron: 60
   batUpgrade: {fileID: 0}
   generateGold: 0
   generateMeat: 0
