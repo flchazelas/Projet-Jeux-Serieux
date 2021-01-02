@@ -32,9 +32,11 @@ public class Niveau : MonoBehaviour
 
         listEvenements = GameObject.Find("ListeEvenements").GetComponent<ListEvenements>();
         int rand = Random.Range(5, 15);
-        for(int i = 0; i<rand; i++)
+        //for(int i = 0; i<rand; i++)
+        for(int i = 0; i<6; i++)
         {
-            listEvents.AddEvent(listEvenements.getEvent(Random.Range(0, listEvenements.getSize())));
+            //listEvents.AddEvent(listEvenements.getEvent(Random.Range(0, listEvenements.getSize())));
+            listEvents.AddEvent(listEvenements.getEvent(i));
         }
 
         for(int i = 0; i < listEvents.getSize(); i++)

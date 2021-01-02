@@ -25019,18 +25019,18 @@ MonoBehaviour:
   pointsVie: 50
   typeHabitant: 4
   priceGold: 20
-  priceMeat: 25
-  priceWood: 45
-  priceMana: 10
-  priceIron: 30
+  priceMeat: 20
+  priceWood: 20
+  priceMana: 0
+  priceIron: 20
   batUpgrade: {fileID: 4503078806978854168, guid: a2fc6ee79405bb846ac94dd7a6d05928, type: 3}
   generateGold: 0
   generateMeat: 0
   generateWood: 1
   generateMana: 0
   generateIron: 0
-  nbSecondBeforeGenerate: 15
-  multiplicator: 2
+  nbSecondBeforeGenerate: 7
+  multiplicator: 4
 --- !u!54 &4503078806978854166
 Rigidbody:
   m_ObjectHideFlags: 0

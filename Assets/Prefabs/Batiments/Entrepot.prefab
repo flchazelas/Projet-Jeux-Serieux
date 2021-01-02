@@ -37188,11 +37188,11 @@ MonoBehaviour:
   nbrMaxHab: 0
   pointsVie: 10
   typeHabitant: 0
-  priceGold: 15
-  priceMeat: 15
-  priceWood: 15
-  priceMana: 15
-  priceIron: 15
+  priceGold: 30
+  priceMeat: 30
+  priceWood: 30
+  priceMana: 30
+  priceIron: 30
   batUpgrade: {fileID: 0}
   resSup: 300
 --- !u!23 &4503078806978854170

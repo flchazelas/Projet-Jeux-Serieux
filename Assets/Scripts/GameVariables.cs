@@ -6,12 +6,12 @@ using UnityEngine;
 public class GameVariables : MonoBehaviour
 {
     //Ressources
-    public static int maxWood = 150;
-    public static int maxMeat = 100;
-    public static int maxGold = 120;
-    public static int maxStone = 120;
-    public static int maxMana = 120;
-    public static int maxIron = 250;
+    public static int maxWood = 200;
+    public static int maxMeat = 200;
+    public static int maxGold = 200;
+    public static int maxStone = 200;
+    public static int maxMana = 200;
+    public static int maxIron = 200;
     public static int nbIron = 100;
     public static int nbWood = 100;
     public static int nbMeat = 100;

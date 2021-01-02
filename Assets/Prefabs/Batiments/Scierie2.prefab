@@ -30594,8 +30594,8 @@ MonoBehaviour:
   generateWood: 1
   generateMana: 0
   generateIron: 0
-  nbSecondBeforeGenerate: 10
-  multiplicator: 3
+  nbSecondBeforeGenerate: 5
+  multiplicator: 5
 --- !u!54 &4503078806978854166
 Rigidbody:
   m_ObjectHideFlags: 0

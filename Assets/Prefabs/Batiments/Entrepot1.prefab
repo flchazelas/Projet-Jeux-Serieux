@@ -14531,7 +14531,7 @@ MonoBehaviour:
   size: 0.5
   spawn: {fileID: 0}
   description: "Cet entrep\xF4t augmentent la quantit\xE9 maximal de ressource de
-    150."
+    100."
   nomBatiment: "Entrep\xF4t"
   hab: 
   nbHabitants: 0
@@ -14544,7 +14544,7 @@ MonoBehaviour:
   priceMana: 10
   priceIron: 10
   batUpgrade: {fileID: 4503078806978854168, guid: 111641b085416414990a722c3d4a05b1, type: 3}
-  resSup: 150
+  resSup: 100
 --- !u!1 &4503078808856339967
 GameObject:
   m_ObjectHideFlags: 0

@@ -1010,7 +1010,7 @@ MonoBehaviour:
   nomBatiment: Caserne
   hab: Combattants
   nbHabitants: 
-  nbrMaxHab: 5
+  nbrMaxHab: 10
   pointsVie: 0
   typeHabitant: 1
   priceGold: 50

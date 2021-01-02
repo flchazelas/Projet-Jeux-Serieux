@@ -18,7 +18,10 @@ public class GameBehaviourHabitant : MonoBehaviour
     void Start()
     {
         currentTime = allowTime;
-        spawnHabitant();
+        for(int i = 0; i<5; i++)
+        {
+            spawnHabitant();
+        }
         StartCoroutine(Timer());
         canvas = GameObject.Find("Canvas Principal");
 

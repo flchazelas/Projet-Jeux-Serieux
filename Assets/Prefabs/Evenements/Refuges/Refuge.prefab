@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nom: Refuge + 1
-  description: 3 survivants viennent de trouver votre camps et vous les accueillez
-    !
+  description: 1 survivant vient de trouver votre camps et vous l'accueillez !
   type: Refuge
   objectifReussi: 0
   duree: 20
