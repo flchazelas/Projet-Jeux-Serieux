@@ -101,7 +101,7 @@ public class GameBehaviourHabitant : MonoBehaviour
             if (h.random_object!=null && !h.IsActif && h != null)
             {
                 
-                h.random_object.transform.position = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), h.transform.position.y, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
+                h.random_object.transform.position = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), 0.1f, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
                 //h.V = h.Vec - h.transform.position;
             }
         }

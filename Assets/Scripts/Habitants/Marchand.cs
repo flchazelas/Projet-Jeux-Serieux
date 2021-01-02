@@ -13,6 +13,7 @@ public class Marchand : Habitant
     // Start is called before the first frame update
     protected override void Start()
     {
+        Destroy(random_object);
         base.Start();
     }
 
