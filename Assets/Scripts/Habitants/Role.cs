@@ -118,6 +118,7 @@ public class Role : MonoBehaviour
 
             case "Marchand":
                 gameObject.AddComponent<Marchand>();
+
                 GetComponent<Marchand>().pointsVie = GetComponent<Habitant>().pointsVie;
                 float speed= marchand.GetComponent<Marchand>().speed;
                 GetComponent<Marchand>().speed = speed;
@@ -145,15 +146,18 @@ public class Role : MonoBehaviour
                 ;
                 break;
             case "Habitant":
-                print("Removal");
-                GetComponent<Habitant>().enabled=true;
                 typeHabitant = role.Habitant;
+                if (GetComponent<Habitant>().random_object == null)
+                {
+                    GetComponent<Habitant>().random_object = new GameObject(); GetComponent<Habitant>().random_object.transform.position = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), 0, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
+                    GetComponent<Habitant>().target = GetComponent<Habitant>().random_object.transform;
+                }
                 GetComponent<Habitant>().pointsVie = habitant.GetComponent<Habitant>().pointsVie;
                 GetComponent<Habitant>().speed = habitant.GetComponent<Habitant>().speed;
                 GetComponent<Habitant>().survie = habitant.GetComponent<Habitant>().survie;
                 GetComponent<Habitant>().quantiteConso = habitant.GetComponent<Habitant>().quantiteConso;
                 GetComponent<Habitant>().Spawn = habitant.GetComponent<Habitant>().Spawn;
-
+                GetComponent<Habitant>().enabled = true;
 
                 GetComponent<Animator>().runtimeAnimatorController = habitant.GetComponent<Animator>().runtimeAnimatorController;
                 
@@ -165,7 +169,8 @@ public class Role : MonoBehaviour
         switch (str)
         {
             case "Habitant":
-                print("Removal");
+                Destroy(GetComponent<Habitant>().random_object);
+                GetComponent<Habitant>().random_object = null;
                 GetComponent<Habitant>().enabled = false; 
                 //GetComponent<Habitant>().enabled = true;
                 break;
@@ -175,6 +180,8 @@ public class Role : MonoBehaviour
                 Destroy(GetComponent<Fermier>());
                 break;
             case "Combattant":
+                Destroy(GetComponent<Combattant>().random_object);
+                GetComponent<Combattant>().random_object = null;
                 o = o.transform.GetChild(4).gameObject;
                 o.SetActive(false);
                 Destroy(GetComponent<Combattant>());
@@ -190,9 +197,13 @@ public class Role : MonoBehaviour
                 Destroy(GetComponent<Bucheron>());
                 break;
             case "Marchand":
+                Destroy(GetComponent<Marchand>().random_object);
+                GetComponent<Marchand>().random_object = null;
                 Destroy(GetComponent<Marchand>());
                 break;
             case "Pretre":
+                Destroy(GetComponent<Pretre>().random_object);
+                GetComponent<Pretre>().random_object = null;
                 Destroy(GetComponent<Pretre>());
                 break;
         }

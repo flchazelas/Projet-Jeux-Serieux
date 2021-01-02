@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Niveau : MonoBehaviour
 {
-    public float timer;
+    private float timer;
     public int score = 0;
     public int difficulte = 0;
     public ListEvenements listEvenements;
@@ -43,6 +43,7 @@ public class Niveau : MonoBehaviour
             timer += listEvents.getEvent(i).getDuree();
         }
         timer += 2.0f * laps;
+        GameVariables.timer = timer;
         currentTimer = laps;
         StartCoroutine("Timer");
     }

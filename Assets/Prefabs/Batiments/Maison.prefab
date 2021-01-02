@@ -14444,18 +14444,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.5
   spawn: {fileID: 0}
-  description: 
+  description: Les maisons augmentent le nombre d'habitants maximum.
   nomBatiment: Maison
-  description2: 
+  hab: 
   nbHabitants: 0
   nbrMaxHab: 0
   pointsVie: 0
   typeHabitant: 0
-  priceGold: 0
+  priceGold: 30
   priceMeat: 0
-  priceWood: 0
+  priceWood: 50
   priceMana: 0
-  priceIron: 0
+  priceIron: 20
   batUpgrade: {fileID: 4503078806978854168, guid: 5c04364c51217874eb69af41d323b1c9, type: 3}
   habSup: 10
 --- !u!23 &4503078806978854170
