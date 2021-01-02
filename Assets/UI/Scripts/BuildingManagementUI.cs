@@ -55,7 +55,6 @@ public class BuildingManagementUI : MonoBehaviour
         titleText.text = GameVariables.batimentSelectionne.nomBatiment;
         //Set Desc Text
         descText.text = GameVariables.batimentSelectionne.description;
-        descText.text += "\n" + GameVariables.batimentSelectionne.description;
 
         //Check Effectifs UI Needed + Set Pop Manager Actions
         if (GameVariables.batimentSelectionne.nbrMaxHab != 0)
