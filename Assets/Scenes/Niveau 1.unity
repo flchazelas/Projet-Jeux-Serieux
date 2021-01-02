@@ -2429,6 +2429,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390092136}
   m_CullTransparentMesh: 0
+--- !u!225 &394835208 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 3544488563152453019, guid: 9bffc13e1f2ca05419f19c00916c0e6e, type: 3}
+  m_PrefabInstance: {fileID: 2143387260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &409730600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14619,6 +14624,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2437556070443214862, guid: 9bffc13e1f2ca05419f19c00916c0e6e, type: 3}
+      propertyPath: switchButton
+      value: 
+      objectReference: {fileID: 247338163}
+    - target: {fileID: 2437556070443214862, guid: 9bffc13e1f2ca05419f19c00916c0e6e, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 394835208}
     - target: {fileID: 2879099992075169327, guid: 9bffc13e1f2ca05419f19c00916c0e6e, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0

@@ -41,7 +41,7 @@ public class EventsUI : MonoBehaviour
             }
 
             GameObject container = Instantiate(eventContainerPrefab);
-            container.transform.parent = contentObject.transform;
+            container.transform.SetParent(contentObject.transform);
             container.transform.localScale = new Vector3(1, 1, 1);
 
             EventContainerUI eventContainerUI = container.GetComponent<EventContainerUI>();

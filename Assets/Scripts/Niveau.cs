@@ -119,7 +119,7 @@ public class Niveau : MonoBehaviour
                 score += (int)e.duree - (int)e.currentTimer;
                 evenementsActifs.Remove(e);
                 EventsUIUpdater.getInstance().updateEventsUI(evenementsActifs);
-                Destroy(GameObject.Find(e.nom));
+                Destroy(e.gameObject);
             }
         }
     }
