@@ -146,14 +146,13 @@ public class Role : MonoBehaviour
                 break;
             case "Habitant":
                 print("Removal");
-                GetComponent<Habitant>().enabled=true;
                 typeHabitant = role.Habitant;
                 GetComponent<Habitant>().pointsVie = habitant.GetComponent<Habitant>().pointsVie;
                 GetComponent<Habitant>().speed = habitant.GetComponent<Habitant>().speed;
                 GetComponent<Habitant>().survie = habitant.GetComponent<Habitant>().survie;
                 GetComponent<Habitant>().quantiteConso = habitant.GetComponent<Habitant>().quantiteConso;
                 GetComponent<Habitant>().Spawn = habitant.GetComponent<Habitant>().Spawn;
-
+                GetComponent<Habitant>().enabled = true;
 
                 GetComponent<Animator>().runtimeAnimatorController = habitant.GetComponent<Animator>().runtimeAnimatorController;
                 

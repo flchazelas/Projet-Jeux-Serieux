@@ -14,6 +14,7 @@ public class Refuge : Evenement
         for (int i = 0; i < nbRefugies; i++)
         {
             Habitant habitant = Instantiate(h);
+            GameVariables.nbHabitants += 1;
             GameVariables.listHabitant.Add(habitant);
         }
     }

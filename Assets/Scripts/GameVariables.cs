@@ -24,6 +24,7 @@ public class GameVariables : MonoBehaviour
     public static double malus = 0.0;
 
     //Timer
+    public static float timer;
     public static int allowedTime = 30;
     public static int currentTime = GameVariables.allowedTime;
 
