@@ -27,7 +27,6 @@ public class Niveau : MonoBehaviour
     {
         score += 1000;
         perdu = false;
-        consigne = GameObject.Find("Canvas Evenement").transform.Find("Description").GetComponent<Text>();
         image = GameObject.Find("Canvas Principal").transform.Find("Image").GetComponent<Image>();
         fin = image.transform.Find("Fin").GetComponent<Text>();
 
@@ -52,7 +51,6 @@ public class Niveau : MonoBehaviour
     void Update()
     {
         lancerEvenement();
-        affichage();
         if(GameVariables.nbHabitants <= 0)
         {
             perdu = true;
@@ -97,15 +95,6 @@ public class Niveau : MonoBehaviour
             StartCoroutine("Fin", "Fin du niveau !\nVoici votre score : "+score);
             image.enabled = true;
             image.GetComponent<Animation>().Play();
-        }
-    }
-
-    public void affichage()
-    {
-        consigne.text = "";
-        foreach (Evenement e in FindObjectsOfType<Evenement>())
-        {
-            consigne.text += e.description + "\n";
         }
     }
 
