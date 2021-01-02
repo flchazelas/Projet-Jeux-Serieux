@@ -42,7 +42,7 @@ public class PopulationUIUpdater : MonoBehaviour
 
         if(avaiblePopCounter == 0)
         { //On désac les boutons + (plus de pop dispo)
-            avaiblePop.disableUpAction(); foodPop.disableUpAction(); woodPop.disableUpAction(); ironPop.disableUpAction(); goldPop.disableUpAction(); manaPop.disableUpAction();
+            avaiblePop.disableUpAction(); miliciaPop.disableUpAction(); foodPop.disableUpAction(); woodPop.disableUpAction(); ironPop.disableUpAction(); goldPop.disableUpAction(); manaPop.disableUpAction();
         }
 
         //Update Food Pop
@@ -303,44 +303,52 @@ public class PopulationUIUpdater : MonoBehaviour
     }
 
     //Milicia
-    void addFirstFoundHabitant_miliciaPop()
+    void addFirstFoundHabitantForType(Batiment.role type)
     {
         if (GameVariables.listHabitant.Count == 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab)
+            return;
+
+
+        Batiment batiment = null;
+        foreach (Batiment bat in GameVariables.listBatiment)
+        {
+            if (!bat.isEnDeplacement() && bat.typeHabitant == type && bat.ListHabitants.Count < bat.nbrMaxHab)
+            {
+                batiment = bat;
+                break;
+            }
+        }
+
+        if (batiment == null || batiment.ListHabitants.Count >= batiment.nbrMaxHab)
+            return;
+
+        List<Habitant> listMetierBat = GameVariables.getListMetier(batiment.typeHabitant);
+        if (listMetierBat == null)
             return;
 
         Habitant villager = GameVariables.listHabitant[0];
         GameVariables.listHabitant.Remove(villager);
 
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Combattant && bat.ListHabitants.Count != bat.nbrMaxHab)
-                batiment = bat; break;
-        }
-
-        if (batiment == null && batiment.ListHabitants.Count <= 0)
-            return;
-
         villager.Spawn = batiment;
         GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
         GameVariables.listHabitantAffecte.Add(villager);
-        GameVariables.listCombattant.Add(o.GetComponent<Combattant>());
+        listMetierBat.Add(villager);
         batiment.ListHabitants.Add(o);
     }
 
-    void removeFirstFoundHabitant_miliciaPop()
+    void removeFirstFoundHabitantForType(Batiment.role type)
     {
-
         Batiment batiment = null;
         foreach (Batiment bat in GameVariables.listBatiment)
         {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Combattant && bat.ListHabitants.Count != 0)
+            if (!bat.isEnDeplacement() && bat.typeHabitant == type && bat.ListHabitants.Count > 0)
+            {
+                Debug.Log(batiment);
                 batiment = bat; break;
+            }
         }
 
-        if (batiment == null)
-            return;
-        if (batiment.ListHabitants.Count == 0)
+        if (batiment == null || batiment.ListHabitants.Count <= 0)
             return;
 
         GameObject o = batiment.ListHabitants[0];
@@ -348,286 +356,81 @@ public class PopulationUIUpdater : MonoBehaviour
         if (o.GetComponent<Habitant>() == null)
             return;
 
+        List<Habitant> listMetierBat = GameVariables.getListMetier(batiment.typeHabitant);
+        if (listMetierBat == null)
+            return;
+
         Habitant villager = o.GetComponent<Habitant>();
         batiment.ListHabitants.Remove(o);
-        GameVariables.listCombattant.Remove(o.GetComponent<Combattant>());
+        listMetierBat.Remove(villager);
         GameVariables.listHabitantAffecte.Remove(villager);
 
         villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
         GameVariables.listHabitant.Add(villager);
+    }
+
+    void addFirstFoundHabitant_miliciaPop()
+    {
+        addFirstFoundHabitantForType(Batiment.role.Combattant);
+    }
+
+    void removeFirstFoundHabitant_miliciaPop()
+    {
+        removeFirstFoundHabitantForType(Batiment.role.Combattant);
     }
 
     //Food
     void addFirstFoundHabitant_foodPop()
     {
-        if (GameVariables.listHabitant.Count == 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab)
-            return;
-
-        Habitant villager = GameVariables.listHabitant[0];
-        GameVariables.listHabitant.Remove(villager);
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Fermier)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        
-        villager.Spawn = batiment;
-        GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
-        GameVariables.listHabitantAffecte.Add(villager);
-        GameVariables.listFermier.Add(o.GetComponent<Fermier>());
-        batiment.ListHabitants.Add(o);
+        addFirstFoundHabitantForType(Batiment.role.Fermier);
     }
 
     void removeFirstFoundHabitant_foodPop()
     {
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Fermier)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        if (batiment.ListHabitants.Count == 0)
-            return;
-
-        GameObject o = batiment.ListHabitants[0];
-
-        if (o.GetComponent<Habitant>() == null)
-            return;
-
-        Habitant villager = o.GetComponent<Habitant>();
-        batiment.ListHabitants.Remove(o);
-        GameVariables.listFermier.Remove(o.GetComponent<Fermier>());
-        GameVariables.listHabitantAffecte.Remove(villager);
-
-        villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
-        GameVariables.listHabitant.Add(villager);
+        removeFirstFoundHabitantForType(Batiment.role.Fermier);
     }
 
     //Wood
     void addFirstFoundHabitant_woodPop()
     {
-        if (GameVariables.listHabitant.Count == 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab)
-            return;
-
-        Habitant villager = GameVariables.listHabitant[0];
-        GameVariables.listHabitant.Remove(villager);
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Bucheron)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        
-        villager.Spawn = batiment;
-        GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
-        GameVariables.listHabitantAffecte.Add(villager);
-        GameVariables.listBucheron.Add(o.GetComponent<Bucheron>());
-        batiment.ListHabitants.Add(o);
+        addFirstFoundHabitantForType(Batiment.role.Bucheron);
     }
 
     void removeFirstFoundHabitant_woodPop()
     {
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Bucheron)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        if (batiment.ListHabitants.Count == 0)
-            return;
-
-        GameObject o = batiment.ListHabitants[0];
-
-        if (o.GetComponent<Habitant>() == null)
-            return;
-
-        Habitant villager = o.GetComponent<Habitant>();
-        batiment.ListHabitants.Remove(o);
-        GameVariables.listBucheron.Remove(o.GetComponent<Bucheron>());
-        GameVariables.listHabitantAffecte.Remove(villager);
-
-        villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
-        GameVariables.listHabitant.Add(villager);
+        removeFirstFoundHabitantForType(Batiment.role.Bucheron);
     }
 
     //Iron
     void addFirstFoundHabitant_ironPop()
     {
-        if (GameVariables.listHabitant.Count == 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab)
-            return;
-
-        Habitant villager = GameVariables.listHabitant[0];
-        GameVariables.listHabitant.Remove(villager);
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Mineur)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        
-        villager.Spawn = batiment;
-        GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
-        GameVariables.listHabitantAffecte.Add(villager);
-        GameVariables.listMineur.Add(o.GetComponent<Mineur>());
-        batiment.ListHabitants.Add(o);
+        addFirstFoundHabitantForType(Batiment.role.Mineur);
     }
 
     void removeFirstFoundHabitant_ironPop()
     {
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Mineur)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        if (batiment.ListHabitants.Count == 0)
-            return;
-
-        GameObject o = batiment.ListHabitants[0];
-
-        if (o.GetComponent<Habitant>() == null)
-            return;
-
-        Habitant villager = o.GetComponent<Habitant>();
-        batiment.ListHabitants.Remove(o);
-        GameVariables.listMineur.Remove(o.GetComponent<Mineur>());
-        GameVariables.listHabitantAffecte.Remove(villager);
-
-        villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
-        GameVariables.listHabitant.Add(villager);
+        removeFirstFoundHabitantForType(Batiment.role.Mineur);
     }
 
     //Gold
     void addFirstFoundHabitant_goldPop()
     {
-        if (GameVariables.listHabitant.Count == 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab)
-            return;
-
-        Habitant villager = GameVariables.listHabitant[0];
-        GameVariables.listHabitant.Remove(villager);
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Marchand)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        
-        villager.Spawn = batiment;
-        GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
-        GameVariables.listHabitantAffecte.Add(villager);
-        GameVariables.listMarchand.Add(o.GetComponent<Marchand>());
-        batiment.ListHabitants.Add(o);
+        addFirstFoundHabitantForType(Batiment.role.Marchand);
     }
 
     void removeFirstFoundHabitant_goldPop()
     {
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Marchand)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        if (batiment.ListHabitants.Count == 0)
-            return;
-
-        GameObject o = batiment.ListHabitants[0];
-
-        if (o.GetComponent<Habitant>() == null)
-            return;
-
-        Habitant villager = o.GetComponent<Habitant>();
-        batiment.ListHabitants.Remove(o);
-        GameVariables.listMarchand.Remove(o.GetComponent<Marchand>());
-        GameVariables.listHabitantAffecte.Remove(villager);
-
-        villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
-        GameVariables.listHabitant.Add(villager);
+        removeFirstFoundHabitantForType(Batiment.role.Marchand);
     }
 
     //Mana
     void addFirstFoundHabitant_manaPop()
     {
-        if (GameVariables.listHabitant.Count == 0 && GameVariables.batimentSelectionne.ListHabitants.Count < GameVariables.batimentSelectionne.nbrMaxHab)
-            return;
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Pretre)
-                batiment = bat; break;
-        }
-
-        if (batiment == null && batiment.ListHabitants.Count <= 0)
-            return;
-
-
-        Habitant villager = GameVariables.listHabitant[0];
-        GameVariables.listHabitant.Remove(villager);
-        villager.Spawn = batiment;
-        GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
-        GameVariables.listHabitantAffecte.Add(villager);
-        GameVariables.listPretre.Add(o.GetComponent<Pretre>());
-        batiment.ListHabitants.Add(o);
+        addFirstFoundHabitantForType(Batiment.role.Pretre);
     }
 
     void removeFirstFoundHabitant_manaPop()
     {
-
-        Batiment batiment = null;
-        foreach (Batiment bat in GameVariables.listBatiment)
-        {
-            if (!bat.isEnDeplacement() && bat.typeHabitant == Batiment.role.Pretre && bat.ListHabitants.Count != 0)
-                batiment = bat; break;
-        }
-
-        if (batiment == null)
-            return;
-        if (batiment.ListHabitants.Count == 0)
-            return;
-
-        GameObject o = batiment.ListHabitants[0];
-
-        if (o.GetComponent<Habitant>() == null)
-            return;
-
-        Habitant villager = o.GetComponent<Habitant>();
-        batiment.ListHabitants.Remove(o);
-        GameVariables.listPretre.Remove(o.GetComponent<Pretre>());
-        GameVariables.listHabitantAffecte.Remove(villager);
-
-        villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
-        GameVariables.listHabitant.Add(villager);
+        removeFirstFoundHabitantForType(Batiment.role.Pretre);
     }
 }

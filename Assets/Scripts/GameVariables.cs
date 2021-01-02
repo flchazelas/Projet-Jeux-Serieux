@@ -47,4 +47,22 @@ public class GameVariables : MonoBehaviour
     public static List<Habitant> listPretre = new List<Habitant>();
     public static List<Habitant> listMarchand = new List<Habitant>();
     public static List<Habitant> listHabitantAffecte = new List<Habitant>();
+
+    public static List<Habitant> getListMetier(Batiment.role type)
+    {
+        if (type == Batiment.role.Combattant)
+            return listCombattant;
+        else if (type == Batiment.role.Fermier)
+            return listFermier;
+        else if (type == Batiment.role.Mineur)
+            return listMineur;
+        else if (type == Batiment.role.Bucheron)
+            return listBucheron;
+        else if (type == Batiment.role.Pretre)
+            return listPretre;
+        else if (type == Batiment.role.Marchand)
+            return listMarchand;
+        else
+            return null;
+    }
 }

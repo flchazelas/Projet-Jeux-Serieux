@@ -70,9 +70,11 @@ public class BuildingManagementUI : MonoBehaviour
                     return;
 
                 Batiment batiment = GameVariables.batimentSelectionne;
-                if (batiment == null || batiment.isEnDeplacement())
+                if (batiment == null || batiment.isEnDeplacement() || batiment.ListHabitants.Count >= batiment.nbrMaxHab)
                     return;
-                if (batiment.ListHabitants.Count == batiment.nbrMaxHab)
+
+                List<Habitant> listMetierBat = GameVariables.getListMetier(batiment.typeHabitant);
+                if (listMetierBat == null)
                     return;
 
                 Habitant villager = GameVariables.listHabitant[0];
@@ -81,6 +83,7 @@ public class BuildingManagementUI : MonoBehaviour
                 villager.Spawn = batiment;
                 GameObject o = villager.GetComponent<Role>().changementRole(batiment.typeHabitant.ToString());
                 GameVariables.listHabitantAffecte.Add(villager);
+                listMetierBat.Add(villager);
                 batiment.ListHabitants.Add(o);
             });
 
@@ -96,8 +99,13 @@ public class BuildingManagementUI : MonoBehaviour
                 if (o.GetComponent<Habitant>() == null)
                     return;
 
+                List<Habitant> listMetierBat = GameVariables.getListMetier(batiment.typeHabitant);
+                if (listMetierBat == null)
+                    return;
+
                 Habitant villager = o.GetComponent<Habitant>();
                 batiment.ListHabitants.Remove(o);
+                listMetierBat.Remove(villager);
                 GameVariables.listHabitantAffecte.Remove(villager);
 
                 villager.GetComponent<Role>().changementRole(Batiment.role.Habitant.ToString());
