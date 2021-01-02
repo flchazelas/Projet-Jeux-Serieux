@@ -14,7 +14,6 @@ public abstract class Evenement : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        nom = gameObject.name;
         StartCoroutine("Timer");
     }
 

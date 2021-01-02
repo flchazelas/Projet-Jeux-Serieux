@@ -10,6 +10,8 @@ public class Niveau : MonoBehaviour
     public int difficulte = 0;
     public ListEvenements listEvenements;
 
+    public List<Evenement> evenementsActifs;
+
     public ListEvenements listEvents;
     public float currentTimer;
     public float laps;
@@ -73,6 +75,8 @@ public class Niveau : MonoBehaviour
         {
             Evenement e = listEvents.getEvent();
             e = Instantiate(e);
+            evenementsActifs.Add(e);
+            EventsUIUpdater.getInstance().updateEventsUI(evenementsActifs);
             print("temps :" + e.getDuree());
             currentTimer = e.getDuree();
             if (listEvents.getSize() == 0)
@@ -112,6 +116,8 @@ public class Niveau : MonoBehaviour
             {
                 print("Fin : " + e.description);
                 score += (int)e.duree - (int)e.currentTimer;
+                evenementsActifs.Remove(e);
+                EventsUIUpdater.getInstance().updateEventsUI(evenementsActifs);
                 Destroy(GameObject.Find(e.nom));
             }
         }
