@@ -7,14 +7,14 @@ public class GameVariables : MonoBehaviour
 {
     //Ressources
     public static int maxWood = 150;
-    public static int maxMeat = 100000000;
+    public static int maxMeat = 100;
     public static int maxGold = 120;
     public static int maxStone = 120;
     public static int maxMana = 120;
     public static int maxIron = 250;
     public static int nbIron = 100;
     public static int nbWood = 100;
-    public static int nbMeat = 100000000;
+    public static int nbMeat = 100;
     public static int nbGold = 100;
     public static int nbStone = 100;
     public static int nbMana = 100;
