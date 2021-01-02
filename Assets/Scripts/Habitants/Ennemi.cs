@@ -45,7 +45,7 @@ public class Ennemi : MonoBehaviour
         }
 
         agent.SetDestination(target.position);
-        print(agent.velocity);
+        //print(agent.velocity);
         if (agent.velocity.magnitude > 0)
         {
             GetComponent<Animator>().SetBool("isWalking", true);
