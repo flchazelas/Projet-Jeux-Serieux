@@ -9,14 +9,11 @@ public abstract class Batiment : MonoBehaviour
 {
     public float size = 0.5f;
     protected GameObject batiment;
-    protected GameObject canvas;
-    UnityAction close;
-    UnityAction upgrade;
     static bool actionPossible;
     public GameObject spawn;
 
     Color color;
-    bool deplacement;
+    bool deplacement; public bool isEnDeplacement() { return this.deplacement; }
     private bool clic;
 
     public string description;
@@ -51,25 +48,17 @@ public abstract class Batiment : MonoBehaviour
     protected List<Color> prefabModelColorChild;
     protected List<GameObject> modelChild;
 
-    protected Text desc;
-    protected Text batName;
-    protected Text habitants;
-
-    Button upgradeButton;
-    Button closeButton;
-
     public List<GameObject> ListHabitants { get => listHabitants; set => listHabitants = value; }
     public GameObject Spawn { get => spawn; set => spawn = value; }
 
-
-
-    // Start is called before the first frame update
-    protected virtual void Start()
+    void Awake()
     {
         ListHabitants = new List<GameObject>();
-        upgrade = () => { this.upgradeStructure(); };
-        close = () => { this.desactiverCanvas(); };
+    }
 
+    // Start is called before the first frame update
+    public virtual void Start()
+    {
         batiment = gameObject.transform.Find("Delimitation").gameObject;
         batiment.SetActive(false);
         color = GetComponent<Renderer>().material.color;
@@ -78,23 +67,12 @@ public abstract class Batiment : MonoBehaviour
         batiment.GetComponent<Renderer>().material.color = Color.green;
         GetComponent<Renderer>().material.color = Color.green;
         batiment.SetActive(true);
-
-        canvas = GameObject.Find("Canvas Batiment");
-        upgradeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Upgrade").GetComponent<Button>();
-        closeButton = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Fermer").GetComponent<Button>();
-        desc = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Description").GetComponent<Text>();
-
-        batName = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("BatName").GetComponent<Text>();
-        batName.text = nomBatiment;
-        //ChangeDesc();
-        habitants = canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Nb Habitants Affectés").GetComponent<Text>();
+        
         actionPossible = false;
         GetPartModel();
         ChangeBatColor(Color.green);
-
     }
-
-    public abstract void ChangeDesc();
+    
     protected void GetPartModel()
     {
         prefabModelColorChild = new List<Color>();
@@ -127,7 +105,7 @@ public abstract class Batiment : MonoBehaviour
 
     }
     // Update is called once per frame
-    protected virtual void Update()
+    public virtual void Update()
     {
         if (GameVariables.batimentSelectionne == this)
         {
@@ -207,7 +185,7 @@ public abstract class Batiment : MonoBehaviour
     //met le batiment en surbrillance si on le survole
     private void OnMouseOver()
     {
-        if (!deplacement && batiment != null && GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false && actionPossible)
+        if (!deplacement && batiment != null && !BuildingManagementUI.getInstance().isOpen() && actionPossible)
         {
             ChangeBatColor(Color.yellow);
 
@@ -243,9 +221,9 @@ public abstract class Batiment : MonoBehaviour
     }
 
     //Affiche les choix possibles et la description
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-        if (GameObject.Find("Canvas Batiment").GetComponent<Canvas>().enabled == false) afficheCanvas();
+        if (BuildingManagementUI.getInstance() != null && !BuildingManagementUI.getInstance().isOpen()) afficheCanvas();
     }
 
     public void ChangeBatColor(Color c)
@@ -283,46 +261,17 @@ public abstract class Batiment : MonoBehaviour
     }
     public void desactiverCanvas()
     {
-        canvas = GameObject.Find("Canvas Batiment");
-        upgradeButton.onClick.RemoveListener(upgrade);
-
-        closeButton.onClick.RemoveListener(close);
-        canvas.GetComponent<Canvas>().enabled = false;
-
-
+        if(BuildingManagementUI.getInstance() != null)
+            BuildingManagementUI.getInstance().closeBuildingManagement();
     }
 
     public void afficheCanvas()
     {
-        if (!deplacement && batiment != null && actionPossible)
-        {
-            canvas.GetComponent<Canvas>().enabled = true;
-            GameVariables.batimentSelectionne = this;
-            if (listHabitants.Count < nbrMaxHab)
-            {
-                canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(true);
-            }
-            else
-            {
-                canvas.transform.Find("Image Fond").GetComponent<Image>().transform.Find("Affectation Habitant").gameObject.SetActive(false);
-            }
-            if (batUpgrade != null)
-            {
-                upgradeButton.gameObject.SetActive(true);
-                upgradeButton.onClick.AddListener(upgrade);
-            }
-            else
-            {
-                upgradeButton.gameObject.SetActive(false);
-
-            }
-            closeButton.onClick.AddListener(close);
-            ChangeDesc();
-        }
+        if (BuildingManagementUI.getInstance() != null && !deplacement && batiment != null && actionPossible)
+            BuildingManagementUI.getInstance().openBuildingManagement(this);
     }
 
     public abstract void upgradeStructure();
-
 
     public void validateLocation()
     {
@@ -353,7 +302,6 @@ public abstract class Batiment : MonoBehaviour
 
     public bool canBeConstruct()
     {
-
         bool t = (GameVariables.nbWood >= priceWood && GameVariables.nbGold >= priceGold && GameVariables.nbMeat >= priceMeat && GameVariables.nbMana >= priceMana && GameVariables.nbIron >= priceIron);
         return t;
     }

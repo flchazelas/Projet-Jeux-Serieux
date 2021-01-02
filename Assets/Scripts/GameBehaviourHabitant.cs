@@ -13,7 +13,6 @@ public class GameBehaviourHabitant : MonoBehaviour
     bool b = true;
 
     GameObject canvas;
-    Text nbHabitants;
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +21,13 @@ public class GameBehaviourHabitant : MonoBehaviour
         spawnHabitant();
         StartCoroutine(Timer());
         canvas = GameObject.Find("Canvas Principal");
-        nbHabitants = canvas.transform.Find("Nb Habitants").GetComponent<Text>();
-        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        nbHabitants.text = "Nombre habitants : "+GameVariables.listHabitant.Count.ToString();
         if (!b)
         {
             walk();
@@ -85,7 +82,6 @@ public class GameBehaviourHabitant : MonoBehaviour
             }
 
             GameVariables.batimentSelectionne.ListHabitants.Add(o);
-            GameVariables.batimentSelectionne.ChangeDesc();
         }
     }
 
@@ -110,5 +106,11 @@ public class GameBehaviourHabitant : MonoBehaviour
                 //h.V = h.Vec - h.transform.position;
             }
         }
+    }
+
+    public void ConvertVillagerFromTypeToType(string baseType, string targetType)
+    {
+        //Pick base collection
+
     }
 }

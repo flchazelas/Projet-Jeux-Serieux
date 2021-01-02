@@ -89,7 +89,7 @@ public class Habitant : MonoBehaviour
             yield return new WaitForSeconds(tempsConso);
             GameVariables.nbMeat -= quantiteConso;
             survie++;
-            print("consomme");
+            //print("consomme");
             conso = true;
         }
     }
@@ -99,7 +99,7 @@ public class Habitant : MonoBehaviour
         while(survie != 0)
         {
             yield return new WaitForSeconds(tempsSurvie);
-            print("survie");
+            //print("survie");
             survie--;
         }
     }

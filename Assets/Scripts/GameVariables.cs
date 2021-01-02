@@ -20,8 +20,8 @@ public class GameVariables : MonoBehaviour
     public static int nbMana = 100;
     public static int nbMaxHabitants = 20;
     //Malus et Bonus (Compris dans l'intervalle  [0,1[ )
-    public static double bonus = 0.6;
-    public static double malus = 0.5;
+    public static double bonus = 0.0;
+    public static double malus = 0.0;
 
     //Timer
     public static int allowedTime = 30;
@@ -47,5 +47,4 @@ public class GameVariables : MonoBehaviour
     public static List<Habitant> listPretre = new List<Habitant>();
     public static List<Habitant> listMarchand = new List<Habitant>();
     public static List<Habitant> listHabitantAffecte = new List<Habitant>();
-
 }

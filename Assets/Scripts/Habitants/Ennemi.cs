@@ -49,6 +49,13 @@ public class Ennemi : MonoBehaviour
         if (agent.velocity.magnitude > 0)
         {
             GetComponent<Animator>().SetBool("isWalking", true);
+            /*transform.position = Vector3.MoveTowards(transform.position, new Vector3(Vec.x, 0, Vec.z), speed * Time.deltaTime);
+            if(V != Vector3.zero)
+            transform.forward = V;
+            if (transform.position == new Vector3(Vec.x, transform.position.y, Vec.z))
+            {
+                GetComponent<Animator>().SetBool("isWalking", false);
+            }*/
         }
         else
         {
