@@ -32,6 +32,7 @@ public class BatimentRessource : Batiment
 
         base.Update();
         nbHabitant = ListHabitants.Count;
+        nbRessourcesGenerate = nbHabitant * multiplicator;
         if (canGenerate) StartCoroutine("generateRessources");
     }
 
@@ -47,7 +48,6 @@ public class BatimentRessource : Batiment
         canGenerate = true;
         if (generateGold)
         {
-            
             GameVariables.nbGold += this.getCurrentResourceProd();
             if (GameVariables.nbGold < 0) GameVariables.nbGold = 0;
             if (GameVariables.nbGold > GameVariables.maxGold) GameVariables.nbGold = GameVariables.maxGold;

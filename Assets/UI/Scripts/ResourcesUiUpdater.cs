@@ -15,7 +15,7 @@ public class ResourcesUiUpdater : MonoBehaviour
     {
         foodGauge.UpdateGauge(GameVariables.nbMeat, GameVariables.maxMeat);
         woodGauge.UpdateGauge(GameVariables.nbWood, GameVariables.maxWood);
-        woodGauge.UpdateGauge(GameVariables.nbIron, GameVariables.maxIron);
+        ironGauge.UpdateGauge(GameVariables.nbIron, GameVariables.maxIron);
         goldGauge.UpdateGauge(GameVariables.nbGold, GameVariables.maxGold);
         manaGauge.UpdateGauge(GameVariables.nbMana, GameVariables.maxMana);
         popGauge.UpdateGauge(GameVariables.nbHabitants, GameVariables.nbHabitants);
