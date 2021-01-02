@@ -73,7 +73,6 @@ public class GameBehaviourHabitant : MonoBehaviour
                     GameVariables.listBucheron.Add(o.GetComponent<Bucheron>());
                     break;
                 case "Marchand":
-                    print("New Marchand");
                     GameVariables.listMarchand.Add(o.GetComponent<Marchand>());
                     break;
                 case "Pretre":
