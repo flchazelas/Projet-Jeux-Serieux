@@ -9146,7 +9146,7 @@ MonoBehaviour:
   buidMineButton: {fileID: 3544488563824948104}
   buidTraderButton: {fileID: 3544488563179360124}
   buidMageButton: {fileID: 3544488564624031775}
-  housePrefab: {fileID: 6108305614118769151, guid: 8fed6a99eabbeb4428953fc8ae4df7f4, type: 3}
+  housePrefab: {fileID: 6965939748837483883, guid: fa410c905b3426c4bbf4b9354431a9ab, type: 3}
   miliciaPrefab: {fileID: 8119388362871620560, guid: 9ded70eb9787457468a3060f19d7fa29, type: 3}
   farmPrefab: {fileID: 4421425150908877339, guid: b8e9272df7d949b44b058604161301cd, type: 3}
   woodLodgePrefab: {fileID: 4421425150908877339, guid: abc1ad89c02d063488ec6bd985a80441, type: 3}
@@ -18702,7 +18702,7 @@ MonoBehaviour:
           m_MethodName: buildButtonPointerEnter
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 6108305614118769151, guid: 8fed6a99eabbeb4428953fc8ae4df7f4, type: 3}
+            m_ObjectArgument: {fileID: 6965939748837483883, guid: fa410c905b3426c4bbf4b9354431a9ab, type: 3}
             m_ObjectArgumentAssemblyTypeName: Batiment, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
