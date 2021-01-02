@@ -104,7 +104,7 @@ public class BuildingPlacerStart : MonoBehaviour
     {
         costPopUp.gameObject.SetActive(true);
 
-        if (batiment is Maison)
+        if (batiment is Entrepot)
             costPopUp.transform.SetParent(buidHouseButton.transform);
         else if (batiment is Caserne)
             costPopUp.transform.SetParent(buidMiliciaButton.transform);
