@@ -23,27 +23,27 @@ public class TacheNbHabitants : Tache
         switch (typeHabitant)
         {
             case habitant.Villageois:
-                if (GameVariables.listHabitant.Count == nombreVoulu)
+                if (GameVariables.listHabitant.Count >= nombreVoulu)
                     return true;
                 break;
             case habitant.Combattant:
-                if (GameVariables.listCombattant.Count == nombreVoulu)
+                if (GameVariables.listCombattant.Count >= nombreVoulu)
                     return true;
                 break;
             case habitant.Fermier:
-                if (GameVariables.listCombattant.Count == nombreVoulu)
+                if (GameVariables.listCombattant.Count >= nombreVoulu)
                     return true;
                 break;
             case habitant.Mineur:
-                if (GameVariables.listCombattant.Count == nombreVoulu)
+                if (GameVariables.listCombattant.Count >= nombreVoulu)
                     return true;
                 break;
             case habitant.Bucheron:
-                if (GameVariables.listCombattant.Count == nombreVoulu)
+                if (GameVariables.listCombattant.Count >= nombreVoulu)
                     return true;
                 break;
             case habitant.Pretre:
-                if (GameVariables.listCombattant.Count == nombreVoulu)
+                if (GameVariables.listCombattant.Count >= nombreVoulu)
                     return true;
                 break;
         }

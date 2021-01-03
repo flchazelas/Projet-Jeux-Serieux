@@ -21,6 +21,7 @@ public class Combattant : Habitant
         Destroy(random_object);
         base.Start();
         ennemi = null;
+        agent.isStopped = false;
     }
 
     // Update is called once per frame

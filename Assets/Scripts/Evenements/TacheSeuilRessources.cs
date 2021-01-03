@@ -20,19 +20,19 @@ public class TacheSeuilRessources : Tache
         switch (typeRessource)
         {
             case habitant.Gold:
-                if (GameVariables.nbGold == nombreVoulu)
+                if (GameVariables.nbGold >= nombreVoulu)
                     return true;
                 break;
             case habitant.Meat:
-                if (GameVariables.nbMeat == nombreVoulu)
+                if (GameVariables.nbMeat >= nombreVoulu)
                     return true;
                 break;
             case habitant.Wood:
-                if (GameVariables.nbWood == nombreVoulu)
+                if (GameVariables.nbWood >= nombreVoulu)
                     return true;
                 break;
             case habitant.Stone:
-                if (GameVariables.nbStone == nombreVoulu)
+                if (GameVariables.nbStone >= nombreVoulu)
                     return true;
                 break;
         }

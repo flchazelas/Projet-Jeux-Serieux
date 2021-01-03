@@ -42,6 +42,7 @@ public class Worker : Habitant
         Destroy(random_object);
         isWorking = false;
         isReturningToSpawn = true;
+        agent.isStopped = false;
     }
 
     // Update is called once per frame

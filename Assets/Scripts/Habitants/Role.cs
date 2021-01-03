@@ -143,10 +143,9 @@ public class Role : MonoBehaviour
 
 
                 GetComponent<Animator>().runtimeAnimatorController = pretre.GetComponent<Animator>().runtimeAnimatorController;
-                ;
                 break;
+
             case "Habitant":
-                typeHabitant = role.Habitant;
                 if (GetComponent<Habitant>().random_object == null)
                 {
                     GetComponent<Habitant>().random_object = new GameObject(); GetComponent<Habitant>().random_object.transform.position = new Vector3(Random.Range(GameVariables.terrainXmin, GameVariables.terrainXmax), 0, Random.Range(GameVariables.terrainZmin, GameVariables.terrainZmax));
@@ -158,6 +157,7 @@ public class Role : MonoBehaviour
                 GetComponent<Habitant>().quantiteConso = habitant.GetComponent<Habitant>().quantiteConso;
                 GetComponent<Habitant>().Spawn = habitant.GetComponent<Habitant>().Spawn;
                 GetComponent<Habitant>().enabled = true;
+                typeHabitant = role.Habitant;
 
                 GetComponent<Animator>().runtimeAnimatorController = habitant.GetComponent<Animator>().runtimeAnimatorController;
                 
